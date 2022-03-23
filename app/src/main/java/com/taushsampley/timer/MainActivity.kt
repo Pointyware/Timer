@@ -117,6 +117,7 @@ fun TaskControl() {
     ) {
         Text(text = stringResource(R.string.start_task))
     }
+    // TODO: hide text field when timer is running and change button text to "Stop Task"
 }
 
 /**
