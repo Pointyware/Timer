@@ -62,19 +62,45 @@ fun TaskTimer() {
     }
 }
 
+private fun defaultTaskList(): List<Task> {
+    val currentTime = System.currentTimeMillis()
+    return listOf(
+        Task("programming", currentTime, currentTime + 3641000),
+        Task("cleaning", currentTime, currentTime + 7223000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000),
+        Task("eating", currentTime, currentTime + 50000)
+    )
+}
+
 /**
  * List of prior task times
  */
 @Composable
-fun TaskList() {
-    val currentTime = System.currentTimeMillis()
-    val taskList = listOf(
-        Task("programming", currentTime, currentTime + 3641000),
-        Task("cleaning", currentTime, currentTime + 7223000),
-        Task("eating", currentTime, currentTime + 50000)
-    ) // TODO: pull from actual data source/view model
+fun TaskList(
+    taskList: List<Task> = defaultTaskList(),
+    modifier: Modifier
+) {
 
-    LazyColumn(modifier = Modifier.fillMaxWidth()) {
+    LazyColumn(modifier = modifier.fillMaxWidth()) {
         items(taskList) { task ->
 
             Surface(
@@ -133,7 +159,7 @@ fun TaskUi() {
             modifier = Modifier.fillMaxHeight()
         ) {
             TaskTimer()
-            TaskList()
+            TaskList(modifier = Modifier.weight(1f))
             /*
              TODO:
                1. attach input/controls to bottom of page
