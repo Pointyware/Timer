@@ -112,8 +112,8 @@ private fun defaultTaskList(): List<Task> {
  */
 @Composable
 fun TaskList(
-    taskList: List<Task> = defaultTaskList(),
-    modifier: Modifier
+    modifier: Modifier = Modifier,
+    taskList: List<Task> = defaultTaskList()
 ) {
 
     LazyColumn(modifier = modifier.fillMaxWidth()) {
