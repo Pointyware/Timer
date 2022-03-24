@@ -148,18 +148,38 @@ fun TaskList(
 fun TaskControl() {
     // TODO: bind and update with view model
     var text by remember { mutableStateOf("") }
-    TextField(
-        value = text,
-        onValueChange = { text = it },
-        label = { Text("Task Title") }
-    )
-    Button(
-        // TODO: notify view model of creation
-        onClick = { println("Start timing new task") }
+    var running by remember { mutableStateOf(false) }
+
+    val height by animateDpAsState(if (running) 0.dp else Float.NaN.dp)
+
+    // TODO: add background to represent a surface that will cover task list
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colors.primary),
+        elevation = 16.dp
     ) {
-        Text(text = stringResource(R.string.start_task))
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            TextField(
+                value = text,
+                onValueChange = { text = it },
+                label = { Text("Task Title") },
+                modifier = Modifier
+                    .height(height)
+                    .animateContentSize()
+            )
+            Button(
+                // TODO: notify view model of creation
+                onClick = {
+                    println("Start timing new task")
+                    running = !running
+                }
+            ) {
+                Text(text = stringResource(if (running) R.string.stop_task else R.string.start_task))
+            }
+            // TODO: hide text field when timer is running and change button text to "Stop Task"
+        }
     }
-    // TODO: hide text field when timer is running and change button text to "Stop Task"
 }
 
 /**
