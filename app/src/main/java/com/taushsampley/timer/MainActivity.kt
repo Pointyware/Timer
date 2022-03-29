@@ -190,21 +190,33 @@ fun TaskControl() {
  */
 @Composable
 fun TaskUi() {
-    Surface(
-        color = MaterialTheme.colors.background
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxHeight()
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = stringResource(R.string.app_name))
+                }
+            )
+        }
+    ) { innerPadding ->
+        Surface(
+            modifier = Modifier.padding(innerPadding),
+            color = MaterialTheme.colors.background
         ) {
-            TaskTimer()
-            TaskList(modifier = Modifier.weight(1f))
-            /*
-             TODO:
-               1. attach input/controls to bottom of page
-               2. create space between list and controls
-             */
-            TaskControl()
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxHeight()
+            ) {
+                TaskTimer()
+                TaskList(modifier = Modifier.weight(1f))
+                /*
+                 TODO:
+                   1. attach input/controls to bottom of page
+                   2. create space between list and controls
+                 */
+                TaskControl()
+            }
         }
     }
 }
