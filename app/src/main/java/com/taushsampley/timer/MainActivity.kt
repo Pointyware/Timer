@@ -4,8 +4,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -157,8 +156,6 @@ fun TaskControl() {
     var text by remember { mutableStateOf("") }
     var running by remember { mutableStateOf(false) }
 
-    val height by animateDpAsState(if (running) 0.dp else Float.NaN.dp)
-
     // TODO: add background to represent a surface that will cover task list
     Surface(
         modifier = Modifier
@@ -167,14 +164,13 @@ fun TaskControl() {
         elevation = 16.dp
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            TextField(
-                value = text,
-                onValueChange = { text = it },
-                label = { Text("Task Title") },
-                modifier = Modifier
-                    .height(height)
-                    .animateContentSize()
-            )
+            AnimatedVisibility(!running) {
+                TextField(
+                    value = text,
+                    onValueChange = { text = it },
+                    label = { Text("Task Title") }
+                )
+            }
             Button(
                 // TODO: notify view model of creation
                 onClick = {
