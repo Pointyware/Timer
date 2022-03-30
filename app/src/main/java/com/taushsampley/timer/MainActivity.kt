@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
@@ -19,23 +20,91 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.taushsampley.timer.ui.theme.TimerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TimerTheme {
+            TimerApp()
+        }
+    }
+}
 
-                TaskUi()
-                /*
-                TODO:
-                  1. Current Task Timer
-                  2. Task Time List (Task Title : Time)
-                  3. New Task Title (Input Box)
-                  4. Start/Pause/New (Button)
-                 */
+enum class Screens {
+    Timer,
+    Organizer,
+    Metrics,
+    Calendar
+}
+
+@Composable
+fun TimerApp() {
+
+    TimerTheme {
+
+        val allScreens = Screens.values()
+        val currentScreen by rememberSaveable { mutableStateOf(Screens.Timer) }
+        val navController = rememberNavController()
+
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Text(text = stringResource(R.string.app_name))
+                    }
+                )
             }
+        ) { innerPadding ->
+
+            NavHost(
+                navController = navController,
+                startDestination = Screens.Timer.name,
+                modifier = Modifier.padding(innerPadding)
+            ) {
+                composable(Screens.Timer.name) {
+                    TimerScreen()
+                }
+                composable(Screens.Organizer.name) {
+                    Text("Organizer")
+                }
+                composable(Screens.Metrics.name) {
+                    Text("Metrics")
+                }
+                composable(Screens.Calendar.name) {
+                    Text("Calendar")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun TimerScreen() {
+
+    /*
+    TODO:
+      1. Current Task Timer
+      2. Task Time List (Task Title : Time)
+      3. New Task Title (Input Box)
+      4. Start/Pause/New (Button)
+     */
+    Surface {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxHeight()
+        ) {
+            TaskTimer()
+            TaskList(modifier = Modifier.weight(1f))
+            /*
+             TODO:
+               1. attach input/controls to bottom of page
+               2. create space between list and controls
+             */
+            TaskControl()
         }
     }
 }
