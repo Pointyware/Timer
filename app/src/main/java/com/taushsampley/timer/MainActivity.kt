@@ -228,8 +228,7 @@ fun TaskControl() {
     // TODO: add background to represent a surface that will cover task list
     Surface(
         modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colors.primary),
+            .fillMaxWidth(),
         elevation = 16.dp
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
