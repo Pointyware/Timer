@@ -254,47 +254,11 @@ fun TaskControl() {
     }
 }
 
-/**
- * Full task timer UI
- */
+@Preview(showBackground = true, name = "Timer Light")
+@Preview(showBackground = true, name = "Timer Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun TaskUi() {
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = stringResource(R.string.app_name))
-                }
-            )
-        }
-    ) { innerPadding ->
-        Surface(
-            modifier = Modifier.padding(innerPadding),
-            color = MaterialTheme.colors.background
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxHeight()
-            ) {
-                TaskTimer()
-                TaskList(modifier = Modifier.weight(1f))
-                /*
-                 TODO:
-                   1. attach input/controls to bottom of page
-                   2. create space between list and controls
-                 */
-                TaskControl()
-            }
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-fun DefaultPreview() {
+fun TimerPreview() {
     TimerTheme {
-        TaskUi()
+        TimerScreen()
     }
 }
