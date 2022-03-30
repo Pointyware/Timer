@@ -2,6 +2,7 @@
 /shelf/
 /workspace.xml
 <<<<<<< HEAD
+<<<<<<< HEAD
 /inspectionProfiles/Project_Default.xml
 /vcs.xml
 /runConfigurations.xml
@@ -10,3 +11,6 @@
 /deploymentTargetSelector.xml
 =======
 >>>>>>> 9cc7db9 (Initial Commit)
+=======
+/inspectionProfiles/Project_Default.xml
+>>>>>>> d28975c (ignore frequently generated file)
