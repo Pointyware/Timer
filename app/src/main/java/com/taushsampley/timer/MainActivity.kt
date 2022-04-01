@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,8 +13,6 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -66,7 +62,7 @@ fun TimerApp() {
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(Screens.Timer.name) {
-                    TimerScreen()
+                    TimerScreen(0) // TODO: pass data from viewModel
                 }
                 composable(Screens.Organizer.name) {
                     Text("Organizer")
@@ -83,7 +79,7 @@ fun TimerApp() {
 }
 
 @Composable
-fun TimerScreen() {
+fun TimerScreen(time: Int) {
 
     /*
     TODO:
@@ -97,7 +93,7 @@ fun TimerScreen() {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxHeight()
         ) {
-            TaskTimer()
+            Timer(time, modifier = Modifier.padding(24.dp))
             TaskList(modifier = Modifier.weight(1f))
             /*
              TODO:
@@ -106,43 +102,6 @@ fun TimerScreen() {
              */
             TaskControl()
         }
-    }
-}
-
-/**
- * Elapsed time for current active task
- * TODO: mock out
- *   1. Elapsed Time Text, centered [x]
- *   2. Backing Circle [x]
- *   3. Seconds "Hand" border
- */
-@Composable
-fun TaskTimer() {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .padding(horizontal = 24.dp, vertical = 8.dp)
-    ) {
-
-        val arcColor = MaterialTheme.colors.primary
-        Canvas(modifier = Modifier.aspectRatio(1f)) {
-
-            drawArc(
-                color = arcColor,
-                startAngle = -90f,
-                sweepAngle = 270f,
-                useCenter = false,
-                style = Stroke(width = 8f, cap = StrokeCap.Round)
-            )
-        }
-
-        Text(
-            text = "00:00:00",
-//            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.h4,
-            modifier = Modifier
-                .align(Alignment.Center)
-        )
     }
 }
 
@@ -256,8 +215,11 @@ fun TaskControl() {
 @Preview(showBackground = true, name = "Timer Light")
 @Preview(showBackground = true, name = "Timer Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun TimerPreview() {
+fun TimerScreenPreview() {
+
+    var timer by remember { mutableStateOf(3805) }
+
     TimerTheme {
-        TimerScreen()
+        TimerScreen(timer)
     }
 }
