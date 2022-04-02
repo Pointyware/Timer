@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,11 +42,30 @@ enum class Screens {
 }
 
 @Composable
+fun BottomNavBar(
+    currentScreen: Screens,
+    onClick: (Screens) -> Unit,
+    modifier: Modifier = Modifier
+) {
+
+    BottomAppBar(modifier) {
+        Screens.values().forEach {
+            BottomNavigationItem(
+                selected = currentScreen == it,
+                onClick = { onClick(it) },
+                icon = {
+                    Icon(Icons.Default.Add, contentDescription = null)
+                }
+            )
+        }
+    }
+}
+
+@Composable
 fun TimerApp() {
 
     TimerTheme {
 
-        val allScreens = Screens.values()
         var currentScreen by rememberSaveable { mutableStateOf(Screens.Timer) }
         val navController = rememberNavController()
 
@@ -66,13 +86,13 @@ fun TimerApp() {
                 )
             },
             bottomBar = {
-                BottomAppBar {
-                    allScreens.forEach {
-                        Button(onClick = { navController.navigate(it.name) }) {
-                            Text(it.name)
-                        }
+                BottomNavBar(
+                    currentScreen = currentScreen,
+                    onClick = {
+                        navController.navigate(it.name)
+                        currentScreen = it
                     }
-                }
+                )
             }
         ) { innerPadding ->
 
