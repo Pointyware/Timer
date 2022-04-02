@@ -1,5 +1,11 @@
 package com.taushsampley.timer.calendar
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+
 /**
- * TODO: describe purpose/intent of Calendar
  */
+@Composable
+fun CalendarScreen() {
+    Text("Calendar")
+}
