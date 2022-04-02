@@ -1,5 +1,11 @@
 package com.taushsampley.timer.metrics
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+
 /**
- * TODO: describe purpose/intent of Metrics
  */
+@Composable
+fun MetricsScreen() {
+    Text("Metrics")
+}

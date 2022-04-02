@@ -1,5 +1,11 @@
 package com.taushsampley.timer.organizer
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+
 /**
- * TODO: describe purpose/intent of Organizer
  */
+@Composable
+fun OrganizerScreen() {
+    Text("Organizer")
+}

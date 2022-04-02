@@ -6,16 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.taushsampley.timer.calendar.CalendarScreen
 import com.taushsampley.timer.metrics.MetricsScreen
@@ -45,7 +45,7 @@ fun TimerApp() {
     TimerTheme {
 
         val allScreens = Screens.values()
-        val currentScreen by rememberSaveable { mutableStateOf(Screens.Timer) }
+        var currentScreen by rememberSaveable { mutableStateOf(Screens.Timer) }
         val navController = rememberNavController()
 
         Scaffold(
@@ -55,6 +55,15 @@ fun TimerApp() {
                         Text(text = stringResource(R.string.app_name))
                     }
                 )
+            },
+            bottomBar = {
+                Row {
+                    allScreens.forEach {
+                        Button(onClick = { navController.navigate(it.name) }) {
+                            Text(it.name)
+                        }
+                    }
+                }
             }
         ) { innerPadding ->
 
@@ -67,13 +76,13 @@ fun TimerApp() {
                     TimerScreen(0) // TODO: pass data from viewModel
                 }
                 composable(Screens.Organizer.name) {
-                    Text("Organizer")
+                    OrganizerScreen()
                 }
                 composable(Screens.Metrics.name) {
-                    Text("Metrics")
+                    MetricsScreen()
                 }
                 composable(Screens.Calendar.name) {
-                    Text("Calendar")
+                    CalendarScreen()
                 }
             }
         }
