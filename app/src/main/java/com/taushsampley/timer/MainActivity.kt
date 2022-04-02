@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-enum class Screens {
+enum class Screen {
     Timer,
     Organizer,
     Metrics,
@@ -43,13 +43,13 @@ enum class Screens {
 
 @Composable
 fun BottomNavBar(
-    currentScreen: Screens,
-    onClick: (Screens) -> Unit,
+    currentScreen: Screen,
+    onClick: (Screen) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
     BottomAppBar(modifier) {
-        Screens.values().forEach {
+        Screen.values().forEach {
             BottomNavigationItem(
                 selected = currentScreen == it,
                 onClick = { onClick(it) },
@@ -66,7 +66,7 @@ fun TimerApp() {
 
     TimerTheme {
 
-        var currentScreen by rememberSaveable { mutableStateOf(Screens.Timer) }
+        var currentScreen by rememberSaveable { mutableStateOf(Screen.Timer) }
         val navController = rememberNavController()
 
         Scaffold(
@@ -98,19 +98,19 @@ fun TimerApp() {
 
             NavHost(
                 navController = navController,
-                startDestination = Screens.Timer.name,
+                startDestination = Screen.Timer.name,
                 modifier = Modifier.padding(innerPadding)
             ) {
-                composable(Screens.Timer.name) {
+                composable(Screen.Timer.name) {
                     TimerScreen(0) // TODO: pass data from viewModel
                 }
-                composable(Screens.Organizer.name) {
+                composable(Screen.Organizer.name) {
                     OrganizerScreen()
                 }
-                composable(Screens.Metrics.name) {
+                composable(Screen.Metrics.name) {
                     MetricsScreen()
                 }
-                composable(Screens.Calendar.name) {
+                composable(Screen.Calendar.name) {
                     CalendarScreen()
                 }
             }
