@@ -51,6 +51,14 @@ fun TimerApp() {
         Scaffold(
             topBar = {
                 TopAppBar(
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                Icons.Default.ArrowBack,
+                                stringResource(R.string.navigate_back)
+                            )
+                        }
+                    },
                     title = {
                         Text(text = stringResource(R.string.app_name))
                     }
