@@ -1,4 +1,4 @@
-package com.taushsampley.timer
+package com.taushsampley.timer.tasks
 
 import java.util.concurrent.TimeUnit
 
