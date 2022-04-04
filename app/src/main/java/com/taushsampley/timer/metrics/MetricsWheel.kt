@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun MetricsWheel(
     metricsList: List<Metric>,
+    colorMap: ColorMap<Int> = RandomColorMap(),
     edgeColor: Color = Color.White,
     edgeStyle: DrawStyle = Stroke(2.0f)
 ) {
@@ -52,19 +53,20 @@ fun MetricsWheel(
                 val segmentDuration = metric.duration
                 val segmentSweep = sweep * segmentDuration / duration
                 val segmentEnd = segmentStart + segmentSweep
+                val segmentColor = colorMap[metric.id]
 
                 val children = metric.children
                 if (children.isEmpty()) {
                     // draw to final height
                     drawSegment(tierInnerBounds, fullBounds,
                         segmentStart, segmentSweep, segmentEnd,
-                        Color.Black, edgeColor, edgeStyle
+                        segmentColor, edgeColor, edgeStyle
                     )
                 } else {
                     // draw only this tier
                     drawSegment(tierInnerBounds, tierOuterBounds,
                         segmentStart, segmentSweep, segmentEnd,
-                        Color.Black, edgeColor, edgeStyle
+                        segmentColor, edgeColor, edgeStyle
                     )
 
                     // draw child segments
