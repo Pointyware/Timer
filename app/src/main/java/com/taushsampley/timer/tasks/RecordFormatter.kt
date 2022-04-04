@@ -6,11 +6,11 @@ package com.taushsampley.timer.tasks
  *
  * Clean Layer: UI
  */
-object TaskFormatter {
+object RecordFormatter {
 
-    fun durationStringForTask(task: Task): String {
+    fun durationStringForRecord(record: Record): String {
 
-        val taskTime = task.elapsedTime
+        val taskTime = record.elapsedTime
 
         val remainingMinutes = taskTime / 60
         val displaySeconds = taskTime % 60

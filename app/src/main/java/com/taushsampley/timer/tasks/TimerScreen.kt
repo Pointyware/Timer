@@ -43,32 +43,32 @@ fun TimerScreen(time: Int) {
 }
 
 
-private fun defaultTaskList(): List<Task> {
+private fun defaultTaskList(): List<Record> {
     val currentTime = System.currentTimeMillis()
     return listOf(
-        Task("programming", currentTime, currentTime + 3641000),
-        Task("cleaning", currentTime, currentTime + 7223000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000),
-        Task("eating", currentTime, currentTime + 50000)
+        Record("programming", currentTime, currentTime + 3641000),
+        Record("cleaning", currentTime, currentTime + 7223000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000),
+        Record("eating", currentTime, currentTime + 50000)
     )
 }
 
@@ -78,11 +78,11 @@ private fun defaultTaskList(): List<Task> {
 @Composable
 fun TaskList(
     modifier: Modifier = Modifier,
-    taskList: List<Task> = defaultTaskList()
+    recordList: List<Record> = defaultTaskList()
 ) {
 
     LazyColumn(modifier = modifier.fillMaxWidth()) {
-        items(taskList) { task ->
+        items(recordList) { task ->
 
             /*
              TODO:
@@ -104,7 +104,7 @@ fun TaskList(
                     Text(text = task.title, style = MaterialTheme.typography.body1)
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = TaskFormatter.durationStringForTask(task),
+                        text = RecordFormatter.durationStringForRecord(task),
                         style = MaterialTheme.typography.body1
                     )
                 }

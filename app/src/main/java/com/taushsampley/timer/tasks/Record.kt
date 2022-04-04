@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
  * @property startTime The start time of the task, in milliseconds, using Unix epoch.
  * @property endTime The end time of the task, in milliseconds, using Unix epoch.
  */
-data class Task(
+data class Record(
     val title: String,
     val startTime: Long,
     val endTime: Long

@@ -7,20 +7,20 @@ import org.junit.Test
 
 /**
  */
-class TaskFormatterTest {
+class RecordFormatterTest {
 
     private val millisecondsPerSecond = 1000
 
-    private fun createTask(title: String, start: Int, duration: Int): Task {
-        return Task(title, start.toLong(), (start + duration*millisecondsPerSecond).toLong())
+    private fun createRecord(title: String, start: Int, duration: Int): Record {
+        return Record(title, start.toLong(), (start + duration*millisecondsPerSecond).toLong())
     }
 
-    private fun createTask(hour: Int, minute: Int, second: Int): Task {
+    private fun createRecord(hour: Int, minute: Int, second: Int): Record {
         val start = System.currentTimeMillis()
         val minutes = hour * 60 + minute
         val duration = minutes * 60 + second
         val millis = duration*1000
-        return Task("", start, start + millis.toLong())
+        return Record("", start, start + millis.toLong())
     }
 
     @Test
@@ -37,9 +37,9 @@ class TaskFormatterTest {
                 "%02d:%02d".format(minute, seconds)
             }
 
-            val simulatedTask = createTask(hour, minute, seconds)
+            val simulatedTask = createRecord(hour, minute, seconds)
             assertThat("$hour hour(s), $minute minute(s), and $seconds second(s) formatted as $expectedString",
-                TaskFormatter.durationStringForTask(simulatedTask), `is`(expectedString))
+                RecordFormatter.durationStringForRecord(simulatedTask), `is`(expectedString))
         }
     }
 }
