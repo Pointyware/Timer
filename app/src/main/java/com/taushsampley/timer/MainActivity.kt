@@ -21,6 +21,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.taushsampley.timer.calendar.CalendarScreen
 import com.taushsampley.timer.metrics.MetricsScreen
+import com.taushsampley.timer.metrics.TaskMetric
 import com.taushsampley.timer.organizer.OrganizerScreen
 import com.taushsampley.timer.tasks.TimerScreen
 import com.taushsampley.timer.ui.theme.TimerTheme
@@ -108,7 +109,7 @@ fun TimerApp() {
                     OrganizerScreen()
                 }
                 composable(Screen.Metrics.name) {
-                    MetricsScreen()
+                    MetricsScreen(listOf())
                 }
                 composable(Screen.Calendar.name) {
                     CalendarScreen()
