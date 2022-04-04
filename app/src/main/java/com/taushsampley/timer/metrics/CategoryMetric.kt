@@ -13,4 +13,6 @@ data class CategoryMetric(
         get() = children.maxOf { it.height } + 1
 
     override val duration: Long = children.sumOf { it.duration }
+
+    override val id: Int = Metric.autogenerateId()
 }
