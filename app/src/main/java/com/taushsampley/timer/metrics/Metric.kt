@@ -20,4 +20,23 @@ interface Metric {
      * Sub=metrics that together compose this metric.
      */
     val children: List<Metric>
+
+    /**
+     * Uniquely identifies this metric.
+     */
+    val id: Int
+
+    companion object {
+
+        private var newId = 0
+
+        /**
+         * Sequentially generates new ids that can be used by metrics.
+         * @return A new id incremented from the previous, starting at 0.
+         */
+        @Synchronized
+        fun autogenerateId(): Int {
+            return newId++
+        }
+    }
 }

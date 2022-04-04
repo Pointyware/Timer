@@ -10,4 +10,6 @@ data class TaskMetric(
     override val height: Int get() = 1
 
     override val children: List<Metric> get() = emptyList()
+
+    override val id: Int = Metric.autogenerateId()
 }
