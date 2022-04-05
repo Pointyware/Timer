@@ -5,9 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.twotone.Add
+import androidx.compose.material.icons.twotone.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,9 +20,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.taushsampley.timer.calendar.CalendarScreen
 import com.taushsampley.timer.metrics.MetricsScreen
-import com.taushsampley.timer.metrics.TaskMetric
 import com.taushsampley.timer.organizer.OrganizerScreen
 import com.taushsampley.timer.tasks.TimerScreen
+import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
 
 class MainActivity : ComponentActivity() {
@@ -55,7 +54,7 @@ fun BottomNavBar(
                 selected = currentScreen == it,
                 onClick = { onClick(it) },
                 icon = {
-                    Icon(Icons.Default.Add, contentDescription = null)
+                    Icon(TimerIcons.Add, contentDescription = null)
                 }
             )
         }
@@ -76,7 +75,7 @@ fun TimerApp() {
                     navigationIcon = {
                         IconButton(onClick = { navController.navigateUp() }) {
                             Icon(
-                                Icons.Default.ArrowBack,
+                                TimerIcons.ArrowBack,
                                 stringResource(R.string.navigate_back)
                             )
                         }
