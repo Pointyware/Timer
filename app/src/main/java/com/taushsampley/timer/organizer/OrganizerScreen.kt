@@ -6,6 +6,6 @@ import androidx.compose.runtime.Composable
 /**
  */
 @Composable
-fun OrganizerScreen() {
+fun OrganizerScreen(organizerViewModel: OrganizerViewModel) {
     Text("Organizer")
 }

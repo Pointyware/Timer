@@ -2,6 +2,8 @@ package com.taushsampley.timer.metrics
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -11,11 +13,13 @@ import com.taushsampley.timer.ui.theme.TimerTheme
  */
 @Composable
 fun MetricsScreen(
-    metricsList: List<Metric>,
+    metricsViewModel: MetricsViewModel,
     modifier: Modifier = Modifier
 ) {
     Column {
         val colorMap = remember { RandomColorMap<Int>() }
+        val metricsList by metricsViewModel.metricsList.collectAsState()
+
         MetricsWheel(metricsList, colorMap)
     }
 }
@@ -23,20 +27,10 @@ fun MetricsScreen(
 @Preview
 @Composable
 fun MetricsPreview() {
-    val dummyData = listOf(
-        TaskMetric(2000),
-        TaskMetric(5000),
-        TaskMetric(3000),
-        CategoryMetric(
-            TaskMetric(8000),
-            TaskMetric(2000),
-            CategoryMetric(
-                TaskMetric(1000)
-            )
-        )
-    )
+
+    val viewModel = MetricsViewModel()
 
     TimerTheme {
-        MetricsScreen(dummyData)
+        MetricsScreen(viewModel)
     }
 }
