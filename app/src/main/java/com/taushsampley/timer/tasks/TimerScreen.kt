@@ -124,11 +124,7 @@ fun TaskControl(
                 )
             }
             Button(
-                // TODO: notify view model of creation
-                onClick = {
-                    println("Start timing new task")
-                    onToggleTimer
-                }
+                onClick = onToggleTimer
             ) {
                 Text(text = stringResource(if (running) R.string.stop_task else R.string.start_task))
             }
