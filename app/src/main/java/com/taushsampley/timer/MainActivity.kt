@@ -121,13 +121,13 @@ fun TimerApp(
                     TimerScreen(timerViewModel)
                 }
                 composable(Screen.Organizer.name) {
-                    OrganizerScreen()
+                    OrganizerScreen(organizerViewModel)
                 }
                 composable(Screen.Metrics.name) {
-                    MetricsScreen(listOf())
+                    MetricsScreen(metricsViewModel)
                 }
                 composable(Screen.Calendar.name) {
-                    CalendarScreen()
+                    CalendarScreen(calendarViewModel)
                 }
             }
         }
