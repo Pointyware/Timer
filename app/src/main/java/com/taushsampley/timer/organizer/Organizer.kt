@@ -9,9 +9,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Folder
-import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.twotone.Folder
+import androidx.compose.material.icons.twotone.Timer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -20,6 +19,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.taushsampley.timer.R
+import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
 
 /**
@@ -62,9 +62,9 @@ fun OrganizerRow(element: OrganizerElement) {
         Spacer(modifier = Modifier.width((8*element.level).dp))
         Icon(
             imageVector = if (element.type == OrganizerElement.Type.Branch) {
-                Icons.Default.Folder
+                TimerIcons.Folder
             } else {
-                Icons.Default.Timer
+                TimerIcons.Timer
             },
             contentDescription = null
         )
