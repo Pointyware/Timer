@@ -3,6 +3,7 @@ package com.taushsampley.timer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.twotone.Add
@@ -19,17 +20,27 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.taushsampley.timer.calendar.CalendarScreen
+import com.taushsampley.timer.calendar.CalendarViewModel
 import com.taushsampley.timer.metrics.MetricsScreen
+import com.taushsampley.timer.metrics.MetricsViewModel
 import com.taushsampley.timer.organizer.OrganizerScreen
+import com.taushsampley.timer.organizer.OrganizerViewModel
 import com.taushsampley.timer.tasks.TimerScreen
+import com.taushsampley.timer.tasks.TimerViewModel
 import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val timerViewModel: TimerViewModel by viewModels()
+    private val organizerViewModel: OrganizerViewModel by viewModels()
+    private val calendarViewModel: CalendarViewModel by viewModels()
+    private val metricsViewModel: MetricsViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TimerApp()
+            TimerApp(timerViewModel, organizerViewModel, calendarViewModel, metricsViewModel)
         }
     }
 }
@@ -62,7 +73,12 @@ fun BottomNavBar(
 }
 
 @Composable
-fun TimerApp() {
+fun TimerApp(
+    timerViewModel: TimerViewModel,
+    organizerViewModel: OrganizerViewModel,
+    calendarViewModel: CalendarViewModel,
+    metricsViewModel: MetricsViewModel
+) {
 
     TimerTheme {
 
@@ -102,7 +118,7 @@ fun TimerApp() {
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(Screen.Timer.name) {
-                    TimerScreen(0) // TODO: pass data from viewModel
+                    TimerScreen(timerViewModel)
                 }
                 composable(Screen.Organizer.name) {
                     OrganizerScreen()
@@ -121,5 +137,9 @@ fun TimerApp() {
 @Preview
 @Composable
 fun NavigationPreview() {
-    TimerApp()
+    val timerViewModel = TimerViewModel()
+    val organizerViewModel = OrganizerViewModel()
+    val calendarViewModel = CalendarViewModel()
+    val metricsViewModel = MetricsViewModel()
+    TimerApp(timerViewModel, organizerViewModel, calendarViewModel, metricsViewModel)
 }

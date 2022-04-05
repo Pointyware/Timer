@@ -16,7 +16,9 @@ import com.taushsampley.timer.R
 import com.taushsampley.timer.ui.theme.TimerTheme
 
 @Composable
-fun TimerScreen(time: Int) {
+fun TimerScreen(
+    timerViewModel: TimerViewModel
+) {
 
     /*
     TODO:
@@ -30,14 +32,17 @@ fun TimerScreen(time: Int) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxHeight()
         ) {
-            Timer(time, modifier = Modifier.padding(24.dp))
+            val currentTime by timerViewModel.time.collectAsState()
+            val isRunning by timerViewModel.isRunning.collectAsState()
+
+            Timer(currentTime, modifier = Modifier.padding(24.dp))
             TaskList(modifier = Modifier.weight(1f))
             /*
              TODO:
                1. attach input/controls to bottom of page
                2. create space between list and controls
              */
-            TaskControl()
+            TaskControl(isRunning, timerViewModel::toggleTimer)
         }
     }
 }
@@ -46,7 +51,7 @@ fun TimerScreen(time: Int) {
 private fun defaultTaskList(): List<RecordListItem> {
     val currentTime = System.currentTimeMillis()
     return listOf(
-        RecordListItem("programming", "")
+        RecordListItem("programming", "00:00:00")
     )
 }
 
@@ -76,7 +81,9 @@ fun TaskList(
                 shape = MaterialTheme.shapes.medium
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(all = 4.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(all = 4.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     Text(text = record.title, style = MaterialTheme.typography.body1)
@@ -95,10 +102,12 @@ fun TaskList(
  * New task creation input/controls
  */
 @Composable
-fun TaskControl() {
+fun TaskControl(
+    running: Boolean,
+    onToggleTimer: () -> Unit
+) {
     // TODO: bind and update with view model
     var text by remember { mutableStateOf("") }
-    var running by remember { mutableStateOf(false) }
 
     // TODO: add background to represent a surface that will cover task list
     Surface(
@@ -118,7 +127,7 @@ fun TaskControl() {
                 // TODO: notify view model of creation
                 onClick = {
                     println("Start timing new task")
-                    running = !running
+                    onToggleTimer
                 }
             ) {
                 Text(text = stringResource(if (running) R.string.stop_task else R.string.start_task))
@@ -133,9 +142,9 @@ fun TaskControl() {
 @Composable
 fun TimerScreenPreview() {
 
-    var timer by remember { mutableStateOf(3805) }
+    val viewModel = TimerViewModel()
 
     TimerTheme {
-        TimerScreen(timer)
+        TimerScreen(viewModel)
     }
 }
