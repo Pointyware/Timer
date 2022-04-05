@@ -43,32 +43,10 @@ fun TimerScreen(time: Int) {
 }
 
 
-private fun defaultTaskList(): List<Record> {
+private fun defaultTaskList(): List<RecordListItem> {
     val currentTime = System.currentTimeMillis()
     return listOf(
-        Record("programming", currentTime, currentTime + 3641000),
-        Record("cleaning", currentTime, currentTime + 7223000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000),
-        Record("eating", currentTime, currentTime + 50000)
+        RecordListItem("programming", "")
     )
 }
 
@@ -78,11 +56,11 @@ private fun defaultTaskList(): List<Record> {
 @Composable
 fun TaskList(
     modifier: Modifier = Modifier,
-    recordList: List<Record> = defaultTaskList()
+    recordList: List<RecordListItem> = defaultTaskList()
 ) {
 
     LazyColumn(modifier = modifier.fillMaxWidth()) {
-        items(recordList) { task ->
+        items(recordList) { record ->
 
             /*
              TODO:
@@ -101,10 +79,10 @@ fun TaskList(
                     modifier = Modifier.fillMaxWidth().padding(all = 4.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(text = task.title, style = MaterialTheme.typography.body1)
+                    Text(text = record.title, style = MaterialTheme.typography.body1)
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = RecordFormatter.durationStringForRecord(task),
+                        text = record.duration,
                         style = MaterialTheme.typography.body1
                     )
                 }
