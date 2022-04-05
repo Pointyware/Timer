@@ -1,0 +1,66 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+rectangle FrameworkAndDrivers #AAF {
+
+    class View
+
+    rectangle InterfaceAdapters #AFA {
+
+        class ViewModel
+
+        rectangle Interactors #FAA {
+
+            interface TaskRepository {
+                suspend getTasksInRange(start: DateTime, end: DateTime): List<Category>
+                suspend createRecordAndTask(start: DateTime, end: DateTime, title: String)
+                suspend createRecord(start: DateTime, end: DateTime, task: Task)
+                suspend createTask(title: String, category: Category?)
+            }
+
+            rectangle Entities #FFA {
+
+                interface Node {
+                    title: String
+                    children: List<Node>?
+                }
+
+                class Record {
+                    startTime: Long
+                    endTime: Long
+                    duration: Int
+                }
+
+                class Task implements Node {
+                    title: String
+                }
+                Task "1" *--> "*" Record
+
+                class Category implements Node {
+                    title: String
+                }
+                Category "0..1" *--> "*" Task
+                Category "1" *--> "*" Category
+
+            } /' Entities '/
+
+            GetTasksUseCase --> TaskRepository
+            CreateRecordUseCase --> TaskRepository
+            CreateRecordAndTaskUseCase --> TaskRepository
+            CreateTaskUseCase --> TaskRepository
+
+        } /' Interactors '/
+
+        ViewModel --> CreateRecordUseCase
+
+        class LocalTaskRepository implements TaskRepository
+
+    } /' InterfaceAdapters '/
+
+    class TaskDatabase
+
+    View --> ViewModel
+
+} /' FrameworksAndDrivers '/
+
+@enduml
