@@ -1,17 +1,19 @@
 package com.taushsampley.timer.organizer
 
-import androidx.compose.foundation.Image
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Icon
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Folder
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -58,12 +60,20 @@ fun OrganizerRow(element: OrganizerElement) {
         }
     ) {
         Spacer(modifier = Modifier.width((8*element.level).dp))
-        Icon(painter = painterResource(R.drawable.ic_category), contentDescription = null)
+        Icon(
+            imageVector = if (element.type == OrganizerElement.Type.Branch) {
+                Icons.Default.Folder
+            } else {
+                Icons.Default.Timer
+            },
+            contentDescription = null
+        )
         Text(text = element.title)
     }
 }
 
-@Preview
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun OrganizerPreview() {
     val elementList = listOf(
@@ -75,6 +85,8 @@ fun OrganizerPreview() {
     )
 
     TimerTheme {
-        Organizer(elements = elementList, onClickElement = {_, _ -> })
+        Surface {
+            Organizer(elements = elementList, onClickElement = { _, _ -> })
+        }
     }
 }
