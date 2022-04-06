@@ -16,7 +16,7 @@ fun MetricsScreen(
     metricsViewModel: MetricsViewModel,
     modifier: Modifier = Modifier
 ) {
-    Column {
+    Column(modifier = modifier) {
         val colorMap = remember { RandomColorMap<Int>() }
         val metricsList by metricsViewModel.metricsList.collectAsState()
 
