@@ -92,7 +92,7 @@ fun TimerApp(
                         IconButton(onClick = { navController.navigateUp() }) {
                             Icon(
                                 TimerIcons.ArrowBack,
-                                stringResource(R.string.navigate_back)
+                                stringResource(R.string.acc_navigate_back)
                             )
                         }
                     },
