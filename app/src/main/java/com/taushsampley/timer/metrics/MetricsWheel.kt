@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun MetricsWheel(
     metricsList: List<Metric>,
+    modifier: Modifier = Modifier,
     colorMap: ColorMap<Int> = RandomColorMap(),
     edgeColor: Color = Color.White,
     edgeStyle: DrawStyle = Stroke(2.0f)
@@ -26,7 +27,7 @@ fun MetricsWheel(
     val totalDuration = metricsList.sumOf { it.duration }
     val maxHeight = metricsList.maxOfOrNull { it.height } ?: 0
 
-    Canvas(modifier = Modifier
+    Canvas(modifier = modifier
         .fillMaxWidth()
         .aspectRatio(1.0f)) {
         // defines draw radius of wheel
