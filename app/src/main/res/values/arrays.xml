@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="weekDays">
+        <item>@string/weekday_sunday</item>
+        <item>@string/weekday_monday</item>
+        <item>@string/weekday_tuesday</item>
+        <item>@string/weekday_wednesday</item>
+        <item>@string/weekday_thursday</item>
+        <item>@string/weekday_friday</item>
+        <item>@string/weekday_saturday</item>
+    </string-array>
+    <string-array name="weekDaysShort">
+        <item>@string/weekday_sunday_short</item>
+        <item>@string/weekday_monday_short</item>
+        <item>@string/weekday_tuesday_short</item>
+        <item>@string/weekday_wednesday_short</item>
+        <item>@string/weekday_thursday_short</item>
+        <item>@string/weekday_friday_short</item>
+        <item>@string/weekday_saturday_short</item>
+    </string-array>
+</resources>
