@@ -20,7 +20,7 @@ fun MetricsScreen(
         val colorMap = remember { RandomColorMap<Int>() }
         val metricsList by metricsViewModel.metricsList.collectAsState()
 
-        MetricsWheel(metricsList, colorMap)
+        MetricsWheel(metricsList, colorMap = colorMap)
     }
 }
 
