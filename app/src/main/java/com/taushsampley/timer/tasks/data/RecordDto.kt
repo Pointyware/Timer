@@ -45,8 +45,8 @@ data class RecordDto(
 ) {
     companion object {
         const val TABLE_NAME = "records"
-        const val ID_NAME = "id"
-        const val TASK_NAME = "task"
+        const val ID_NAME = "record_id"
+        const val TASK_NAME = "record_task"
         const val START_NAME = "start"
         const val END_NAME = "end"
     }
