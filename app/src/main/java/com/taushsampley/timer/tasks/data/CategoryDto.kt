@@ -37,8 +37,8 @@ data class CategoryDto(
 ) {
     companion object {
         const val TABLE_NAME = "categories"
-        const val ID_NAME = "id"
-        const val TITLE_NAME = "title"
+        const val ID_NAME = "cat_id"
+        const val TITLE_NAME = "cat_title"
         const val PARENT_NAME = "parent"
     }
 }
