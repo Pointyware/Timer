@@ -38,8 +38,8 @@ data class TaskDto(
 ) {
     companion object {
         const val TABLE_NAME = "tasks"
-        const val ID_NAME = "id"
-        const val TITLE_NAME = "title"
-        const val CATEGORY_NAME = "category"
+        const val ID_NAME = "task_id"
+        const val TITLE_NAME = "task_title"
+        const val CATEGORY_NAME = "task_category"
     }
 }
