@@ -14,7 +14,12 @@ interface CategoryDao {
 
     // Read
     @Query("SELECT * FROM categories WHERE categories.parent = :categoryId")
-    suspend fun getAll(categoryId: Long?): List<CategoryDto>
+    suspend fun getSubcategories(categoryId: Long?): List<CategoryDto>
+
+    @Transaction
+    @MapInfo(keyColumn = "parent")
+    @Query("SELECT * FROM categories")
+    suspend fun getAll(): Map<Long?, List<CategoryWithTasksAndRecords>>
 
     // Update
     @Update
