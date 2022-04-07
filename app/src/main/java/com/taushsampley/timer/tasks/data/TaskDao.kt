@@ -13,8 +13,9 @@ interface TaskDao {
     suspend fun insert(task: TaskDto): Long
 
     // Read
+    @Transaction
     @Query("SELECT * FROM tasks WHERE task_category = :categoryId")
-    suspend fun getByCategory(categoryId: Long?): List<TaskDto>
+    suspend fun getWithRecords(categoryId: Long?): List<TaskWithRecords>
 
     // Update
     @Update
