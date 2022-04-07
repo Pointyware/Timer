@@ -11,8 +11,8 @@ class RecordFormatterTest {
 
     private val millisecondsPerSecond = 1000
 
-    private fun createRecord(title: String, start: Int, duration: Int): Record {
-        return Record(title, start.toLong(), (start + duration*millisecondsPerSecond).toLong())
+    private fun createRecord(start: Int, duration: Int): Record {
+        return Record(start.toLong(), (start + duration*millisecondsPerSecond).toLong())
     }
 
     private fun createRecord(hour: Int, minute: Int, second: Int): Record {
@@ -20,7 +20,7 @@ class RecordFormatterTest {
         val minutes = hour * 60 + minute
         val duration = minutes * 60 + second
         val millis = duration*1000
-        return Record("", start, start + millis.toLong())
+        return Record(start, start + millis.toLong())
     }
 
     @Test
