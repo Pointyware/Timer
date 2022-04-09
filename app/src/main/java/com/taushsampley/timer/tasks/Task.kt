@@ -7,7 +7,7 @@ package com.taushsampley.timer.tasks
  */
 data class Task(
     override val title: String,
-    val records: MutableList<Record> = mutableListOf()
+    val records: List<Record> = emptyList()
 ): Node {
 
     /**
