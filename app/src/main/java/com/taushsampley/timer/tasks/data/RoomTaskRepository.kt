@@ -14,7 +14,7 @@ class RoomTaskRepository(
     private val database: TaskDatabase
 ): TaskRepository {
 
-    override suspend fun getRootNodes(): List<Node> {
+    override suspend fun getNodes(category: Category?): List<Node> {
         TODO("Not yet implemented")
     }
 

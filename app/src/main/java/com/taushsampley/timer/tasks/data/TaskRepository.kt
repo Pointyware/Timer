@@ -15,7 +15,7 @@ import com.taushsampley.timer.tasks.Task
  */
 interface TaskRepository {
 
-    suspend fun getRootNodes(): List<Node>
+    suspend fun getNodes(category: Category?): List<Node>
 
     // region Category access
     suspend fun addCategory(category: Category, parent: Category?)
