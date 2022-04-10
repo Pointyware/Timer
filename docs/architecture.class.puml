@@ -3,63 +3,186 @@
 
 rectangle FrameworkAndDrivers #AAF {
 
-    class View
+    class TimerScreen
+    class OrganizerScreen
+    class MetricsScreen
+    class CalendarScreen
 
     rectangle InterfaceAdapters #AFA {
 
-        class ViewModel
+        class TimerViewModel
+        TimerScreen ---> TimerViewModel
+        class OrganizerViewModel
+        OrganizerScreen ---> OrganizerViewModel
+        class MetricsViewModel
+        MetricsScreen ---> MetricsViewModel
+        class CalendarViewModel
+        CalendarScreen ---> CalendarViewModel
 
         rectangle Interactors #FAA {
 
             interface TaskRepository {
-                suspend getTasksInRange(start: DateTime, end: DateTime): List<Category>
-                suspend createRecordAndTask(start: DateTime, end: DateTime, title: String)
-                suspend createRecord(start: DateTime, end: DateTime, task: Task)
-                suspend createTask(title: String, category: Category?)
+                suspend createTask(title: String)
+                suspend getTasksInRange(start: Long, end: Long): List<Task>
+            }
+
+            interface RecordingRepository {
+                suspend createRecording(recording:Recording, task: Task)
             }
 
             rectangle Entities #FFA {
 
-                interface Node {
-                    title: String
-                    children: List<Node>?
-                }
-
-                class Record {
+                class Recording {
                     startTime: Long
                     endTime: Long
                     duration: Int
                 }
 
-                class Task implements Node {
+                class Task {
                     title: String
                 }
-                Task "1" *--> "*" Record
+                Task "1" ..> "*" Recording
 
-                class Category implements Node {
-                    title: String
+                class TaskWithRecordings {
+                    task: Task
+                    recordings: List<Recording>
                 }
-                Category "0..1" *--> "*" Task
-                Category "1" *--> "*" Category
+                TaskWithRecordings o--> Task
+                TaskWithRecordings o--> "*" Recording
+
+                class RecordingWithTask {
+                    recording: Recording
+                    task: Task
+                }
+                RecordingWithTask o--> Recording
+                RecordingWithTask o--> Task
+
+'                class Category implements Node {
+'                    title: String
+'                }
+'                Category "0..1" *--> "*" Task
+'                Category "1" *--> "*" Category
+
+'                class OrganizerHierarchy {
+'                    openCategory
+'                    closeCategory
+'                    getOrganizerState(): StateFlow<OrganizerState>
+'                }
+'                note bottom
+'                Maintains state of organizer
+'
+'                end note
 
             } /' Entities '/
 
-            GetTasksUseCase --> TaskRepository
-            CreateRecordUseCase --> TaskRepository
-            CreateRecordAndTaskUseCase --> TaskRepository
-            CreateTaskUseCase --> TaskRepository
+            rectangle "Task Interactors" {
+                class CreateTaskUseCase {
+                    attempts to create a new task with the
+                    given title.
+
+                    invoke(title:String): Result
+                }
+                CreateTaskUseCase --> TaskRepository
+
+                class GetTasksUseCase {
+                    retrieves a list of all tasks
+
+                    invoke(): List<Task>
+                }
+                GetTasksUseCase --> TaskRepository
+
+                class GetTasksWithRecordingsUseCase {
+                    retrieves a list of tasks with associated
+                    recordings within a given range
+
+                    invoke(start:Long,end:Long): List<TaskWithRecordings>
+                }
+
+                class EditTaskUseCase {
+                    invoke(task:Task,newTitle:String): Result
+                }
+                class RemoveTaskUseCase {
+                    invoke(task:Task)
+                }
+            }
+
+            rectangle "Record Interactors" {
+                class CreateRecordingUseCase {
+                    creates a recording under the existing
+                    task given.
+
+                    invoke(recording:Recording,task:Task)
+                }
+                CreateRecordingUseCase ---> RecordingRepository
+
+                class CreateRecordingAndTaskUseCase {
+                    creates a recording after creating a
+                    new task with the given title. If a task
+                    with the given title already exists, the
+                    recording will be placed under that task.
+
+                    invoke(recording:Recording,taskTitle:String)
+                }
+                CreateRecordingAndTaskUseCase --> CreateTaskUseCase
+                CreateRecordingAndTaskUseCase ---> RecordingRepository
+
+                class GetRecordingsUseCase {
+                    invoke(task:Task): List<Recording>
+                }
+
+                class GetRecordingsInRangeUseCase {
+                    Returns list of recordings the given range
+                    sorted by start time
+                    invoke(start:Long,end:Long): List<RecordingWithTask>
+                }
+
+
+                class EditRecordingUseCase {
+                    invoke(recording:Recording,startTime:Long,endTime:Long)
+                }
+                class MoveRecordingsUseCase {
+                    Reassociates one or more recordings with a new task
+                    invoke(recordings:List<Recording>,newTask:Task)
+                }
+                class EraseRecordingsUseCase {
+                    invoke(recordings:List<Recording>)
+                }
+            }
 
         } /' Interactors '/
 
-        ViewModel --> CreateRecordUseCase
+        TimerViewModel ---> CreateRecordingUseCase
+        TimerViewModel ---> CreateRecordingAndTaskUseCase
+        TimerViewModel ---> EraseRecordingsUseCase
+        TimerViewModel --> StartTimerUseCase
+        TimerViewModel --> StopTimerUseCase
 
-        class LocalTaskRepository implements TaskRepository
+        OrganizerViewModel ---> CreateTaskUseCase
+        OrganizerViewModel ---> GetTasksUseCase
+        OrganizerViewModel ---> EditTaskUseCase
+        OrganizerViewModel ---> RemoveTaskUseCase
+
+        MetricsViewModel --> GetRecordingsInRangeUseCase
+
+        CalendarViewModel --> GetRecordingsInRangeUseCase
 
     } /' InterfaceAdapters '/
 
-    class TaskDatabase
+    class LocalTaskCache {
 
-    View --> ViewModel
+    }
+
+    class RoomTaskDatabase {
+
+    }
+
+    class LocalTaskRecordingRepository {
+
+    }
+    TaskRepository <|.. LocalTaskRecordingRepository
+    RecordingRepository <|.. LocalTaskRecordingRepository
+    LocalTaskRecordingRepository --> RoomTaskDatabase
+    LocalTaskRecordingRepository --> LocalTaskCache
 
 } /' FrameworksAndDrivers '/
 
