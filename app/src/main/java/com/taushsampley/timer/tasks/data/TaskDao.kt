@@ -12,10 +12,13 @@ interface TaskDao {
     @Insert
     suspend fun insert(task: TaskDto): Long
 
-    // Read
-    @Transaction
-    @Query("SELECT * FROM tasks WHERE task_category = :categoryId")
-    suspend fun getWithRecords(categoryId: Long?): List<TaskWithRecords>
+//    // Read
+//    @Transaction
+//    @Query("SELECT * FROM tasks WHERE task_category = :categoryId")
+//    suspend fun getWithRecords(categoryId: Long?): List<TaskWithRecords>
+
+    @Query("SELECT * FROM tasks")
+    suspend fun getAll(): List<TaskDto>
 
     // Update
     @Update
@@ -25,6 +28,6 @@ interface TaskDao {
     @Delete
     suspend fun delete(vararg tasks: TaskDto)
 
-    @Query("DELETE FROM tasks WHERE task_category = :categoryId")
-    suspend fun deleteAll(categoryId: Long?)
+//    @Query("DELETE FROM tasks WHERE task_category = :categoryId")
+//    suspend fun deleteAll(categoryId: Long?)
 }

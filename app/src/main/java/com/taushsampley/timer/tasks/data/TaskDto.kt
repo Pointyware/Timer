@@ -2,7 +2,6 @@ package com.taushsampley.timer.tasks.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 /**
@@ -10,11 +9,11 @@ import androidx.room.PrimaryKey
  */
 @Entity(
     tableName = TaskDto.TABLE_NAME,
-    foreignKeys = [ForeignKey(
-        entity = CategoryDto::class,
-        parentColumns = [CategoryDto.ID_NAME],
-        childColumns = [TaskDto.CATEGORY_NAME]
-    )]
+//    foreignKeys = [ForeignKey( TODO: reinstate later
+//        entity = CategoryDto::class,
+//        parentColumns = [CategoryDto.ID_NAME],
+//        childColumns = [TaskDto.CATEGORY_NAME]
+//    )]
 )
 data class TaskDto(
     /**
@@ -23,11 +22,11 @@ data class TaskDto(
     @ColumnInfo(name = TITLE_NAME)
     val title: String,
 
-    /**
-     * The category this task belongs to, or null if this task is uncategorized.
-     */
-    @ColumnInfo(name = CATEGORY_NAME, index = true)
-    val category: Int? = null,
+//    /** TODO: reinstate later
+//     * The category this task belongs to, or null if this task is uncategorized.
+//     */
+//    @ColumnInfo(name = CATEGORY_NAME, index = true)
+//    val category: Int? = null,
 
     /**
      * Unique row id of this task entry.
