@@ -2,78 +2,17 @@
   "formatVersion": 1,
   "database": {
     "version": 0,
-    "identityHash": "7cbc60d5e4b7517aaebc4729983e6785",
+    "identityHash": "85e36648f7284fb4f8535b7b0c7c6596",
     "entities": [
       {
-        "tableName": "categories",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cat_title` TEXT NOT NULL, `parent` INTEGER, `cat_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FOREIGN KEY(`parent`) REFERENCES `categories`(`cat_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
-        "fields": [
-          {
-            "fieldPath": "title",
-            "columnName": "cat_title",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "category",
-            "columnName": "parent",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "id",
-            "columnName": "cat_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "cat_id"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [
-          {
-            "name": "index_categories_parent_cat_title",
-            "unique": true,
-            "columnNames": [
-              "parent",
-              "cat_title"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_categories_parent_cat_title` ON `${TABLE_NAME}` (`parent`, `cat_title`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "categories",
-            "onDelete": "NO ACTION",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "parent"
-            ],
-            "referencedColumns": [
-              "cat_id"
-            ]
-          }
-        ]
-      },
-      {
         "tableName": "tasks",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_title` TEXT NOT NULL, `task_category` INTEGER, `task_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FOREIGN KEY(`task_category`) REFERENCES `categories`(`cat_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_title` TEXT NOT NULL, `task_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "title",
             "columnName": "task_title",
             "affinity": "TEXT",
             "notNull": true
-          },
-          {
-            "fieldPath": "category",
-            "columnName": "task_category",
-            "affinity": "INTEGER",
-            "notNull": false
           },
           {
             "fieldPath": "id",
@@ -88,30 +27,8 @@
           ],
           "autoGenerate": true
         },
-        "indices": [
-          {
-            "name": "index_tasks_task_category",
-            "unique": false,
-            "columnNames": [
-              "task_category"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_tasks_task_category` ON `${TABLE_NAME}` (`task_category`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "categories",
-            "onDelete": "NO ACTION",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "task_category"
-            ],
-            "referencedColumns": [
-              "cat_id"
-            ]
-          }
-        ]
+        "indices": [],
+        "foreignKeys": []
       },
       {
         "tableName": "records",
@@ -177,7 +94,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7cbc60d5e4b7517aaebc4729983e6785')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '85e36648f7284fb4f8535b7b0c7c6596')"
     ]
   }
 }
