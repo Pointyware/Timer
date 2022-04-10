@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title Organizer Screen
+'autonumber
+
+actor User as user
+participant UI as ui
+participant ViewModel as vm
+collections UseCases as useCases
+participant Repository as repo
+database RoomDb as db
+queue Cache as cache
+
+activate ui
+ui -> vm : observe ui StateFlow
+ui -> vm : loadCategory(null)
+deactivate ui
+
+activate vm
+vm -> useCases ++ : GetNodesIn(null)
+useCases -> repo ++ : getNodes(null)
+repo -> cache ++ : isFresh()
+return false
+repo -> db ++ : getCategories(null)
+return List<CategoryDto>
+repo -> cache : cache(null, List<Category>)
+repo -> db ++ : getTasks(null)
+return List<TaskDto>
+repo -> cache : cache(null, List<Task>)
+return List<Node>
+return List<Node>
+vm -> ui: notify observers
+deactivate vm
+
+activate ui
+ui -> ui : render
+deactivate ui
+
+user -> ui : tap on category
+
+'user ->
+
+
+@enduml
