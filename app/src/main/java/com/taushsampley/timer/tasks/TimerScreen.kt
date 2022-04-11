@@ -113,8 +113,8 @@ fun TaskControl(
     selectedTask: Task?,
     onTaskSelected: (Task) -> Unit
 ) {
-    // TODO: bind and update with view model
-    var text by remember { mutableStateOf("") }
+
+    var taskSelectionOpen by remember { mutableStateOf(false) }
 
     // TODO: add background to represent a surface that will cover task list
     Surface(
@@ -125,9 +125,18 @@ fun TaskControl(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AnimatedVisibility(!running) {
                 TextField(
-                    value = text,
-                    onValueChange = { text = it },
-                    label = { Text("Task Title") }
+                    modifier = Modifier.padding(top = 8.dp),
+                    value = title,
+                    onValueChange = onTitleChanged,
+                    label = { Text(stringResource(R.string.label_task_title)) },
+                    trailingIcon = {
+                        IconButton(onClick = { taskSelectionOpen = true }) {
+                            Icon(
+                                imageVector = TimerIcons.Task,
+                                contentDescription = stringResource(R.string.acc_open_task_selector)
+                            )
+                        }
+                    }
                 )
             }
             Button(
@@ -136,6 +145,19 @@ fun TaskControl(
                 Text(text = stringResource(if (running) R.string.stop_task else R.string.start_task))
             }
             // TODO: hide text field when timer is running and change button text to "Stop Task"
+        }
+
+        if (taskSelectionOpen) {
+            Dialog(
+                onDismissRequest = { taskSelectionOpen = false }
+            ) {
+                TaskSelector(
+                    taskList = taskList,
+                    selectedTask = selectedTask,
+                    onSelect = onTaskSelected,
+                    onCancel = { taskSelectionOpen = false }
+                )
+            }
         }
     }
 }
