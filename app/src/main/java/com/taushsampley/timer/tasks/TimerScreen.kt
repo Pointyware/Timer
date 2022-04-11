@@ -6,13 +6,16 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
+import androidx.compose.material.icons.twotone.Task
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import com.taushsampley.timer.R
+import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
 
 @Composable
@@ -20,13 +23,6 @@ fun TimerScreen(
     timerViewModel: TimerViewModel
 ) {
 
-    /*
-    TODO:
-      1. Current Task Timer
-      2. Task Time List (Task Title : Time)
-      3. New Task Title (Input Box)
-      4. Start/Pause/New (Button)
-     */
     Surface {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -34,15 +30,21 @@ fun TimerScreen(
         ) {
             val currentTime by timerViewModel.time.collectAsState()
             val isRunning by timerViewModel.isRunning.collectAsState()
+            val title by timerViewModel.taskTitle.collectAsState()
+            val taskList by timerViewModel.taskList.collectAsState()
+            val selectedTask by timerViewModel.selectedTask.collectAsState()
 
             Timer(currentTime, modifier = Modifier.padding(24.dp))
             TaskList(modifier = Modifier.weight(1f))
-            /*
-             TODO:
-               1. attach input/controls to bottom of page
-               2. create space between list and controls
-             */
-            TaskControl(isRunning, timerViewModel::toggleTimer)
+            TaskControl(
+                running = isRunning,
+                onToggleTimer = timerViewModel::toggleTimer,
+                title = title,
+                onTitleChanged = timerViewModel::titleChanged,
+                taskList = taskList,
+                selectedTask = selectedTask,
+                onTaskSelected = timerViewModel::selectTask,
+            )
         }
     }
 }
@@ -104,7 +106,12 @@ fun TaskList(
 @Composable
 fun TaskControl(
     running: Boolean,
-    onToggleTimer: () -> Unit
+    onToggleTimer: () -> Unit,
+    title: String,
+    onTitleChanged: (String) -> Unit,
+    taskList: List<Task>,
+    selectedTask: Task?,
+    onTaskSelected: (Task) -> Unit
 ) {
     // TODO: bind and update with view model
     var text by remember { mutableStateOf("") }
