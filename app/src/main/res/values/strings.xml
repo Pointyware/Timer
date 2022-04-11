@@ -3,6 +3,9 @@
     <string name="start_task">Start Task</string>
     <string name="stop_task">Stop Task</string>
     <string name="loading">Loading</string>
+    <string name="label_task_title">Task Title</string>
+    <string name="cancel">Cancel</string>
+    <string name="select">Select</string>
 
     <string name="weekday_sunday">Sunday</string>
     <string name="weekday_monday">Monday</string>
@@ -39,4 +42,6 @@
     <string name="acc_previous_month">Previous Month</string>
     <string name="acc_next_month">Next month</string>
     <string name="acc_select_month">Select Month</string>
+    <string name="acc_open_task_selector">Open Task Selector</string>
+    <string name="acc_confirm_selection">Confirm Selection</string>
 </resources>
