@@ -8,8 +8,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.greaterThanOrEqualTo
-import org.hamcrest.Matchers.lessThanOrEqualTo
 import org.junit.After
 import org.junit.Assert.assertThrows
 import org.junit.Assert.fail
@@ -340,15 +338,16 @@ class TaskDatabaseTest {
         setupRecords(records, taskTitle)
 
         // when getting records in a time range
+        val range: LongRange = mileStone2..mileStone4
         val recordsInRange = runBlocking {
-            recordDao.getRange(mileStone2, mileStone4)
+            recordDao.getRange(range.first, range.last)
         }
 
         // then all records start or end time is in the inclusive range
         recordsInRange.forEach {
-            val inRange = both(greaterThanOrEqualTo(mileStone2)).and(lessThanOrEqualTo(mileStone4))
-            assertThat(it.start, inRange)
-            assertThat(it.end, inRange)
+            val startInRange = range.contains(it.start)
+            val endInRange = range.contains(it.end)
+            assertThat(startInRange || endInRange, `is`(true))
         }
 
         // TODO: add second task with another range
