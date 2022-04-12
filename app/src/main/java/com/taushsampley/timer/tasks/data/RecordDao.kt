@@ -1,6 +1,9 @@
 package com.taushsampley.timer.tasks.data
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 
 /**
  * Defines CRUD operations relevant to Record table.
@@ -26,8 +29,8 @@ interface RecordDao {
     suspend fun update(record: RecordDto)
 
     // Delete
-    @Delete
-    suspend fun delete(vararg records: RecordDto)
+    @Query("DELETE FROM records WHERE record_id IN (:records)")
+    suspend fun delete(records: List<Long>)
 
     @Query("DELETE FROM records WHERE record_task = :taskId")
     suspend fun deleteAll(taskId: Long)
