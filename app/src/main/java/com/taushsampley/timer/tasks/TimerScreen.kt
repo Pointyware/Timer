@@ -14,13 +14,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.taushsampley.timer.R
 import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
 
 @Composable
 fun TimerScreen(
-    timerViewModel: TimerViewModel
+    timerViewModel: TimerViewModel = viewModel()
 ) {
 
     Surface {
@@ -30,12 +31,13 @@ fun TimerScreen(
         ) {
             val currentTime by timerViewModel.time.collectAsState()
             val isRunning by timerViewModel.isRunning.collectAsState()
+            val recordingList by timerViewModel.recordings.collectAsState()
             val title by timerViewModel.taskTitle.collectAsState()
             val taskList by timerViewModel.taskList.collectAsState()
             val selectedTask by timerViewModel.selectedTask.collectAsState()
 
             Timer(currentTime, modifier = Modifier.padding(24.dp))
-            TaskList(modifier = Modifier.weight(1f))
+            RecordingList(modifier = Modifier.weight(1f), recordingList)
             TaskControl(
                 running = isRunning,
                 onToggleTimer = timerViewModel::toggleTimer,
@@ -49,21 +51,13 @@ fun TimerScreen(
     }
 }
 
-
-private fun defaultTaskList(): List<RecordListItem> {
-    val currentTime = System.currentTimeMillis()
-    return listOf(
-        RecordListItem("programming", "00:00:00")
-    )
-}
-
 /**
  * List of prior task times
  */
 @Composable
-fun TaskList(
+fun RecordingList(
     modifier: Modifier = Modifier,
-    recordList: List<RecordListItem> = defaultTaskList()
+    recordList: List<RecordListItem>
 ) {
 
     LazyColumn(modifier = modifier.fillMaxWidth()) {
