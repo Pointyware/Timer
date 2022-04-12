@@ -5,12 +5,17 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.twotone.Task
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -97,6 +102,7 @@ fun RecordingList(
 /**
  * New task creation input/controls
  */
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun TaskControl(
     running: Boolean,
@@ -118,23 +124,31 @@ fun TaskControl(
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AnimatedVisibility(!running) {
+                val keyboardController = LocalSoftwareKeyboardController.current
                 TextField(
                     modifier = Modifier.padding(top = 8.dp),
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                    keyboardActions = KeyboardActions(onDone = {
+                        keyboardController?.hide()
+                    }),
                     value = title,
                     onValueChange = onTitleChanged,
                     label = { Text(stringResource(R.string.label_task_title)) },
-                    trailingIcon = {
-                        IconButton(onClick = { taskSelectionOpen = true }) {
-                            Icon(
-                                imageVector = TimerIcons.Task,
-                                contentDescription = stringResource(R.string.acc_open_task_selector)
-                            )
+                    trailingIcon = if (taskList.isNotEmpty()) {
+                        {
+                            IconButton(onClick = { taskSelectionOpen = true }) {
+                                Icon(
+                                    imageVector = TimerIcons.Task,
+                                    contentDescription = stringResource(R.string.acc_open_task_selector)
+                                )
+                            }
                         }
-                    }
+                    } else null
                 )
             }
             Button(
-                onClick = onToggleTimer
+                onClick = onToggleTimer,
+                enabled = title.isNotBlank()
             ) {
                 Text(text = stringResource(if (running) R.string.stop_task else R.string.start_task))
             }
@@ -161,9 +175,7 @@ fun TaskControl(
 @Composable
 fun TimerScreenPreview() {
 
-    val viewModel = TimerViewModel()
-
     TimerTheme {
-        TimerScreen(viewModel)
+        TimerScreen()
     }
 }
