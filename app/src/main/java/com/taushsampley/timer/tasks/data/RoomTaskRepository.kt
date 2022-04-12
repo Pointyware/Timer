@@ -50,6 +50,6 @@ class RoomTaskRepository(
     }
 
     override suspend fun removeRecord(record: Record) {
-        database.recordDao.delete(RecordDto(record.startTime, record.endTime, record.id))
+        database.recordDao.delete(listOf(record.id))
     }
 }
