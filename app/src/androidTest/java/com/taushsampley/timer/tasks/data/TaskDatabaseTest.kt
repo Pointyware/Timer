@@ -251,7 +251,7 @@ class TaskDatabaseTest {
     private fun timeSpan(offset: Long, duration: Long): Pair<Long, Long> =
         (firstTime + offset) to (firstTime + offset + duration)
 
-    private val recordList = listOf(
+    private val spanList = listOf(
         timeSpan(0, 50000L),
         timeSpan(50000L, 60000L),
         // 10000 gap
@@ -267,8 +267,8 @@ class TaskDatabaseTest {
             taskDao.insert(TaskDto(taskTitle))
         }
         runBlocking {
-            recordList.forEach { record ->
-                recordDao.insert(RecordDto(taskId, record.first, record.second))
+            list.forEach { span ->
+                recordDao.insert(RecordDto(taskId, span.first, span.second))
             }
         }
 
@@ -356,7 +356,37 @@ class TaskDatabaseTest {
 
     @Test
     fun getRecordsUnderTask() {
-        fail("Not yet implemented")
+        // given two sets of records inserted under separate tasks
+        val taskId = setupRecords(spanList, recordTaskTitle)
+
+        val shiftedSpanList = spanList.map {
+            it.first + 15000L to it.second + 15000L
+        }
+        val shiftedTaskTitle = "$recordTaskTitle - shifted"
+        val shiftedTaskId = setupRecords(shiftedSpanList, shiftedTaskTitle)
+
+        // when retrieving records under each task
+        val recordDtoList = runBlocking {
+            recordDao.getForTask(taskId)
+        }
+        val shiftedRecordDtoList = runBlocking {
+            recordDao.getForTask(shiftedTaskId)
+        }
+
+        // then the record ranges match the source lists
+        fun assertCorresponds(taskId: Long, recordList: List<RecordDto>, spanList: List<Pair<Long, Long>>) {
+            recordList.forEach { record ->
+                assertThat(record.task, `is`(taskId))
+                assertThat(record.id, not(0L))
+
+                val correspondingSpan = spanList.find {
+                    record.start == it.first && record.end == it.second
+                }
+                assertThat(correspondingSpan, not(nullValue()))
+            }
+        }
+        assertCorresponds(taskId, recordDtoList, spanList)
+        assertCorresponds(shiftedTaskId, shiftedRecordDtoList, shiftedSpanList)
     }
 
     // endregion
