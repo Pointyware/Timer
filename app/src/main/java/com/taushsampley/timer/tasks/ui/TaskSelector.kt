@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks
+package com.taushsampley.timer.tasks.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.taushsampley.timer.R
+import com.taushsampley.timer.tasks.Task
 
 /**
  * Allows the user to select from a list of tasks.

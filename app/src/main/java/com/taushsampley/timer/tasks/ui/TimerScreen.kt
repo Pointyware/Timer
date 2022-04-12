@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks
+package com.taushsampley.timer.tasks.ui
 
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.taushsampley.timer.R
+import com.taushsampley.timer.tasks.Task
 import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
 
