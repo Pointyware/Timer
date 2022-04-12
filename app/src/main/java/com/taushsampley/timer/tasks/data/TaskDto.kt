@@ -2,6 +2,7 @@ package com.taushsampley.timer.tasks.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 /**
@@ -9,6 +10,12 @@ import androidx.room.PrimaryKey
  */
 @Entity(
     tableName = TaskDto.TABLE_NAME,
+    indices = [
+        Index(
+            TaskDto.TITLE_NAME,
+            unique = true
+        )
+    ]
 //    foreignKeys = [ForeignKey( TODO: reinstate later
 //        entity = CategoryDto::class,
 //        parentColumns = [CategoryDto.ID_NAME],
