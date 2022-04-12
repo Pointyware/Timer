@@ -12,7 +12,7 @@ import androidx.room.RoomDatabase
         TaskDto::class,
         RecordDto::class
                ],
-    version = 0
+    version = 1
 )
 abstract class TaskDatabase: RoomDatabase() {
 
