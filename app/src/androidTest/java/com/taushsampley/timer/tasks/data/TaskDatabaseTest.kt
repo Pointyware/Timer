@@ -319,13 +319,39 @@ class TaskDatabaseTest {
     // region Read
 
     @Test
-    fun getAllRecords() {
-        fail("Not yet implemented")
-    }
-
-    @Test
     fun getRecordsInRange() {
-        fail("Not yet implemented")
+        // given records inserted under a task
+        val start = 100000L
+        val span = 50000000L
+        val mileStone = start + span / 5
+        val mileStone2 = start + 2 * span / 5
+        val mileStone3 = start + 3 * span / 5
+        val mileStone4 = start + 4 * span / 5
+        val end = start + span
+
+        val taskTitle = "some task"
+        val records = listOf(
+            start to mileStone,
+            mileStone to mileStone2, // in range
+            mileStone2 to mileStone3, // in range
+            mileStone3 to mileStone4, // in range
+            mileStone4 to end
+        )
+        setupRecords(records, taskTitle)
+
+        // when getting records in a time range
+        val recordsInRange = runBlocking {
+            recordDao.getRange(mileStone2, mileStone4)
+        }
+
+        // then all records start or end time is in the inclusive range
+        recordsInRange.forEach {
+            val inRange = both(greaterThanOrEqualTo(mileStone2)).and(lessThanOrEqualTo(mileStone4))
+            assertThat(it.start, inRange)
+            assertThat(it.end, inRange)
+        }
+
+        // TODO: add second task with another range
     }
 
     @Test
