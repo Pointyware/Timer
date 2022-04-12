@@ -1,7 +1,5 @@
 package com.taushsampley.timer.tasks.data
 
-import com.taushsampley.timer.tasks.Category
-import com.taushsampley.timer.tasks.Node
 import com.taushsampley.timer.tasks.Record
 import com.taushsampley.timer.tasks.Task
 
@@ -15,26 +13,28 @@ import com.taushsampley.timer.tasks.Task
  */
 interface TaskRepository {
 
-    suspend fun getNodes(category: Category?): List<Node>
+//    suspend fun getNodes(category: Category?): List<Node>
 
     // region Category access
-    suspend fun addCategory(category: Category, parent: Category?)
+//    suspend fun addCategory(category: Category, parent: Category?)
 
-    suspend fun getCategoriesIn(category: Category?): List<Category>
+//    suspend fun getCategoriesIn(category: Category?): List<Category>
 
-    suspend fun renameCategory(category: Category, newTitle: String)
-    suspend fun moveCategory(category: Category, newParent: Category?)
+//    suspend fun renameCategory(category: Category, newTitle: String)
+//    suspend fun moveCategory(category: Category, newParent: Category?)
 
-    suspend fun removeCategory(category: Category)
+//    suspend fun removeCategory(category: Category)
     // endregion
 
     // region Task access
-    suspend fun addTask(task: Task, category: Category?)
+//    suspend fun addTask(task: Task, category: Category?)
+    suspend fun addTask(title: String): Task
 
-    suspend fun getTasksIn(category: Category?): List<Task>
+//    suspend fun getTasksIn(category: Category?): List<Task>
+    suspend fun getTasks(): List<Task>
 
     suspend fun renameTask(task: Task, newTitle: String)
-    suspend fun moveTask(task: Task, newCategory: Category?)
+//    suspend fun moveTask(task: Task, newCategory: Category?)
 
     suspend fun removeTask(task: Task)
     // endregion
@@ -44,7 +44,7 @@ interface TaskRepository {
 
     suspend fun getRecordsIn(task: Task): List<Record>
 
-    suspend fun editRecord(task: Record, start: Long, end: Long)
+    suspend fun editRecord(record: Record, start: Long, end: Long)
     suspend fun moveRecord(record: Record, task: Task)
 
     suspend fun removeRecord(record: Record)
