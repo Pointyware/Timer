@@ -8,6 +8,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.greaterThanOrEqualTo
+import org.hamcrest.Matchers.lessThanOrEqualTo
 import org.junit.After
 import org.junit.Assert.assertThrows
 import org.junit.Assert.fail
@@ -20,6 +22,28 @@ import java.io.IOException
  */
 @RunWith(AndroidJUnit4::class)
 class TaskDatabaseTest {
+
+    private lateinit var database: TaskDatabase
+    private lateinit var recordDao: RecordDao
+    private lateinit var taskDao: TaskDao
+
+    @Before
+    fun setup() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        database = Room.inMemoryDatabaseBuilder(
+            context, TaskDatabase::class.java
+        ).build()
+        recordDao = database.recordDao
+        taskDao = database.taskDao
+    }
+
+    @After
+    @Throws(IOException::class)
+    fun teardown() {
+        database.close()
+    }
+
+    // region Tasks
 
     /**
      * List of unique title strings
@@ -38,20 +62,6 @@ class TaskDatabaseTest {
     )
     private val uniqueTitle = "A title not in that other list"
 
-    private lateinit var database: TaskDatabase
-    private lateinit var recordDao: RecordDao
-    private lateinit var taskDao: TaskDao
-
-    @Before
-    fun setup() {
-        val context = ApplicationProvider.getApplicationContext<Context>()
-        database = Room.inMemoryDatabaseBuilder(
-            context, TaskDatabase::class.java
-        ).build()
-        recordDao = database.recordDao
-        taskDao = database.taskDao
-    }
-
     private fun setupTasks(list: List<String> = titleList) {
         runBlocking {
             list.forEach {
@@ -59,14 +69,6 @@ class TaskDatabaseTest {
             }
         }
     }
-
-    @After
-    @Throws(IOException::class)
-    fun teardown() {
-        database.close()
-    }
-
-    // region Tasks
 
     // region Create
 
@@ -244,16 +246,72 @@ class TaskDatabaseTest {
 
     // region Records
 
+    private val recordTaskTitle = "a task with records"
+    private val firstTime = 10000000000L
+    private fun timeSpan(offset: Long, duration: Long): Pair<Long, Long> =
+        (firstTime + offset) to (firstTime + offset + duration)
+
+    private val recordList = listOf(
+        timeSpan(0, 50000L),
+        timeSpan(50000L, 60000L),
+        // 10000 gap
+        timeSpan(120000L, 2000L),
+        // 500 gap
+        timeSpan(122500L, 40000L),
+        timeSpan(162500L, 400L),
+        timeSpan(162900L, 50000L)
+    )
+
+    private fun setupRecords(list: List<Pair<Long, Long>>, taskTitle: String): Long {
+        val taskId = runBlocking {
+            taskDao.insert(TaskDto(taskTitle))
+        }
+        runBlocking {
+            recordList.forEach { record ->
+                recordDao.insert(RecordDto(taskId, record.first, record.second))
+            }
+        }
+
+        return taskId
+    }
+
     // region Create
 
     @Test
-    fun createRecord() {
-        fail("Not yet implemented")
+    fun createRecord_ValidId() {
+        // given an inserted task
+        val taskTitle = "some task with a title"
+        val taskId = runBlocking {
+            taskDao.insert(TaskDto(taskTitle))
+        }
+
+        // when creating a record under that task id
+        val recordId = runBlocking {
+            recordDao.insert(RecordDto(taskId, 5000000L, 50000000L))
+        }
+
+        // successful insert returns non-zero id
+        assertThat(recordId, not(0L))
     }
 
     @Test
-    fun createRecordUnderTask() {
-        fail("Not yet implemented")
+    fun createRecord_InvalidId() {
+        // given an invalid task id
+        val taskTitle = "some task with a title"
+        val invalidTaskId = runBlocking {
+            10 + taskDao.insert(TaskDto(taskTitle))
+        }
+
+        // when creating a record under that task id, then an exception is thrown
+        assertThrows(
+            "Inserting record referencing invalid task throws exception",
+            SQLiteConstraintException::class.java
+        ) {
+            runBlocking {
+                val timeSpan = timeSpan(500000L, 3000L)
+                recordDao.insert(RecordDto(invalidTaskId, timeSpan.first, timeSpan.second))
+            }
+        }
     }
 
     // endregion
