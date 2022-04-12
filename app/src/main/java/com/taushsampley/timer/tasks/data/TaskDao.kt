@@ -20,6 +20,9 @@ interface TaskDao {
     @Query("SELECT * FROM tasks")
     suspend fun getAll(): List<TaskDto>
 
+    @Query("SELECT * FROM tasks WHERE task_title = :title LIMIT 1")
+    suspend fun get(title: String): TaskDto?
+
     // Update
     @Update
     suspend fun update(task: TaskDto)
