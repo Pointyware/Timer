@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -137,9 +138,9 @@ fun TimerApp(
 @Preview
 @Composable
 fun NavigationPreview() {
-    val timerViewModel = TimerViewModel()
-    val organizerViewModel = OrganizerViewModel()
-    val calendarViewModel = CalendarViewModel()
-    val metricsViewModel = MetricsViewModel()
+    val timerViewModel: TimerViewModel = viewModel()
+    val organizerViewModel: OrganizerViewModel = viewModel()
+    val calendarViewModel: CalendarViewModel = viewModel()
+    val metricsViewModel: MetricsViewModel = viewModel()
     TimerApp(timerViewModel, organizerViewModel, calendarViewModel, metricsViewModel)
 }
