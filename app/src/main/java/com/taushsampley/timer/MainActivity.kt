@@ -26,8 +26,8 @@ import com.taushsampley.timer.metrics.MetricsScreen
 import com.taushsampley.timer.metrics.MetricsViewModel
 import com.taushsampley.timer.organizer.OrganizerScreen
 import com.taushsampley.timer.organizer.OrganizerViewModel
-import com.taushsampley.timer.tasks.TimerScreen
-import com.taushsampley.timer.tasks.TimerViewModel
+import com.taushsampley.timer.tasks.ui.TimerScreen
+import com.taushsampley.timer.tasks.ui.TimerViewModel
 import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
 

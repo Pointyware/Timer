@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks
+package com.taushsampley.timer.tasks.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Canvas

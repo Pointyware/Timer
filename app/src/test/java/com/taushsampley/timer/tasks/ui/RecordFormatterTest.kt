@@ -1,5 +1,6 @@
-package com.taushsampley.timer.tasks
+package com.taushsampley.timer.tasks.ui
 
+import com.taushsampley.timer.tasks.Record
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test

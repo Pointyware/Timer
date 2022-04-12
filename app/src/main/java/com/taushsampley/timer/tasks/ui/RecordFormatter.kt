@@ -1,4 +1,6 @@
-package com.taushsampley.timer.tasks
+package com.taushsampley.timer.tasks.ui
+
+import com.taushsampley.timer.tasks.Record
 
 
 /**

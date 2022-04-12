@@ -1,9 +1,11 @@
-package com.taushsampley.timer.tasks
+package com.taushsampley.timer.tasks.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.taushsampley.timer.TimerApplication
+import com.taushsampley.timer.tasks.Record
+import com.taushsampley.timer.tasks.Task
 import com.taushsampley.timer.tasks.interactors.CreateRecordUseCase
 import com.taushsampley.timer.tasks.interactors.CreateTaskUseCase
 import kotlinx.coroutines.Dispatchers
