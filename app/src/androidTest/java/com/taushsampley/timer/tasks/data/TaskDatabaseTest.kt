@@ -217,7 +217,26 @@ class TaskDatabaseTest {
 
     // region Delete
 
+    @Test
+    fun removeTasks() {
+        // Given some tasks with titles from a list are inserted in db, and a subset of those titles
+        setupTasks(titleList)
+        val subset = titleList.subList(0, 4)
 
+        // When removing subset
+        runBlocking {
+            taskDao.delete(subset)
+        }
+
+        // Then database no longer contains tasks with titles in subset
+        val taskList = runBlocking {
+            taskDao.getAll()
+        }
+        assertThat(taskList.size, `is`(titleList.size - subset.size))
+        taskList.forEach { task ->
+            assertThat(subset, not(hasItem(task.title)))
+        }
+    }
 
     // endregion
 
