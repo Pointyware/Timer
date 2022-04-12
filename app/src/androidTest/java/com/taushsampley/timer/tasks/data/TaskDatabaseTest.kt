@@ -393,7 +393,97 @@ class TaskDatabaseTest {
 
     // region Update
 
+    @Test
+    fun updateRecord_NewTask() {
+        // given two inserted tasks with an inserted record
+        val taskId = runBlocking {
+            taskDao.insert(TaskDto("Some title"))
+        }
+        val secondTaskId = runBlocking {
+            taskDao.insert(TaskDto("Another title"))
+        }
+        val startTime = 500000L
+        val endTime = startTime + 80000L
+        var recordDto = RecordDto(taskId, startTime, endTime)
+        val recordId = runBlocking {
+            recordDao.insert(recordDto)
+        }
+        recordDto = recordDto.copy(id = recordId)
 
+        // when updating record task to new task
+        val recordUpdateDto = recordDto.copy(task = secondTaskId)
+        runBlocking {
+            recordDao.update(recordUpdateDto)
+        }
+
+        // then record time remains unchanged and associated task is modified to new task
+        val updatedRecord = runBlocking {
+            recordDao.getForTask(secondTaskId).first()
+        }
+        assertThat(updatedRecord, `is`(recordUpdateDto))
+
+        val oldTaskRecords = runBlocking {
+            recordDao.getForTask(taskId)
+        }
+        assertThat("Record has been unassigned from old task",
+            oldTaskRecords, `is`(emptyList())
+        )
+    }
+
+    @Test
+    fun updateRecord_NewSpan() {
+        // given an inserted task with an inserted record
+        val taskId = runBlocking {
+            taskDao.insert(TaskDto("Some title"))
+        }
+        val startTime = 500000L
+        val endTime = startTime + 80000L
+        var recordDto = RecordDto(taskId, startTime, endTime)
+        val recordId = runBlocking {
+            recordDao.insert(recordDto)
+        }
+        recordDto = recordDto.copy(id = recordId)
+
+        // when updating record span to new span
+        val newStart = 234902394032L
+        val newEnd = newStart + 50000000L
+        val recordUpdateDto = recordDto.copy(start = newStart, end = newEnd)
+        runBlocking {
+            recordDao.update(recordUpdateDto)
+        }
+
+        // then record time remains unchanged and associated task is modified to new task
+        val updatedRecord = runBlocking {
+            recordDao.getForTask(taskId).first()
+        }
+        assertThat(updatedRecord, `is`(recordUpdateDto))
+    }
+
+    @Test
+    fun updateRecord_InvalidTask() {
+        // given an inserted task with an inserted record
+        val taskId = runBlocking {
+            taskDao.insert(TaskDto("Some title"))
+        }
+        val startTime = 500000L
+        val endTime = startTime + 80000L
+        var recordDto = RecordDto(taskId, startTime, endTime)
+        val recordId = runBlocking {
+            recordDao.insert(recordDto)
+        }
+        recordDto = recordDto.copy(id = recordId)
+
+        // when updating record task to new invalid task, constraint exception is thrown
+        val invalidId = 40L
+        val recordUpdateDto = recordDto.copy(task = invalidId)
+        assertThrows("Reassigning record's task id to invalid id, throws exception",
+            SQLiteConstraintException::class.java
+        ) {
+            runBlocking {
+                recordDao.update(recordUpdateDto)
+            }
+        }
+    }
 
     // endregion
 
