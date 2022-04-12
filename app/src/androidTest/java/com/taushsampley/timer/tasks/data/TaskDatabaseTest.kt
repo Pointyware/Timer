@@ -167,7 +167,51 @@ class TaskDatabaseTest {
 
     // region Update
 
+    @Test
+    fun updateTaskTitle_UniqueTitle() {
+        // Given some tasks with titles from a list are inserted in db, one of the resulting tasks,
+        //   and a unique title
+        setupTasks(titleList)
+        val titleOfInterest = titleList[3]
+        val taskOfInterest = runBlocking {
+            taskDao.get(titleOfInterest)
+        }!!
+        val newTitle = uniqueTitle
 
+        // When updating existing task title with DTO
+        runBlocking {
+            taskDao.update(taskOfInterest.copy(title = newTitle))
+        }
+        val taskWithNewTitle = runBlocking {
+            taskDao.get(newTitle)
+        }!!
+
+        // Then task title is updated and id is constant
+        assertThat(taskWithNewTitle.id, `is`(taskOfInterest.id))
+        assertThat(taskWithNewTitle.title, `is`(newTitle))
+    }
+
+    @Test
+    fun updateTaskTitle_DuplicateTitle() {
+        // Given some tasks with titles from a list are inserted in db, one of the resulting tasks
+        //   and an existing title
+        setupTasks(titleList)
+        val titleOfInterest = titleList[3]
+        val taskOfInterest = runBlocking {
+            taskDao.get(titleOfInterest)
+        }!!
+        val newTitle = titleList[5]
+
+        // When updating title with existing title, Then exception is thrown
+        assertThrows(
+            "Updating with existing title throws exception",
+            SQLiteConstraintException::class.java
+        ) {
+            runBlocking {
+                taskDao.update(taskOfInterest.copy(title = newTitle))
+            }
+        }
+    }
 
     // endregion
 
