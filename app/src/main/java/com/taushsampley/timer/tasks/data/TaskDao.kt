@@ -1,6 +1,9 @@
 package com.taushsampley.timer.tasks.data
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 
 /**
  * Defines CRUD operations relevant to Task table.
@@ -28,8 +31,8 @@ interface TaskDao {
     suspend fun update(task: TaskDto)
 
     // Delete
-    @Delete
-    suspend fun delete(vararg tasks: TaskDto)
+    @Query("DELETE FROM tasks WHERE task_title IN (:titles)")
+    suspend fun delete(titles: List<String>)
 
 //    @Query("DELETE FROM tasks WHERE task_category = :categoryId")
 //    suspend fun deleteAll(categoryId: Long?)

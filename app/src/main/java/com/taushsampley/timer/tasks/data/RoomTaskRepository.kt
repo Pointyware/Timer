@@ -28,7 +28,7 @@ class RoomTaskRepository(
     }
 
     override suspend fun removeTask(task: Task) {
-        database.taskDao.delete(TaskDto(task.title, task.id))
+        database.taskDao.delete(listOf(task.title))
     }
 
     override suspend fun addRecord(record: Record, task: Task) {
