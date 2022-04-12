@@ -1,7 +1,11 @@
 package com.taushsampley.timer.tasks
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.taushsampley.timer.TimerApplication
+import com.taushsampley.timer.tasks.interactors.CreateRecordUseCase
+import com.taushsampley.timer.tasks.interactors.CreateTaskUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -9,7 +13,19 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class TimerViewModel: ViewModel() {
+// TODO: add Hilt to inject dependencies
+class TimerViewModel(application: Application): AndroidViewModel(application) {
+
+    private val repository = getApplication<TimerApplication>().repository
+
+    private val createTaskUseCase = CreateTaskUseCase(repository)
+    private val createRecordUseCase = CreateRecordUseCase(repository, createTaskUseCase)
+
+//    private val startRecordingUseCase = ToggleTimerUseCase()
+//    private val stopRecordingUseCase = StopRecordingUseCase()
+
+    private val _recordings = MutableStateFlow<List<RecordListItem>>(emptyList())
+    val recordings: StateFlow<List<RecordListItem>> = _recordings
 
     private val _timer = MutableStateFlow(0)
     val time: StateFlow<Int> = _timer
@@ -29,6 +45,8 @@ class TimerViewModel: ViewModel() {
     private val _taskTitle = MutableStateFlow("")
     val taskTitle: StateFlow<String> = _taskTitle
 
+    private var startTime: Long = 0
+
     fun toggleTimer() {
         val isRunning = !_isRunning.value
         _isRunning.value = isRunning
@@ -41,15 +59,21 @@ class TimerViewModel: ViewModel() {
                 }
             }
 
-            val startTime = System.currentTimeMillis()
-            // TODO: get task title and record start of time
+            startTime = System.currentTimeMillis()
         } else {
             timerJob?.cancel()
             _timer.value = 0
 
             val endTime = System.currentTimeMillis()
-            // TODO: complete record with end time
-            // TODO: if creating new task by title, add to list
+            selectedTask.value?.also {
+                viewModelScope.launch {
+                    createRecordUseCase(Record(startTime = startTime, endTime = endTime), it)
+                }
+            } ?: run {
+                viewModelScope.launch {
+                    createRecordUseCase(Record(startTime, endTime), taskTitle.value)
+                }
+            }
         }
     }
 
