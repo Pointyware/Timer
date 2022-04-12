@@ -7,11 +7,5 @@ package com.taushsampley.timer.tasks
  */
 data class Task(
     override val title: String,
-    val records: List<Record> = emptyList()
-): Node {
-
-    /**
-     * Tasks are considered leaf nodes and will always return `null` for children.
-     */
-    override val children: List<Node>? get() = null
-}
+    override val id: Long = 0
+): Node
