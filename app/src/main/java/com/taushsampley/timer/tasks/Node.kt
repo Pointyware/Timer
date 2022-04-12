@@ -12,7 +12,8 @@ interface Node {
     val title: String
 
     /**
-     * The nodes belonging to this node.
+     * Used for database consistency.
+     * TODO: remove from domain
      */
-    val children: List<Node>?
+    val id: Long
 }

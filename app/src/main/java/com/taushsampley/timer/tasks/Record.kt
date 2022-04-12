@@ -12,7 +12,8 @@ import java.util.concurrent.TimeUnit
  */
 data class Record(
     val startTime: Long,
-    val endTime: Long
+    val endTime: Long,
+    val id: Long = 0
 ) {
     /**
      * The amount of time recorded for the task in seconds.

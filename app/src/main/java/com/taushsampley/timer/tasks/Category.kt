@@ -7,5 +7,5 @@ package com.taushsampley.timer.tasks
  */
 data class Category(
     override val title: String,
-    override val children: List<Node>
+    override val id: Long
 ): Node
