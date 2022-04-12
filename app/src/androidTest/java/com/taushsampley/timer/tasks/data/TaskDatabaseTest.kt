@@ -8,9 +8,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.isIn
 import org.junit.After
 import org.junit.Assert.assertThrows
-import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -490,12 +490,50 @@ class TaskDatabaseTest {
 
     @Test
     fun removeRecord() {
-        fail("Not yet implemented")
+        // given an inserted task and several records
+        val taskId = setupRecords(spanList, recordTaskTitle)
+        val recordsUnderTask = runBlocking {
+            recordDao.getForTask(taskId)
+        }
+
+        // when removing subset of records
+        val removedSubset = recordsUnderTask.subList(2, 5).map { it.id }
+        runBlocking {
+            recordDao.delete(removedSubset)
+        }
+
+        // then the retrieved records will no longer contain removed subset
+        val recordsAfterRemoval = runBlocking {
+            recordDao.getForTask(taskId)
+        }
+        assertThat(recordsAfterRemoval.size, `is`(recordsUnderTask.size - removedSubset.size))
+        recordsAfterRemoval.forEach { remainingRecord ->
+            assertThat(remainingRecord.id, not(isIn(removedSubset)))
+        }
     }
 
     @Test
     fun removeAllRecordsUnderTask() {
-        fail("Not yet implemented")
+        // given two inserted tasks with inserted records
+        val taskId = setupRecords(spanList, recordTaskTitle)
+        val secondSpanList = spanList
+        val secondTaskId = setupRecords(secondSpanList, "$recordTaskTitle second")
+
+        // when removing all records under task
+        runBlocking {
+            recordDao.deleteAll(taskId)
+        }
+
+        // then no records under task remain, but records under other tasks are unaffected
+        val recordsUnderTask = runBlocking {
+            recordDao.getForTask(taskId)
+        }
+        assertThat(recordsUnderTask, `is`(emptyList()))
+
+        val recordsUnderSecondTask = runBlocking {
+            recordDao.getForTask(secondTaskId)
+        }
+        assertThat(recordsUnderSecondTask.size, `is`(secondSpanList.size))
     }
 
     // endregion
