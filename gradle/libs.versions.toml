@@ -20,6 +20,7 @@ mockative = "2.0.1"
 mockk = "1.13.12"
 commonSense = "0.1.0"
 realm = "3.0.0"
+room = "2.6.1"
 sqlDelight = "2.0.2"
 truth = "1.1.3"
 
@@ -30,6 +31,10 @@ androidx-composePreview = { module = "androidx.compose.ui:ui-tooling-preview", v
 androidx-composeTest = { module = "androidx.compose.ui:ui-test-junit4-android", version.ref = "androidx-compose-ui" }
 androidx-composeMaterial3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-composeManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-compose-ui" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "jupiter" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }

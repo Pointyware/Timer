@@ -64,16 +64,16 @@ dependencies {
 //    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
 //    implementation 'androidx.activity:activity-compose:1.4.0'
 //    implementation "androidx.navigation:navigation-compose:$navigation_compose_version"
-//
-//    // region Room
-//
-//    implementation "androidx.room:room-runtime:$room_version"
-//    annotationProcessor "androidx.room:room-compiler:$room_version"
-//    ksp "androidx.room:room-compiler:$room_version"
-//    implementation "androidx.room:room-ktx:$room_version"
-//    testImplementation "androidx.room:room-testing:$room_version"
-//
-//    // endregion
+
+    // region Room
+
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    testImplementation(libs.androidx.room.testing)
+
+    // endregion
 //
 //    testImplementation "junit:junit:$junit_version"
 //
