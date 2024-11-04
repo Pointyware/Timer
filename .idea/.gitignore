@@ -1,0 +1,12 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+<<<<<<< HEAD
+/inspectionProfiles/Project_Default.xml
+/vcs.xml
+/runConfigurations.xml
+/migrations.xml
+/kotlinc.xml
+/deploymentTargetSelector.xml
+=======
+>>>>>>> 9cc7db9 (Initial Commit)
