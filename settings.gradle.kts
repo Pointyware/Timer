@@ -1,3 +1,4 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -10,7 +11,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
     }
 }
 rootProject.name = "Timer"
-include ':app'
+
+include(":app")
+include(":app-shared")
+include(":app-android")
+//include(":app-ios")
+include(":app-desktop")
