@@ -1,12 +1,22 @@
-package com.taushsampley.timer
+package org.pointyware.timer
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
-import androidx.compose.material.icons.twotone.*
+import androidx.compose.material.BottomAppBar
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.twotone.ArrowBack
+import androidx.compose.material.icons.twotone.DateRange
+import androidx.compose.material.icons.twotone.Folder
+import androidx.compose.material.icons.twotone.PieChart
+import androidx.compose.material.icons.twotone.Timer
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

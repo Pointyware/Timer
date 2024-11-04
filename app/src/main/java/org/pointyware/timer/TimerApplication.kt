@@ -1,4 +1,4 @@
-package com.taushsampley.timer
+package org.pointyware.timer
 
 import android.app.Application
 import androidx.room.Room
