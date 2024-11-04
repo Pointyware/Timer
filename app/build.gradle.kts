@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -51,10 +53,10 @@ ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
 }
 
-//dependencies {
-//
+dependencies {
+    implementation(compose.ui)
+    implementation(compose.material)
 //    implementation 'androidx.core:core-ktx:1.7.0'
-//    implementation "androidx.compose.ui:ui:$compose_version"
 //    implementation "androidx.compose.material:material:$compose_version"
 //    implementation "androidx.compose.material:material-icons-core:$compose_version"
 //    implementation "androidx.compose.material:material-icons-extended:$compose_version"
@@ -79,6 +81,5 @@ ksp {
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 //    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-//
-//    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-//}
+    debugImplementation(libs.androidx.composeTooling)
+}
