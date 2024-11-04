@@ -1,9 +1,12 @@
-//plugins {
-//    id 'com.android.application'
-//    id 'org.jetbrains.kotlin.android'
-//    id 'com.google.devtools.ksp'
-//}
-//
+plugins {
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.ksp)
+}
+
+android {
+    namespace = "org.pointyware.timer"
+}
 //android {
 //    compileSdk 31
 //
