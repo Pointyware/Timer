@@ -10,5 +10,9 @@ kotlin {
 }
 
 dependencies {
-
+    implementation(projects.appShared)
+    implementation(projects.featureTasks)
+    implementation(projects.featureOrganizer)
+    implementation(projects.featureCalendar)
+    implementation(projects.featureMetrics)
 }
