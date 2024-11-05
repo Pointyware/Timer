@@ -1,16 +1,11 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-<<<<<<< HEAD
-<<<<<<< HEAD
 /inspectionProfiles/Project_Default.xml
 /vcs.xml
 /runConfigurations.xml
 /migrations.xml
 /kotlinc.xml
 /deploymentTargetSelector.xml
-=======
->>>>>>> 9cc7db9 (Initial Commit)
-=======
-/inspectionProfiles/Project_Default.xml
->>>>>>> d28975c (ignore frequently generated file)
+/gradle.xml
+/artifacts/

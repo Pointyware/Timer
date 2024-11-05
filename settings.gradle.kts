@@ -16,8 +16,13 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Timer"
 
-include(":app")
 include(":app-shared")
 include(":app-android")
+include(":app-browser")
 //include(":app-ios")
 include(":app-desktop")
+
+include(":feature-calendar")
+include(":feature-metrics")
+include(":feature-organizer")
+include(":feature-tasks")
