@@ -16,7 +16,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Timer"
 
-include(":app")
 include(":app-shared")
 include(":app-android")
 //include(":app-ios")

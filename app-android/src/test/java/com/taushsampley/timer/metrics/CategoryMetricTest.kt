@@ -1,7 +1,7 @@
 package com.taushsampley.timer.metrics
 
 import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.MatcherAssert.*
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
 /**

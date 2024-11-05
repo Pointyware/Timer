@@ -1,6 +1,10 @@
 package com.taushsampley.timer.tasks.data
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
+import androidx.room.PrimaryKey
 
 /**
  * Room entity (DTO) for [com.taushsampley.timer.tasks.Category].
