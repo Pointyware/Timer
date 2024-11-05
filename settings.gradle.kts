@@ -18,5 +18,6 @@ rootProject.name = "Timer"
 
 include(":app-shared")
 include(":app-android")
+include(":app-browser")
 //include(":app-ios")
 include(":app-desktop")
