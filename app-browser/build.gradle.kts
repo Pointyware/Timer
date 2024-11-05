@@ -36,13 +36,13 @@ kotlin {
 
         }
 
-        val wasmMain by getting {
-
-        }
-
-        val wasmTest by getting {
-
-        }
+//        val wasmMain by getting {
+//
+//        }
+//
+//        val wasmTest by getting {
+//
+//        }
 
         val jsMain by getting {
 
