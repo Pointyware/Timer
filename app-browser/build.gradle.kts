@@ -25,7 +25,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-
+                implementation(projects.appShared)
+                implementation(projects.featureTasks)
+                implementation(projects.featureOrganizer)
+                implementation(projects.featureCalendar)
+                implementation(projects.featureMetrics)
             }
         }
 
@@ -49,8 +53,4 @@ kotlin {
 
         }
     }
-}
-
-android {
-    namespace = "org.pointyware.timer.shared"
 }
