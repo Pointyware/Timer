@@ -6,7 +6,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.twotone.ArrowBack
 import androidx.compose.material.icons.twotone.ArrowForward
 import androidx.compose.runtime.Composable
@@ -18,12 +22,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.taushsampley.timer.R
 import com.taushsampley.timer.metrics.CategoryMetric
 import com.taushsampley.timer.metrics.MetricsWheel
 import com.taushsampley.timer.metrics.TaskMetric
 import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
+import org.pointyware.timer.R
 
 @Composable
 fun MonthHeading(

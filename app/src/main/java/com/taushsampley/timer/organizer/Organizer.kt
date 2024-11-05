@@ -18,9 +18,9 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.taushsampley.timer.R
 import com.taushsampley.timer.ui.theme.TimerIcons
 import com.taushsampley.timer.ui.theme.TimerTheme
+import org.pointyware.timer.R
 
 /**
  * Presents a list of hierarchical elements as described by [elements].
