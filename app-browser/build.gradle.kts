@@ -8,11 +8,11 @@ plugins {
 kotlin {
     jvmToolchain(17)
 
-    wasmJs {
-        browser {
-            binaries.executable()
-        }
-    }
+//    wasmJs {
+//        browser {
+//            binaries.executable()
+//        }
+//    }
     js {
         browser {
             binaries.executable()
