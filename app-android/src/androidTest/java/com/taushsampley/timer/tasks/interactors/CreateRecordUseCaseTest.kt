@@ -61,7 +61,18 @@ class CreateRecordUseCaseTest {
     }
 
     @Test
-    fun createRecordByTask() {
+    fun createRecordByTask() = runTest {
+        // given a task
+        val task = createTaskUseCase("Task 1").getOrNull()!!
+        val start = System.currentTimeMillis()
+        val end = start + 5000
+        val newRecord = Record(start, end)
 
+        // when a record is created
+        createRecordUseCase(newRecord, task)
+        val record = recordDao.getForTask(task.id).first()
+
+        // then the record is associated with the task
+        assertEquals(task.id, record.task)
     }
 }
