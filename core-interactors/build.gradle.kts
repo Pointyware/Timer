@@ -2,8 +2,6 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -22,9 +20,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.coreEntities)
-                api(projects.coreInteractors)
-                api(projects.coreData)
+
             }
         }
 
@@ -70,6 +66,6 @@ kotlin {
 }
 
 android {
-    namespace = "org.pointyware.timer.shared"
+    namespace = "org.pointyware.timer.interactors"
     compileSdk = 35
 }

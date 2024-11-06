@@ -19,7 +19,7 @@ class RoomTaskRepository(
 
     override suspend fun getTasks(): List<Task> {
         return database.taskDao.getAll().map {
-            Task(it.title)
+            Task(it.title, it.id)
         }
     }
 

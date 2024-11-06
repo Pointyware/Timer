@@ -88,6 +88,10 @@ class TaskDatabaseTest {
                 val taskId = taskDao.insert(TaskDto(title))
                 validateId(taskId)
                 idList.add(taskId)
+                val fetchedTask = taskDao.get(title)
+                assert(fetchedTask != null)
+                assert(fetchedTask!!.title == title)
+                assert(fetchedTask.id == taskId)
             }
         }
     }

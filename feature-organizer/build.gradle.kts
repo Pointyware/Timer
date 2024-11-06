@@ -31,7 +31,7 @@ kotlin {
         }
 
         val jvmSharedMain by creating {
-
+            dependsOn(commonMain)
         }
 
         val jvmSharedTest by creating {
@@ -69,4 +69,5 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.organizer"
+    compileSdk = 35
 }

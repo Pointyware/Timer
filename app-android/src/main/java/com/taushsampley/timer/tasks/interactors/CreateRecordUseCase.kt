@@ -14,11 +14,9 @@ class CreateRecordUseCase(
         repository.addRecord(record, task)
     }
 
-    suspend operator fun invoke(record: Record, taskTitle: String): CreateTaskUseCase.Result {
-        val result = createTaskUseCase(taskTitle)
-        if (result is CreateTaskUseCase.Result.Success) {
-            this(record, result.newTask)
+    suspend operator fun invoke(record: Record, taskTitle: String): Result<Task> {
+        return createTaskUseCase(taskTitle).onSuccess { task ->
+            this(record, task)
         }
-        return result
     }
 }

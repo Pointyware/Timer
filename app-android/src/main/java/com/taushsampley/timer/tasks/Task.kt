@@ -7,5 +7,5 @@ package com.taushsampley.timer.tasks
  */
 data class Task(
     override val title: String,
-    override val id: Long = 0
+    override val id: Long
 ): Node

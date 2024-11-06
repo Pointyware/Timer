@@ -92,10 +92,10 @@ fun TaskItem(
 @Composable
 fun TaskSelectionPreview() {
     val taskList = listOf(
-        Task("alpha"),
-        Task("beta"),
-        Task("gamma"),
-        Task("delta")
+        Task("alpha", 1),
+        Task("beta", 2),
+        Task("gamma", 3),
+        Task("delta", 4)
     )
     var selectedTask by remember { mutableStateOf<Task?>(null) }
 
