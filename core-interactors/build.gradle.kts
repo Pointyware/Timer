@@ -29,7 +29,7 @@ kotlin {
         }
 
         val jvmSharedMain by creating {
-
+            dependsOn(commonMain)
         }
 
         val jvmSharedTest by creating {
