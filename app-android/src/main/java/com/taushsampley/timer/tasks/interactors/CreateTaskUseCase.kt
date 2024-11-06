@@ -11,8 +11,8 @@ class CreateTaskUseCase(
 ) {
     suspend operator fun invoke(taskTitle: String): Result<Task> {
         return try {
-            repository.addTask(taskTitle)
-            Result.success(Task(taskTitle))
+            val task = repository.addTask(taskTitle)
+            Result.success(task)
         } catch (duplicateException: SQLDataException) {
             Result.failure(duplicateException)
         }
