@@ -69,4 +69,5 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.tasks"
+    compileSdk = 35
 }

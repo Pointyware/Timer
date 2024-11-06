@@ -69,4 +69,5 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.organizer"
+    compileSdk = 35
 }
