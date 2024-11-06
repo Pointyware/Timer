@@ -18,7 +18,8 @@ rootProject.name = "Timer"
 
 include(
     ":core-entities",
-    ":core-data"
+    ":core-data",
+    ":core-interactors",
 )
 
 include(":app-shared")
