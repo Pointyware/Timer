@@ -22,7 +22,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-
+                api(projects.coreEntities)
+                api(projects.coreInteractors)
+                api(projects.coreData)
             }
         }
 
