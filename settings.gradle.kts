@@ -38,7 +38,12 @@ include(":app-browser")
 //include(":app-ios")
 include(":app-desktop")
 
-include(":feature-calendar")
-include(":feature-metrics")
-include(":feature-organizer")
-include(":feature-tasks")
+include(
+    ":core-ui"
+)
+include(
+    ":feature-calendar",
+    ":feature-metrics",
+    ":feature-organizer",
+    ":feature-tasks"
+)
