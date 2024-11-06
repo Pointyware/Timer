@@ -16,6 +16,11 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Timer"
 
+include(
+    ":core-entities",
+    ":core-data"
+)
+
 include(":app-shared")
 include(":app-android")
 include(":app-browser")
