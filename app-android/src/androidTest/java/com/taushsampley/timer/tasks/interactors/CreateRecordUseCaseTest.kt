@@ -34,6 +34,8 @@ class CreateRecordUseCaseTest {
         database = Room.inMemoryDatabaseBuilder(
             context, TaskDatabase::class.java
         ).build()
+        recordDao = database.recordDao
+        taskDao = database.taskDao
         val taskRepository = RoomTaskRepository(database)
         createTaskUseCase = CreateTaskUseCase(taskRepository)
         createRecordUseCase = CreateRecordUseCase(taskRepository, createTaskUseCase)
