@@ -9,17 +9,12 @@ import java.sql.SQLDataException
 class CreateTaskUseCase(
     private val repository: TaskRepository
 ) {
-    suspend operator fun invoke(taskTitle: String): Result {
+    suspend operator fun invoke(taskTitle: String): Result<Task> {
         return try {
             repository.addTask(taskTitle)
-            Result.Success(Task(taskTitle))
+            Result.success(Task(taskTitle))
         } catch (duplicateException: SQLDataException) {
-            Result.Error(duplicateException)
+            Result.failure(duplicateException)
         }
-    }
-
-    sealed interface Result {
-        class Error(val throwable: Throwable): Result
-        class Success(val newTask: Task): Result
     }
 }
