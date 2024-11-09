@@ -29,6 +29,7 @@ interface TaskRepository {
     // region Task access
 //    suspend fun addTask(task: Task, category: Category?)
     suspend fun addTask(title: String): Task
+    suspend fun getTaskByTitle(title: String): Result<Task>
 
 //    suspend fun getTasksIn(category: Category?): List<Task>
     suspend fun getTasks(): List<Task>
