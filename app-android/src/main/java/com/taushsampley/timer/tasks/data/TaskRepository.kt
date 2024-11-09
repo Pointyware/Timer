@@ -40,7 +40,7 @@ interface TaskRepository {
     // endregion
 
     // region Record access
-    suspend fun addRecord(record: Record, task: Task)
+    suspend fun addRecord(record: Record, task: Task): Result<Record>
 
     suspend fun getRecordsIn(task: Task): List<Record>
 

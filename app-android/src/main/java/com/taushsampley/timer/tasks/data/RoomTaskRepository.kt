@@ -31,8 +31,9 @@ class RoomTaskRepository(
         database.taskDao.delete(listOf(task.title))
     }
 
-    override suspend fun addRecord(record: Record, task: Task) {
-        database.recordDao.insert(RecordDto(task.id, record.startTime, record.endTime))
+    override suspend fun addRecord(record: Record, task: Task) = runCatching {
+        val id = database.recordDao.insert(RecordDto(task.id, record.startTime, record.endTime))
+        record.copy(id = id)
     }
 
     override suspend fun getRecordsIn(task: Task): List<Record> {
