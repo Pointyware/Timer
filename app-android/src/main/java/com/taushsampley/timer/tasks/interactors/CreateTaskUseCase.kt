@@ -14,7 +14,7 @@ class CreateTaskUseCase(
             val task = repository.addTask(taskTitle)
             Result.success(task)
         } catch (duplicateException: SQLiteConstraintException) {
-            Result.failure(duplicateException)
+            repository.getTaskByTitle(taskTitle)
         }
     }
 }

@@ -17,6 +17,12 @@ class RoomTaskRepository(
         return Task(title, newId)
     }
 
+    override suspend fun getTaskByTitle(title: String): Result<Task> {
+        database.taskDao.get(title)?.let {
+            return Result.success(Task(it.title, it.id))
+        } ?: return Result.failure(NoSuchElementException("No task with title $title"))
+    }
+
     override suspend fun getTasks(): List<Task> {
         return database.taskDao.getAll().map {
             Task(it.title, it.id)
