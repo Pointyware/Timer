@@ -1,8 +1,8 @@
 package com.taushsampley.timer.tasks.interactors
 
+import android.database.sqlite.SQLiteConstraintException
 import com.taushsampley.timer.tasks.Task
 import com.taushsampley.timer.tasks.data.TaskRepository
-import java.sql.SQLDataException
 
 /**
  */
@@ -13,7 +13,7 @@ class CreateTaskUseCase(
         return try {
             val task = repository.addTask(taskTitle)
             Result.success(task)
-        } catch (duplicateException: SQLDataException) {
+        } catch (duplicateException: SQLiteConstraintException) {
             Result.failure(duplicateException)
         }
     }
