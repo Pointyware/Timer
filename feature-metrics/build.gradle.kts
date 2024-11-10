@@ -35,7 +35,7 @@ kotlin {
         }
 
         val jvmSharedTest by creating {
-
+            dependsOn(commonTest)
         }
 
         val desktopMain by getting {
@@ -47,7 +47,7 @@ kotlin {
         }
 
         val desktopTest by getting {
-
+            dependsOn(jvmSharedTest)
         }
 
         val androidMain by getting {
