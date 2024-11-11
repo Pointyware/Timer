@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks
+package org.pointyware.timer.tasks.entities
 
 /**
  * Groups records under a single name.
