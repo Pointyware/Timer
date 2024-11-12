@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 /**
- * Room entity (DTO) for [com.taushsampley.timer.tasks.Task].
+ * Room entity (DTO) for [org.pointyware.timer.tasks.entities.Task].
  */
 @Entity(
     tableName = TaskDto.TABLE_NAME,

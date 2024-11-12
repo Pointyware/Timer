@@ -1,8 +1,8 @@
 package com.taushsampley.timer.tasks.interactors
 
 import com.taushsampley.timer.tasks.Record
-import com.taushsampley.timer.tasks.Task
 import com.taushsampley.timer.tasks.data.TaskRepository
+import org.pointyware.timer.tasks.entities.Task
 
 /**
  */

@@ -19,8 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
-import com.taushsampley.timer.tasks.Task
 import org.pointyware.timer.R
+import org.pointyware.timer.tasks.entities.Task
 
 /**
  * Allows the user to select from a list of tasks.
