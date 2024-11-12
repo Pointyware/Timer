@@ -66,6 +66,6 @@ kotlin {
 }
 
 android {
-    namespace = "org.pointyware.timer.shared"
+    namespace = "org.pointyware.timer.data"
     compileSdk = 35
 }
