@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.taushsampley.timer.tasks.Record
-import com.taushsampley.timer.tasks.Task
 import com.taushsampley.timer.tasks.interactors.CreateRecordUseCase
 import com.taushsampley.timer.tasks.interactors.CreateTaskUseCase
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.pointyware.timer.TimerApplication
+import org.pointyware.timer.tasks.entities.Task
 
 // TODO: add Hilt to inject dependencies
 class TimerViewModel(application: Application): AndroidViewModel(application) {
