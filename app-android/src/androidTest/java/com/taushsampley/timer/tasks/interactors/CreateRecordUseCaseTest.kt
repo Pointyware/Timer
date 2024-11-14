@@ -12,6 +12,7 @@ import com.taushsampley.timer.tasks.data.TaskDatabase
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -59,7 +60,10 @@ class CreateRecordUseCaseTest {
 
         // then the record is associated with the task
         assertTrue(result.isSuccess)
-        assertEquals(taskTitle, result.getOrNull()?.title)
+        val task = result.getOrThrow()
+        assertEquals(start, task.startTime)
+        assertEquals(end, task.endTime)
+        assertNotEquals(0, task.id)
     }
 
     @Test
