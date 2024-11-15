@@ -14,6 +14,14 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         mavenLocal()
+
+        maven {
+            url = uri("https://maven.pkg.github.com/Pointyware/Kass")
+            credentials {
+                username = providers.gradleProperty("github.user").get()
+                password = providers.gradleProperty("github.token").get()
+            }
+        }
     }
 }
 rootProject.name = "Timer"
