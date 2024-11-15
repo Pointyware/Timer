@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+version = libs.versions.app.get()
+
 kotlin {
     jvmToolchain(17)
 
