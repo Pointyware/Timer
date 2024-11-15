@@ -20,7 +20,7 @@ android {
         targetSdk = 35
 
         versionCode = 1
-        versionName = "0.1"
+        versionName = libs.versions.app.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -79,6 +79,8 @@ dependencies {
     // endregion
 
     testImplementation(libs.junit)
+    testImplementation(libs.kass.assertions)
+    androidTestImplementation(libs.kass.assertions)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
