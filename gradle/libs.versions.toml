@@ -30,7 +30,6 @@ mockk = "1.13.12"
 commonSense = "0.1.0"
 navigationCompose = "2.8.3"
 realm = "3.0.0"
-room = "2.6.1"
 sqlDelight = "2.0.2"
 truth = "1.1.3"
 uiTestJunit4 = "1.7.0"
@@ -52,10 +51,6 @@ androidx-material = { module = "androidx.compose.material:material", version.ref
 androidx-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsCore" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsCore" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 androidx-compose-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
 androidx-ui-tooling-preview-v170 = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -106,7 +101,6 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp                 = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktor                = { id = "io.ktor.plugin", version.ref = "ktor" }
-realm               = { id = "io.realm.kotlin", version.ref = "realm" }
 sqlDelight          = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
 
 commonsense-compose = { id = "org.pointyware.commonsense.compose-convention", version = "0.1.0" }

@@ -70,16 +70,6 @@ dependencies {
 
     implementation(libs.koin.android)
 
-    // region Room
-
-    implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
-    testImplementation(libs.androidx.room.testing)
-
-    // endregion
-
     testImplementation(libs.junit)
     testImplementation(libs.kass.assertions)
     androidTestImplementation(libs.kass.assertions)
