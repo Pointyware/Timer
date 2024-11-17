@@ -68,6 +68,8 @@ dependencies {
     implementation(libs.androidx.activity.compose.v140)
     implementation(libs.androidx.navigation.compose)
 
+    implementation(libs.koin.android)
+
     // region Room
 
     implementation(libs.androidx.room.runtime)
