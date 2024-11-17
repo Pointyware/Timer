@@ -26,6 +26,9 @@ kotlin {
                 api(projects.coreEntities)
                 api(projects.coreInteractors)
                 api(projects.coreData)
+
+                implementation(compose.ui)
+                implementation(compose.material3)
             }
         }
 
