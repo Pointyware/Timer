@@ -1,0 +1,63 @@
+CREATE TABLE tasks (
+  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  title TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE categories (
+  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  title TEXT NOT NULL,
+  parentId INTEGER,
+  UNIQUE (title, parentId)
+);
+
+-- Insert a new category under an existing category; default to root if parentId is null
+insertCategory:
+INSERT INTO categories (title, parentId)
+VALUES (
+  :title,
+  (SELECT id FROM categories WHERE title = :parentTitle)
+);
+
+-- Get a category by title
+getCategory:
+SELECT id, title FROM categories
+WHERE title = :title;
+
+-- Get all categories within a category
+getCategories:
+SELECT id, title FROM categories
+WHERE parentId = (SELECT id FROM categories WHERE title = :categoryTitle);
+
+-- Rename a category
+renameCategory:
+UPDATE categories
+SET title = :newTitle
+WHERE title = :oldTitle;
+
+-- Delete a category
+deleteCategory:
+DELETE FROM categories
+WHERE id = :id;
+
+-- Insert a new task into a category
+insertTask:
+INSERT INTO tasks (title)
+VALUES (
+  :title
+);
+
+-- Get all tasks within a category
+getTasks:
+SELECT id, title FROM tasks
+WHERE id IS (SELECT id FROM categories WHERE title = :categoryTitle);
+
+-- Rename a task
+renameTask:
+UPDATE tasks
+SET title = :newTitle
+WHERE title = :oldTitle;
+
+-- Delete the given list of tasks
+deleteTasks:
+DELETE FROM tasks
+WHERE id IN (SELECT id FROM tasks WHERE title IN :taskTitles);
