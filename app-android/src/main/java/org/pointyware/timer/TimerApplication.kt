@@ -1,28 +1,32 @@
 package org.pointyware.timer
 
 import android.app.Application
-import androidx.room.Room
-import com.taushsampley.timer.tasks.data.RoomTaskRepository
-import com.taushsampley.timer.tasks.data.TaskDatabase
-import com.taushsampley.timer.tasks.data.TaskRepository
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.GlobalContext.startKoin
+import org.koin.mp.KoinPlatform.getKoin
+import org.pointyware.timer.data.TaskRepository
+import org.pointyware.timer.shared.data.TaskRepositoryImpl
+import org.pointyware.timer.shared.di.sharedModule
+import org.pointyware.timer.shared.local.DriverFactory
 
 /**
  *
  */
 class TimerApplication: Application() {
 
-    private lateinit var database: TaskDatabase
-
     lateinit var repository: TaskRepository
 
     override fun onCreate() {
         super.onCreate()
 
-        database = Room.databaseBuilder(
-            this,
-            TaskDatabase::class.java, "timer-db"
-        ).build()
-
-        repository = RoomTaskRepository(database)
+        startKoin {
+            androidContext(this@TimerApplication)
+            modules(
+                sharedModule(),
+            )
+        }
+        val koin = getKoin()
+        val driver = koin.get<DriverFactory>()
+        repository = TaskRepositoryImpl(driver)
     }
 }
