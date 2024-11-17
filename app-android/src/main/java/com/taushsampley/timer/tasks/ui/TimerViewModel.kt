@@ -3,7 +3,6 @@ package com.taushsampley.timer.tasks.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.taushsampley.timer.tasks.Record
 import com.taushsampley.timer.tasks.interactors.CreateRecordUseCase
 import com.taushsampley.timer.tasks.interactors.CreateTaskUseCase
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +12,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.pointyware.timer.TimerApplication
-import org.pointyware.timer.tasks.entities.Task
+import org.pointyware.timer.entities.Record
+import org.pointyware.timer.entities.Task
 
 // TODO: add Hilt to inject dependencies
 class TimerViewModel(application: Application): AndroidViewModel(application) {
@@ -69,7 +69,11 @@ class TimerViewModel(application: Application): AndroidViewModel(application) {
             val endTime = System.currentTimeMillis()
             selectedTask.value?.also {
                 viewModelScope.launch {
-                    createRecordUseCase(Record(startTime = startTime, endTime = endTime), it)
+                    createRecordUseCase(
+                        org.pointyware.timer.entities.Record(
+                            startTime = startTime,
+                            endTime = endTime
+                        ), it)
                 }
             } ?: run {
                 viewModelScope.launch {
