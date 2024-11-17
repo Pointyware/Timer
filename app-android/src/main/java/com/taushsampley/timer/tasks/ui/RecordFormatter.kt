@@ -1,7 +1,6 @@
 package com.taushsampley.timer.tasks.ui
 
-import com.taushsampley.timer.tasks.Record
-
+import org.pointyware.timer.entities.Record
 
 /**
  * Formats a task's elapsed time as a duration string.

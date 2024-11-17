@@ -1,6 +1,6 @@
 package com.taushsampley.timer.tasks
 
-import org.pointyware.timer.tasks.entities.Node
+import org.pointyware.timer.entities.Node
 
 /**
  * Groups tasks or other categories (subcategories).
