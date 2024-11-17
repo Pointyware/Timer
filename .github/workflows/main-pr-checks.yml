@@ -17,9 +17,17 @@ jobs:
   build-app-android:
     if: ${{ github.event.pull_request.draft == false && inputs.android != "" }}
     runs-on: ubuntu-22.04
+      
     steps:
-      - name: Setup
-        uses: Pointyware/.github/.github/workflows/checkout-java-gradle.yml@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          version: 17
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
       - name: Build Android
         run: ./gradlew buildDebug buildRelease
       - name: Test Android
@@ -29,8 +37,15 @@ jobs:
     if: ${{ github.event.pull_request.draft == false && inputs.ios != "" }}
     runs-on: macos-14
     steps:
-      - name: Setup
-        uses: Pointyware/.github/.github/workflows/checkout-java-gradle.yml@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          version: 17
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
       - name: Build iOS
         run: ./gradlew build${{ inputs.ios }}
       - name: Test iOS
@@ -40,8 +55,15 @@ jobs:
     if: ${{ github.event.pull_request.draft == false && inputs.desktop != "" }}
     runs-on: ubuntu-22.04
     steps:
-      - name: Setup
-        uses: Pointyware/.github/.github/workflows/checkout-java-gradle.yml@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          version: 17
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
       - name: Build Desktop
         run: ./gradlew build${{ inputs.desktop }}
       - name: Test Desktop
@@ -51,8 +73,15 @@ jobs:
     if: ${{ github.event.pull_request.draft == false && inputs.browser != "" }}
     runs-on: ubuntu-22.04
     steps:
-      - name: Setup
-        uses: Pointyware/.github/.github/workflows/checkout-java-gradle.yml@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          version: 17
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
       - name: Build Browser
         run: ./gradlew build${{ inputs.browser }}
       - name: Test Browser
