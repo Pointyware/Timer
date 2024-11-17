@@ -1,20 +1,23 @@
-package com.taushsampley.timer.tasks.interactors
+package org.pointyware.timer.shared.interactors
 
 import kotlinx.coroutines.test.runTest
-import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotEquals
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
-import org.koin.core.context.GlobalContext.startKoin
+import kotlinx.datetime.Clock
+import org.koin.core.context.startKoin
 import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.data.TaskRepository
 import org.pointyware.timer.entities.Record
+import org.pointyware.timer.interactors.CreateRecordUseCase
+import org.pointyware.timer.interactors.CreateTaskUseCase
 import org.pointyware.timer.shared.data.TaskRepositoryImpl
 import org.pointyware.timer.shared.di.sharedModule
 import org.pointyware.timer.shared.local.DriverFactory
 import org.pointyware.timer.shared.local.Persistence
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
+import kotlin.test.assertTrue
 
 /**
  */
@@ -24,7 +27,7 @@ class CreateRecordUseCaseTest {
     private lateinit var createTaskUseCase: CreateTaskUseCase
     private lateinit var createRecordUseCase: CreateRecordUseCase
 
-    @Before
+    @BeforeTest
     fun setUp() {
         startKoin {
             modules(
@@ -38,7 +41,7 @@ class CreateRecordUseCaseTest {
         createRecordUseCase = CreateRecordUseCase(taskRepository, createTaskUseCase)
     }
 
-    @After
+    @AfterTest
     fun tearDown() {
         getKoin().close()
     }
@@ -47,7 +50,7 @@ class CreateRecordUseCaseTest {
     fun createRecordByTitle() = runTest {
         // given a task title
         val taskTitle = "Task 1"
-        val start = System.currentTimeMillis()
+        val start = Clock.System.now().toEpochMilliseconds()
         val end = start + 5000
         val newRecord = Record(start, end)
 
@@ -66,7 +69,7 @@ class CreateRecordUseCaseTest {
     fun createRecordByTask() = runTest {
         // given a task
         val task = createTaskUseCase("Task 1").getOrNull()!!
-        val start = System.currentTimeMillis()
+        val start =  Clock.System.now().toEpochMilliseconds()
         val end = start + 5000
         val newRecord = Record(start, end)
 

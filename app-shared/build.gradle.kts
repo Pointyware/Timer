@@ -29,6 +29,8 @@ kotlin {
 
                 implementation(libs.koin.core)
 
+                implementation(libs.kotlinx.dateTime)
+
                 implementation(compose.ui)
                 implementation(compose.material3)
             }
@@ -37,6 +39,9 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(libs.koin.test)
+
+                implementation(libs.kotlin.test)
+                implementation(libs.kotlinx.coroutinesTest)
             }
         }
 
