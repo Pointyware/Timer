@@ -1,14 +1,8 @@
 package com.taushsampley.timer.tasks.interactors
 
 import android.content.Context
-import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.taushsampley.timer.tasks.Record
-import com.taushsampley.timer.tasks.data.RecordDao
-import com.taushsampley.timer.tasks.data.RoomTaskRepository
-import com.taushsampley.timer.tasks.data.TaskDao
-import com.taushsampley.timer.tasks.data.TaskDatabase
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -17,34 +11,42 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.core.context.GlobalContext.startKoin
+import org.koin.mp.KoinPlatform.getKoin
+import org.pointyware.timer.data.TaskRepository
+import org.pointyware.timer.entities.Record
+import org.pointyware.timer.shared.data.TaskRepositoryImpl
+import org.pointyware.timer.shared.local.DriverFactory
+import org.pointyware.timer.shared.local.Persistence
 
 /**
  */
 @RunWith(AndroidJUnit4::class)
 class CreateRecordUseCaseTest {
 
-    private lateinit var database: TaskDatabase
-    private lateinit var recordDao: RecordDao
-    private lateinit var taskDao: TaskDao
+    private lateinit var taskRepository: TaskRepository
     private lateinit var createTaskUseCase: CreateTaskUseCase
     private lateinit var createRecordUseCase: CreateRecordUseCase
 
     @Before
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        database = Room.inMemoryDatabaseBuilder(
-            context, TaskDatabase::class.java
-        ).build()
-        recordDao = database.recordDao
-        taskDao = database.taskDao
-        val taskRepository = RoomTaskRepository(database)
+
+        startKoin {
+            modules(
+
+            )
+        }
+        val koin = getKoin()
+        val driverFactory = koin.get<DriverFactory>()
+        taskRepository = TaskRepositoryImpl(driverFactory, persistence = Persistence.InMemory)
         createTaskUseCase = CreateTaskUseCase(taskRepository)
         createRecordUseCase = CreateRecordUseCase(taskRepository, createTaskUseCase)
     }
 
     @After
     fun tearDown() {
-        database.close()
+        getKoin().close()
     }
 
     @Test
@@ -76,9 +78,11 @@ class CreateRecordUseCaseTest {
 
         // when a record is created
         createRecordUseCase(newRecord, task)
-        val record = recordDao.getForTask(task.id).first()
+        val record = taskRepository.getRecordsIn(task).first()
 
-        // then the record is associated with the task
-        assertEquals(task.id, record.task)
+        // then the first record in the task is the new record
+        assertEquals(start, record.startTime)
+        assertEquals(end, record.endTime)
+        assertNotEquals(0, record.id)
     }
 }
