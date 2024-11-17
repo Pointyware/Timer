@@ -24,8 +24,8 @@ class TaskRepositoryImpl(
 
     override suspend fun addTask(title: String): Task {
         db.tasksQueries.insertTask(title)
-        val taskDto = db.tasksQueries.getTask(title).executeAsOne()
-        return Task(taskDto.title, taskDto.id)
+        val lastId = db.tasksQueries.lastId().executeAsOne()
+        return Task(title, lastId)
     }
 
     override suspend fun getTaskByTitle(title: String): Result<Task> {
@@ -45,11 +45,24 @@ class TaskRepositoryImpl(
     }
 
     override suspend fun addRecord(record: Record, task: Task): Result<Record> {
-        TODO("Not yet implemented")
+        try {
+            db.tasksQueries.insertRecord(record.startTime, record.endTime, task.title)
+            val lastId = db.tasksQueries.lastId().executeAsOne()
+            return Result.success(record.copy(id = lastId))
+        } catch (e: Exception) {
+            return Result.failure(e)
+        }
     }
 
     override suspend fun getRecordsIn(task: Task): List<Record> {
-        TODO("Not yet implemented")
+        try {
+            db.tasksQueries.getRecord(task.title)
+            return db.tasksQueries.getRecord(task.title).executeAsList().map {
+                Record(id = it.id, startTime = it.start, endTime = it.end)
+            }
+        } catch (e: Exception) {
+            return emptyList()
+        }
     }
 
     override suspend fun editRecord(record: Record, start: Long, end: Long) {
