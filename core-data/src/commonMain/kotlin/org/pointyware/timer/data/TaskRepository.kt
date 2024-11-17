@@ -1,7 +1,7 @@
-package com.taushsampley.timer.tasks.data
+package org.pointyware.timer.data
 
-import com.taushsampley.timer.tasks.Record
-import org.pointyware.timer.tasks.entities.Task
+import org.pointyware.timer.entities.Record
+import org.pointyware.timer.entities.Task
 
 /**
  * Contract definition for objects that mediate between multiple task data sources.
