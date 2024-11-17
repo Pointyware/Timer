@@ -46,6 +46,11 @@ VALUES (
   :title
 );
 
+-- Get a task by title
+getTask:
+SELECT id, title FROM tasks
+WHERE title = :title;
+
 -- Get all tasks within a category
 getTasks:
 SELECT id, title FROM tasks
