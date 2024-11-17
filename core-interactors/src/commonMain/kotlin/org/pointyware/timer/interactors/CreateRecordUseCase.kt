@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks.interactors
+package org.pointyware.timer.interactors
 
 import org.pointyware.timer.data.TaskRepository
 import org.pointyware.timer.entities.Record
