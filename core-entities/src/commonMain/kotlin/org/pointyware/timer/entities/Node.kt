@@ -13,7 +13,6 @@ interface Node {
 
     /**
      * Used for database consistency.
-     * TODO: remove from domain
      */
     val id: Long
 }
