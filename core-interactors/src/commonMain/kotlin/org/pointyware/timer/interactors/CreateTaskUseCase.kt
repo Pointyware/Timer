@@ -1,6 +1,5 @@
-package com.taushsampley.timer.tasks.interactors
+package org.pointyware.timer.interactors
 
-import android.database.sqlite.SQLiteConstraintException
 import org.pointyware.timer.data.TaskRepository
 import org.pointyware.timer.entities.Task
 
@@ -13,7 +12,7 @@ class CreateTaskUseCase(
         return try {
             val task = repository.addTask(taskTitle)
             Result.success(task)
-        } catch (duplicateException: SQLiteConstraintException) {
+        } catch (duplicateException: RuntimeException) {
             repository.getTaskByTitle(taskTitle)
         }
     }

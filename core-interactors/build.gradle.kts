@@ -22,7 +22,6 @@ kotlin {
             dependencies {
                 implementation(projects.coreEntities)
                 implementation(projects.coreData)
-
             }
         }
 
