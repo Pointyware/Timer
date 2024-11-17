@@ -70,6 +70,7 @@ dependencies {
 
     implementation(libs.koin.android)
 
+    testImplementation(libs.kotlinx.coroutinesTest)
     testImplementation(libs.junit)
     testImplementation(libs.kass.assertions)
     androidTestImplementation(libs.kass.assertions)

@@ -1,6 +1,5 @@
 package com.taushsampley.timer.tasks.interactors
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -8,7 +7,6 @@ import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.data.TaskRepository
@@ -20,7 +18,6 @@ import org.pointyware.timer.shared.local.Persistence
 
 /**
  */
-@RunWith(AndroidJUnit4::class)
 class CreateRecordUseCaseTest {
 
     private lateinit var taskRepository: TaskRepository
