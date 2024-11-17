@@ -10,6 +10,13 @@ CREATE TABLE categories (
   UNIQUE (title, parentId)
 );
 
+CREATE TABLE records (
+  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  start INTEGER NOT NULL,
+  end INTEGER NOT NULL,
+  taskId INTEGER NOT NULL
+);
+
 -- Insert a new category under an existing category; default to root if parentId is null
 insertCategory:
 INSERT INTO categories (title, parentId)
@@ -66,3 +73,20 @@ WHERE title = :oldTitle;
 deleteTasks:
 DELETE FROM tasks
 WHERE id IN (SELECT id FROM tasks WHERE title IN :taskTitles);
+
+-- Insert a new record
+insertRecord:
+INSERT INTO records (start, end, taskId)
+VALUES (
+  :start,
+  :end,
+  (SELECT id FROM tasks WHERE title = :taskTitle)
+);
+
+-- Get a record by task title
+getRecord:
+SELECT id, start, end FROM records
+WHERE taskId = (SELECT id FROM tasks WHERE title = :taskTitle);
+
+lastId:
+SELECT last_insert_rowid();
