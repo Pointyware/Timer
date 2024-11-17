@@ -3,6 +3,7 @@ package org.pointyware.timer.shared.interactors
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Clock
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.data.TaskRepository
 import org.pointyware.timer.entities.Record
@@ -43,7 +44,7 @@ class CreateRecordUseCaseTest {
 
     @AfterTest
     fun tearDown() {
-        getKoin().close()
+        stopKoin()
     }
 
     @Test
