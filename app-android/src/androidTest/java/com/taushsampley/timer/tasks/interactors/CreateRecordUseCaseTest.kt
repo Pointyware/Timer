@@ -1,7 +1,5 @@
 package com.taushsampley.timer.tasks.interactors
 
-import android.content.Context
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -16,6 +14,7 @@ import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.data.TaskRepository
 import org.pointyware.timer.entities.Record
 import org.pointyware.timer.shared.data.TaskRepositoryImpl
+import org.pointyware.timer.shared.di.sharedModule
 import org.pointyware.timer.shared.local.DriverFactory
 import org.pointyware.timer.shared.local.Persistence
 
@@ -30,11 +29,9 @@ class CreateRecordUseCaseTest {
 
     @Before
     fun setUp() {
-        val context = ApplicationProvider.getApplicationContext<Context>()
-
         startKoin {
             modules(
-
+                sharedModule(),
             )
         }
         val koin = getKoin()

@@ -10,12 +10,6 @@ import org.pointyware.timer.entities.Record
  */
 class RecordFormatterTest {
 
-    private val millisecondsPerSecond = 1000
-
-    private fun createRecord(start: Int, duration: Int): Record {
-        return Record(start.toLong(), (start + duration*millisecondsPerSecond).toLong())
-    }
-
     private fun createRecord(hour: Int, minute: Int, second: Int): Record {
         val start = System.currentTimeMillis()
         val minutes = hour * 60 + minute
