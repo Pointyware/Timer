@@ -12,8 +12,8 @@ import org.pointyware.timer.shared.local.createOrMigrate
  *
  */
 class TaskRepositoryImpl(
-    private val driverFactory: DriverFactory,
-    private val persistence: Persistence = Persistence.File
+    driverFactory: DriverFactory,
+    persistence: Persistence = Persistence.File
 ): TaskRepository {
 
     private val driver = driverFactory.createSqlDriver(persistence)

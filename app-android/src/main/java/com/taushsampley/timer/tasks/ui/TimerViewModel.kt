@@ -70,7 +70,7 @@ class TimerViewModel(application: Application): AndroidViewModel(application) {
             selectedTask.value?.also {
                 viewModelScope.launch {
                     createRecordUseCase(
-                        org.pointyware.timer.entities.Record(
+                        Record(
                             startTime = startTime,
                             endTime = endTime
                         ), it)
