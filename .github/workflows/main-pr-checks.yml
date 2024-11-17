@@ -15,7 +15,7 @@ on:
 
 jobs:
   build-app-android:
-    if: github.event.pull_request.draft == false && inputs.android != ''
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
@@ -26,7 +26,7 @@ jobs:
         run: ./gradlew test${{ inputs.android }}
 
   build-app-ios:
-    if: github.event.pull_request.draft == false && inputs.ios != ''
+    if: github.event.pull_request.draft == false
     runs-on: macos-14
     steps:
       - name: Setup
@@ -37,7 +37,7 @@ jobs:
         run: ./gradlew test${{ inputs.ios }}
     
   build-app-desktop:
-    if: github.event.pull_request.draft == false && inputs.desktop != ''
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
@@ -48,7 +48,7 @@ jobs:
         run: ./gradlew test${{ inputs.desktop }}
     
   build-app-browser:
-    if: github.event.pull_request.draft == false && inputs.browser != ''
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
