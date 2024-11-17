@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -44,7 +45,7 @@ kotlin {
             dependsOn(jvmSharedMain)
 
             dependencies {
-
+                implementation(libs.sqlDelight.jvm)
             }
         }
 
@@ -56,7 +57,7 @@ kotlin {
             dependsOn(jvmSharedMain)
 
             dependencies {
-
+                implementation(libs.sqlDelight.android)
             }
         }
 
@@ -72,4 +73,12 @@ kotlin {
 android {
     namespace = "org.pointyware.timer.shared"
     compileSdk = 35
+}
+
+sqldelight {
+    databases {
+        create("TimerDatabase") {
+            packageName = "org.pointyware.timer.shared.db"
+        }
+    }
 }
