@@ -21,9 +21,9 @@ jobs:
       - name: Setup
         uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build Android
-        run: ./gradlew buildDebug buildRelease -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
-      - name: Test Android
-        run: ./gradlew test${{ inputs.android }} -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+        run: ./gradlew assembleDebug assembleRelease -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+      - name: Android Debug Unit Tests
+        run: ./gradlew testDebugUnitTest -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
 
   build-app-ios:
     if: github.event.pull_request.draft == false
@@ -32,9 +32,9 @@ jobs:
       - name: Setup
         uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build iOS
-        run: ./gradlew build${{ inputs.ios }} -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+        run: ./gradlew assembleios -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
       - name: Test iOS
-        run: ./gradlew test${{ inputs.ios }} -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+        run: ./gradlew testios -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
     
   build-app-desktop:
     if: github.event.pull_request.draft == false
@@ -43,9 +43,9 @@ jobs:
       - name: Setup
         uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build Desktop
-        run: ./gradlew build${{ inputs.desktop }} -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+        run: ./gradlew :app-desktop:assemble -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
       - name: Test Desktop
-        run: ./gradlew test${{ inputs.desktop }} -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+        run: ./gradlew desktopTest -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
     
   build-app-browser:
     if: github.event.pull_request.draft == false
@@ -54,6 +54,6 @@ jobs:
       - name: Setup
         uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build Browser
-        run: ./gradlew build${{ inputs.browser }} -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+        run: ./gradlew assembleBrowser -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
       - name: Test Browser
-        run: ./gradlew test${{ inputs.browser }} -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+        run: ./gradlew jsBrowserTest -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
