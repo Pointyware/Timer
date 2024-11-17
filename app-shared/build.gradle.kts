@@ -27,13 +27,17 @@ kotlin {
                 api(projects.coreInteractors)
                 api(projects.coreData)
 
+                implementation(libs.koin.core)
+
                 implementation(compose.ui)
                 implementation(compose.material3)
             }
         }
 
         val commonTest by getting {
-
+            dependencies {
+                implementation(libs.koin.test)
+            }
         }
 
         val jvmSharedMain by creating {
@@ -61,6 +65,8 @@ kotlin {
 
             dependencies {
                 implementation(libs.sqlDelight.android)
+
+                implementation(libs.koin.android)
             }
         }
 
