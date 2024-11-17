@@ -1,5 +1,7 @@
 package org.pointyware.timer.entities
 
+import kotlinx.datetime.Instant
+
 /**
  * Describes a single instance of task tracking.
  *
@@ -16,6 +18,8 @@ data class Record(
     /**
      * The amount of time recorded for the task in seconds.
      */
-    val elapsedTime: Int
-        get() = TimeUnit.MILLISECONDS.toSeconds(endTime - startTime).toInt()
+    val elapsedTime: Int by lazy {
+        Instant.fromEpochMilliseconds(endTime).epochSeconds.toInt() -
+                Instant.fromEpochMilliseconds(startTime).epochSeconds.toInt()
+    }
 }
