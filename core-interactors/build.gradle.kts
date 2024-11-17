@@ -20,6 +20,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(projects.coreEntities)
+                implementation(projects.coreData)
 
             }
         }
