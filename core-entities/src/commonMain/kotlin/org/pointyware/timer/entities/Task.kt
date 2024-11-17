@@ -1,4 +1,4 @@
-package org.pointyware.timer.tasks.entities
+package org.pointyware.timer.entities
 
 /**
  * Groups records under a single name.

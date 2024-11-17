@@ -1,4 +1,4 @@
-package org.pointyware.timer.tasks.entities
+package org.pointyware.timer.entities
 
 /**
  * Used to generalize a hierarchy of task elements.

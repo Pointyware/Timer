@@ -1,6 +1,4 @@
-package com.taushsampley.timer.tasks
-
-import java.util.concurrent.TimeUnit
+package org.pointyware.timer.entities
 
 /**
  * Describes a single instance of task tracking.
