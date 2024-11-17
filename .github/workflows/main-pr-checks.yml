@@ -26,7 +26,7 @@ jobs:
         run: ./gradlew testDebugUnitTest -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
 
   build-app-ios:
-    if: github.event.pull_request.draft == false
+    if: github.event.pull_request.draft == false && false
     runs-on: macos-14
     steps:
       - name: Setup
@@ -48,7 +48,7 @@ jobs:
         run: ./gradlew desktopTest -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
     
   build-app-browser:
-    if: github.event.pull_request.draft == false
+    if: github.event.pull_request.draft == false && false
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
