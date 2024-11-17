@@ -1,7 +1,8 @@
 package com.taushsampley.timer.tasks.data
 
-import com.taushsampley.timer.tasks.Record
-import org.pointyware.timer.tasks.entities.Task
+import org.pointyware.timer.data.TaskRepository
+import org.pointyware.timer.entities.Record
+import org.pointyware.timer.entities.Task
 
 /**
  * [TaskRepository] backed by RoomDB.
