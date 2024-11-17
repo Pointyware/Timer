@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
-        uses: Pointyware/.github/.github/actions/checkout-java-gradle@75e424e4a7d48fa4271354cafebadbd5a3d5ef41
+        uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build Android
         run: ./gradlew buildDebug buildRelease
       - name: Test Android
@@ -30,7 +30,7 @@ jobs:
     runs-on: macos-14
     steps:
       - name: Setup
-        uses: Pointyware/.github/.github/actions/checkout-java-gradle@75e424e4a7d48fa4271354cafebadbd5a3d5ef41
+        uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build iOS
         run: ./gradlew build${{ inputs.ios }}
       - name: Test iOS
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
-        uses: Pointyware/.github/.github/actions/checkout-java-gradle@75e424e4a7d48fa4271354cafebadbd5a3d5ef41
+        uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build Desktop
         run: ./gradlew build${{ inputs.desktop }}
       - name: Test Desktop
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
-        uses: Pointyware/.github/.github/actions/checkout-java-gradle@75e424e4a7d48fa4271354cafebadbd5a3d5ef41
+        uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build Browser
         run: ./gradlew build${{ inputs.browser }}
       - name: Test Browser
