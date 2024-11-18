@@ -60,7 +60,7 @@ dependencies {
     implementation(compose.material)
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.material)
+    implementation(libs.androidx.composeMaterial3)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.ui.tooling.preview.v170)
