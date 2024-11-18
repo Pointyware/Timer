@@ -3,20 +3,22 @@ package org.pointyware.timer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomAppBar
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.twotone.ArrowBack
+import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.twotone.DateRange
 import androidx.compose.material.icons.twotone.Folder
 import androidx.compose.material.icons.twotone.PieChart
 import androidx.compose.material.icons.twotone.Timer
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,6 +41,7 @@ import com.taushsampley.timer.organizer.OrganizerViewModel
 import com.taushsampley.timer.tasks.ui.TimerScreen
 import com.taushsampley.timer.tasks.ui.TimerViewModel
 import com.taushsampley.timer.ui.theme.TimerIcons
+import com.taushsampley.timer.ui.theme.TimerIconsAutoMirrored
 import com.taushsampley.timer.ui.theme.TimerTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,6 +53,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             TimerApp(timerViewModel, organizerViewModel, calendarViewModel, metricsViewModel)
         }
@@ -71,8 +75,8 @@ fun BottomNavBar(
 ) {
 
     BottomAppBar(modifier) {
-        Screen.values().forEach {
-            BottomNavigationItem(
+        Screen.entries.forEach {
+            NavigationBarItem(
                 selected = currentScreen == it,
                 onClick = { onClick(it) },
                 icon = {
@@ -83,6 +87,7 @@ fun BottomNavBar(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TimerApp(
     timerViewModel: TimerViewModel,
@@ -102,7 +107,7 @@ fun TimerApp(
                     navigationIcon = {
                         IconButton(onClick = { navController.navigateUp() }) {
                             Icon(
-                                TimerIcons.ArrowBack,
+                                TimerIconsAutoMirrored.ArrowBack,
                                 stringResource(R.string.acc_navigate_back)
                             )
                         }
