@@ -14,14 +14,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.material.icons.twotone.Task
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -38,10 +38,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.taushsampley.timer.ui.theme.TimerIcons
-import com.taushsampley.timer.ui.theme.TimerTheme
 import org.pointyware.timer.R
 import org.pointyware.timer.entities.Task
+import org.pointyware.timer.shared.ui.theme.TimerIcons
+import org.pointyware.timer.shared.ui.theme.TimerTheme
 
 @Composable
 fun TimerScreen(
@@ -97,7 +97,7 @@ fun RecordingList(
             Surface(
                 modifier = Modifier
                     .padding(all = 8.dp),
-                elevation = 2.dp,
+                shadowElevation = 2.dp,
                 shape = MaterialTheme.shapes.medium
             ) {
                 Row(
@@ -106,11 +106,11 @@ fun RecordingList(
                         .padding(all = 4.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(text = record.title, style = MaterialTheme.typography.body1)
+                    Text(text = record.title, style = MaterialTheme.typography.bodyLarge)
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = record.duration,
-                        style = MaterialTheme.typography.body1
+                        style = MaterialTheme.typography.bodyLarge
                     )
                 }
             }
@@ -139,7 +139,7 @@ fun TaskControl(
     Surface(
         modifier = Modifier
             .fillMaxWidth(),
-        elevation = 16.dp
+        shadowElevation = 16.dp
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AnimatedVisibility(!running) {

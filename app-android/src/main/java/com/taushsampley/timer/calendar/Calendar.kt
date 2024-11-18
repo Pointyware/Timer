@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.icons.twotone.ArrowBack
-import androidx.compose.material.icons.twotone.ArrowForward
+import androidx.compose.material.icons.automirrored.twotone.ArrowBack
+import androidx.compose.material.icons.automirrored.twotone.ArrowForward
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -25,9 +25,9 @@ import androidx.compose.ui.unit.dp
 import com.taushsampley.timer.metrics.CategoryMetric
 import com.taushsampley.timer.metrics.MetricsWheel
 import com.taushsampley.timer.metrics.TaskMetric
-import com.taushsampley.timer.ui.theme.TimerIcons
-import com.taushsampley.timer.ui.theme.TimerTheme
 import org.pointyware.timer.R
+import org.pointyware.timer.shared.ui.theme.TimerIconsAutoMirrored
+import org.pointyware.timer.shared.ui.theme.TimerTheme
 
 @Composable
 fun MonthHeading(
@@ -43,13 +43,13 @@ fun MonthHeading(
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onClickPrevious ?: {}, enabled = onClickPrevious != null) {
                 Icon(
-                    TimerIcons.ArrowBack,
+                    TimerIconsAutoMirrored.ArrowBack,
                     contentDescription = stringResource(R.string.acc_previous_month)
                 )
             }
             Text(
                 text = stringResource(id = title),
-                style = MaterialTheme.typography.h2,
+                style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier
                     .clickable(
                         onClick = onClickHeading,
@@ -60,7 +60,7 @@ fun MonthHeading(
             )
             IconButton(onClick = onClickNext ?: {}, enabled = onClickNext != null) {
                 Icon(
-                    TimerIcons.ArrowForward,
+                    TimerIconsAutoMirrored.ArrowForward,
                     contentDescription = stringResource(R.string.acc_next_month)
                 )
             }
@@ -70,7 +70,7 @@ fun MonthHeading(
             stringArrayResource(id = R.array.weekDaysShort).forEach {
                 Text(
                     text = it,
-                    style = MaterialTheme.typography.subtitle1,
+                    style = MaterialTheme.typography.titleSmall,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.Center
                 )
