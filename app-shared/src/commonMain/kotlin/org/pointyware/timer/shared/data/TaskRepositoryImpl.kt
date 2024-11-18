@@ -29,7 +29,12 @@ class TaskRepositoryImpl(
     }
 
     override suspend fun getTaskByTitle(title: String): Result<Task> {
-        TODO("Not yet implemented")
+        try {
+            val task = db.tasksQueries.getTask(title).executeAsOne()
+            return Result.success(Task(task.title, task.id))
+        } catch (e: Exception) {
+            return Result.failure(e)
+        }
     }
 
     override suspend fun getTasks(): List<Task> {
