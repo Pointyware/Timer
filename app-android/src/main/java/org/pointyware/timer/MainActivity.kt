@@ -40,9 +40,9 @@ import com.taushsampley.timer.organizer.OrganizerScreen
 import com.taushsampley.timer.organizer.OrganizerViewModel
 import com.taushsampley.timer.tasks.ui.TimerScreen
 import com.taushsampley.timer.tasks.ui.TimerViewModel
-import com.taushsampley.timer.ui.theme.TimerIcons
-import com.taushsampley.timer.ui.theme.TimerIconsAutoMirrored
-import com.taushsampley.timer.ui.theme.TimerTheme
+import org.pointyware.timer.shared.ui.theme.TimerIcons
+import org.pointyware.timer.shared.ui.theme.TimerIconsAutoMirrored
+import org.pointyware.timer.shared.ui.theme.TimerTheme
 
 class MainActivity : ComponentActivity() {
 
