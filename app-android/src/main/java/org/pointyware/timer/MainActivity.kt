@@ -96,7 +96,9 @@ fun TimerApp(
     metricsViewModel: MetricsViewModel
 ) {
 
-    TimerTheme {
+    TimerTheme(
+        isDynamicTheme = true // no-op on non-Android platforms
+    ) {
 
         var currentScreen by rememberSaveable { mutableStateOf(Screen.Timer) }
         val navController = rememberNavController()
