@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,7 +25,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import com.taushsampley.timer.ui.theme.TimerTheme
+import org.pointyware.timer.shared.ui.theme.TimerTheme
 
 /**
  *
@@ -34,8 +34,8 @@ import com.taushsampley.timer.ui.theme.TimerTheme
 fun Timer(
     elapsedTime: Int,
     modifier: Modifier = Modifier,
-    secondsColor: Color = MaterialTheme.colors.secondary,
-    minutesColor: Color = MaterialTheme.colors.secondaryVariant,
+    secondsColor: Color = MaterialTheme.colorScheme.secondary,
+    minutesColor: Color = MaterialTheme.colorScheme.secondaryContainer,
     textStyle: TextStyle = LocalTextStyle.current,
 ) {
     Box(
