@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
-import androidx.compose.material.icons.twotone.ArrowForward
+import androidx.compose.material.icons.automirrored.twotone.ArrowForward
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -26,7 +26,6 @@ import com.taushsampley.timer.metrics.CategoryMetric
 import com.taushsampley.timer.metrics.MetricsWheel
 import com.taushsampley.timer.metrics.TaskMetric
 import org.pointyware.timer.R
-import org.pointyware.timer.shared.ui.theme.TimerIcons
 import org.pointyware.timer.shared.ui.theme.TimerIconsAutoMirrored
 import org.pointyware.timer.shared.ui.theme.TimerTheme
 
@@ -61,7 +60,7 @@ fun MonthHeading(
             )
             IconButton(onClick = onClickNext ?: {}, enabled = onClickNext != null) {
                 Icon(
-                    TimerIcons.ArrowForward,
+                    TimerIconsAutoMirrored.ArrowForward,
                     contentDescription = stringResource(R.string.acc_next_month)
                 )
             }
