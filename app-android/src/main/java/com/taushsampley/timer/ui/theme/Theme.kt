@@ -33,6 +33,7 @@ private val LightColorPalette = lightColorScheme(
 )
 
 val TimerIcons = Icons.TwoTone
+val TimerIconsAutoMirrored = Icons.AutoMirrored.TwoTone
 
 @Composable
 fun TimerTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
