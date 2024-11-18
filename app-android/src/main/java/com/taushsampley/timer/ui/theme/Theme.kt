@@ -10,26 +10,18 @@ import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColorScheme(
     primary = Purple200,
-    onPrimary = Purple700,
     secondary = Teal200,
 
-    surface = Black200,
+    surface = Purple700,
     onSurface = Color.White
 )
 
 private val LightColorPalette = lightColorScheme(
     primary = Purple500,
-    onPrimary = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
 
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
+    surface = Purple200,
     onSurface = Color.Black,
-    */
 )
 
 val TimerIcons = Icons.TwoTone
