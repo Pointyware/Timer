@@ -11,6 +11,10 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import org.pointyware.timer.shared.ui.theme.Purple200
+import org.pointyware.timer.shared.ui.theme.Purple500
+import org.pointyware.timer.shared.ui.theme.Purple700
+import org.pointyware.timer.shared.ui.theme.Teal200
 
 private val DarkColorPalette = darkColorScheme(
     primary = Purple200,
