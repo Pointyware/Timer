@@ -45,10 +45,6 @@ android {
     }
 }
 
-ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")
-}
-
 dependencies {
     implementation(projects.appShared)
     implementation(projects.featureTasks)
