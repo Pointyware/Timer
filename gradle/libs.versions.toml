@@ -8,6 +8,7 @@ compose = "1.7.0"
 coreKtx = "1.15.0"
 dokka = "1.9.20"
 espressoCore = "3.6.1"
+hilt = "2.52"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 #noinspection GradleDependency
@@ -49,6 +50,8 @@ androidx-material-icons-extended = { module = "androidx.compose.material:materia
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-compose-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
 androidx-ui-tooling-preview-v170 = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
+hilt-android    = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler   = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 junit = { module = "junit:junit", version.ref = "junit" }
 kass-assertions = { module = "org.pointyware.kass:assertions", version.ref = "kassAssertions" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
@@ -74,8 +77,6 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
-mockative = { module = "io.mockative:mockative", version.ref = "mockative" }
-mockativeSymbolProcessor = { module = "io.mockative:mockative-processor", version.ref = "mockative" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 sqlDelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelight" }
 sqlDelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
@@ -89,6 +90,7 @@ androidLibrary      = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform    = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler    = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dokka               = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+hilt                = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlinAndroid       = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinJvm           = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.hilt)
 }
 
 kotlin {
@@ -65,6 +66,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.koin.android)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.compiler)
 
     testImplementation(libs.kotlinx.coroutinesTest)
     testImplementation(libs.junit)
