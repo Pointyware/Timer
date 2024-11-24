@@ -40,10 +40,12 @@ import com.taushsampley.timer.organizer.OrganizerScreen
 import com.taushsampley.timer.organizer.OrganizerViewModel
 import com.taushsampley.timer.tasks.ui.TimerScreen
 import com.taushsampley.timer.tasks.ui.TimerViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import org.pointyware.timer.shared.ui.theme.TimerIcons
 import org.pointyware.timer.shared.ui.theme.TimerIconsAutoMirrored
 import org.pointyware.timer.shared.ui.theme.TimerTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val timerViewModel: TimerViewModel by viewModels()
