@@ -1,6 +1,7 @@
 package org.pointyware.timer
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.mp.KoinPlatform.getKoin
@@ -12,6 +13,7 @@ import org.pointyware.timer.shared.local.DriverFactory
 /**
  *
  */
+@HiltAndroidApp
 class TimerApplication: Application() {
 
     lateinit var repository: TaskRepository
