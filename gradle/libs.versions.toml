@@ -5,6 +5,8 @@ androidx-activity = "1.9.3"
 androidx-compose-ui = "1.7.5"
 app = "0.1.0"
 compose = "1.7.0"
+composeNavigation = "2.8.0-alpha10"
+composeViewmodel = "2.8.2"
 coreKtx = "1.15.0"
 dokka = "1.9.20"
 espressoCore = "3.6.1"
@@ -50,6 +52,8 @@ androidx-material-icons-extended = { module = "androidx.compose.material:materia
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-compose-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
 androidx-ui-tooling-preview-v170 = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
+compose-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
+compose-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "composeViewmodel" }
 hilt-android    = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler   = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 junit = { module = "junit:junit", version.ref = "junit" }
