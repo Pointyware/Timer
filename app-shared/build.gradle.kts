@@ -33,6 +33,9 @@ kotlin {
 
                 implementation(compose.ui)
                 implementation(compose.material3)
+
+                implementation(libs.compose.viewmodel)
+                implementation(libs.compose.navigation)
             }
         }
 
