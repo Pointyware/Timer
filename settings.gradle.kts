@@ -47,3 +47,5 @@ include(
     ":feature-organizer",
     ":feature-tasks"
 )
+
+includeBuild("build-logic")
