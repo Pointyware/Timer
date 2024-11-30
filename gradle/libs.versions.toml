@@ -36,6 +36,7 @@ uiTestJunit4 = "1.7.0"
 uiToolingPreview = "1.7.0"
 
 [libraries]
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 androidx-activity-compose-v140 = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-composeTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx-compose-ui" }
