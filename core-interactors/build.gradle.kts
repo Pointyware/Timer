@@ -9,11 +9,11 @@ kotlin {
 
     jvm("desktop")
     androidTarget()
-    js {
-        browser {
-            binaries.executable()
-        }
-    }
+//    js {
+//        browser {
+//            binaries.executable()
+//        }
+//    }
 
     applyDefaultHierarchyTemplate()
 
