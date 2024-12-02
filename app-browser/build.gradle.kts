@@ -26,11 +26,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(projects.appShared)
-                implementation(projects.featureTasks)
-                implementation(projects.featureOrganizer)
-                implementation(projects.featureCalendar)
-                implementation(projects.featureMetrics)
+//                implementation(projects.appShared)
+//                implementation(projects.featureTasks)
+//                implementation(projects.featureOrganizer)
+//                implementation(projects.featureCalendar)
+//                implementation(projects.featureMetrics)
             }
         }
 
@@ -46,12 +46,12 @@ kotlin {
 //
 //        }
 
-        val jsMain by getting {
-
-        }
-
-        val jsTest by getting {
-
-        }
+//        val jsMain by getting {
+//
+//        }
+//
+//        val jsTest by getting {
+//
+//        }
     }
 }
