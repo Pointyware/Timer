@@ -1,7 +1,6 @@
 
 plugins {
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.kotlinMultiplatform)
+    id("pointyware.timer.multiplatform.library")
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.sqlDelight)
@@ -9,16 +8,6 @@ plugins {
 
 kotlin {
     jvmToolchain(17)
-
-    jvm("desktop")
-    androidTarget()
-//    js {
-//        browser {
-//            binaries.executable()
-//        }
-//    }
-
-    applyDefaultHierarchyTemplate()
 
     sourceSets {
         val commonMain by getting {
@@ -48,29 +37,17 @@ kotlin {
             }
         }
 
-        val jvmSharedMain by creating {
-            dependsOn(commonMain)
-        }
-
-        val jvmSharedTest by creating {
-            dependsOn(commonTest)
-        }
 
         val desktopMain by getting {
-            dependsOn(jvmSharedMain)
-
             dependencies {
                 implementation(libs.sqlDelight.jvm)
             }
         }
 
         val desktopTest by getting {
-            dependsOn(jvmSharedTest)
         }
 
         val androidMain by getting {
-            dependsOn(jvmSharedMain)
-
             dependencies {
                 implementation(libs.sqlDelight.android)
 
