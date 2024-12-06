@@ -14,7 +14,7 @@ hilt = "2.52"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 #noinspection GradleDependency
-kassAssertions = "0.2.0"
+kassAssertions = "0.4.1"
 koin = "3.5.6"
 koin-bom = "3.5.3"
 kotlin = "2.0.21"
