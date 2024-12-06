@@ -22,6 +22,7 @@ class MultiplatformLibraryPlugin: Plugin<Project> {
             configureKotlinJvm()
 
             extensions.configure(KotlinMultiplatformExtension::class.java) {
+                jvmToolchain(17)
                 jvm("desktop")
                 androidTarget()
 
