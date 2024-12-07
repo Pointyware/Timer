@@ -1,8 +1,7 @@
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.compose.compiler)
+    id("pointyware.timer.multiplatform.compose")
 }
 
 version = libs.versions.app.get()
