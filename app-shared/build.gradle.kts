@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     id("pointyware.timer.multiplatform.library")
@@ -6,6 +7,11 @@ plugins {
 }
 
 kotlin {
+
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    compilerOptions {
+        freeCompilerArgs = listOf("-Xexpect-actual-classes")
+    }
 
     sourceSets {
         val commonMain by getting {
