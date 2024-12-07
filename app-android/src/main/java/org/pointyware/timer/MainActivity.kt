@@ -37,13 +37,13 @@ import com.taushsampley.timer.calendar.CalendarViewModel
 import com.taushsampley.timer.metrics.MetricsScreen
 import com.taushsampley.timer.metrics.MetricsViewModel
 import com.taushsampley.timer.organizer.OrganizerScreen
-import com.taushsampley.timer.organizer.OrganizerViewModel
 import com.taushsampley.timer.tasks.ui.TimerScreen
 import com.taushsampley.timer.tasks.ui.TimerViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.pointyware.timer.shared.ui.theme.TimerIcons
-import org.pointyware.timer.shared.ui.theme.TimerIconsAutoMirrored
+import org.pointyware.timer.organizer.OrganizerViewModel
 import org.pointyware.timer.shared.ui.theme.TimerTheme
+import org.pointyware.timer.ui.theme.TimerIcons
+import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

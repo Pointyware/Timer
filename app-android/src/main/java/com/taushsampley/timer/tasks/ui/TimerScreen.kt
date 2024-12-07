@@ -40,8 +40,8 @@ import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 import org.pointyware.timer.R
 import org.pointyware.timer.entities.Task
-import org.pointyware.timer.shared.ui.theme.TimerIcons
 import org.pointyware.timer.shared.ui.theme.TimerTheme
+import org.pointyware.timer.ui.theme.TimerIcons
 
 @Composable
 fun TimerScreen(

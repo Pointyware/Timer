@@ -26,8 +26,8 @@ import com.taushsampley.timer.metrics.CategoryMetric
 import com.taushsampley.timer.metrics.MetricsWheel
 import com.taushsampley.timer.metrics.TaskMetric
 import org.pointyware.timer.R
-import org.pointyware.timer.shared.ui.theme.TimerIconsAutoMirrored
 import org.pointyware.timer.shared.ui.theme.TimerTheme
+import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
 
 @Composable
 fun MonthHeading(

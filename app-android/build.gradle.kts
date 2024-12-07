@@ -52,6 +52,10 @@ dependencies {
     implementation(projects.featureOrganizer)
     implementation(projects.featureCalendar)
     implementation(projects.featureMetrics)
+    implementation(projects.coreUi)
+    implementation(projects.coreData)
+    implementation(projects.coreEntities)
+    implementation(projects.coreInteractors)
 
     implementation(compose.ui)
     implementation(compose.material)
