@@ -2,8 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.compose.compiler)
+    id("pointyware.timer.multiplatform.compose")
     alias(libs.plugins.hilt)
 }
 

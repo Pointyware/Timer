@@ -1,8 +1,7 @@
 
 plugins {
     id("pointyware.timer.multiplatform.library")
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.compose.compiler)
+    id("pointyware.timer.multiplatform.compose")
 }
 
 kotlin {
