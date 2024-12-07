@@ -1,7 +1,6 @@
 package org.pointyware.timer.shared.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -35,9 +34,6 @@ fun staticColorScheme(isDarkTheme: Boolean): ColorScheme {
 
 @Composable
 expect fun colorScheme(isDarkTheme: Boolean, isDynamicTheme: Boolean): ColorScheme
-
-val TimerIcons = Icons.TwoTone
-val TimerIconsAutoMirrored = Icons.AutoMirrored.TwoTone
 
 @Composable
 fun TimerTheme(
