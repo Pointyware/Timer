@@ -49,7 +49,7 @@ import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
 class MainActivity : ComponentActivity() {
 
     private val timerViewModel: TimerViewModel by viewModels()
-    private val organizerViewModel: OrganizerViewModel by viewModels()
+    private val organizerViewModel: OrganizerViewModel = OrganizerViewModel()
     private val calendarViewModel: CalendarViewModel by viewModels()
     private val metricsViewModel: MetricsViewModel by viewModels()
 
@@ -158,7 +158,7 @@ fun TimerApp(
 @Composable
 fun NavigationPreview() {
     val timerViewModel: TimerViewModel = viewModel()
-    val organizerViewModel: OrganizerViewModel = viewModel()
+    val organizerViewModel = OrganizerViewModel()
     val calendarViewModel: CalendarViewModel = viewModel()
     val metricsViewModel: MetricsViewModel = viewModel()
     TimerApp(timerViewModel, organizerViewModel, calendarViewModel, metricsViewModel)
