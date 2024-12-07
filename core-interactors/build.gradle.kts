@@ -42,5 +42,4 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.interactors"
-    compileSdk = 35
 }
