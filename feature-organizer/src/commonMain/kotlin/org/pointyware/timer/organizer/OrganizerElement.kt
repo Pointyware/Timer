@@ -1,4 +1,4 @@
-package com.taushsampley.timer.organizer
+package org.pointyware.timer.organizer
 
 /**
  * Used for presentation of an organizational hierarchy.
