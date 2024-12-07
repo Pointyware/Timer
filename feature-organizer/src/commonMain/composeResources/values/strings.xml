@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="acc_name_category">Category</string>
+    <string name="acc_name_task">Task</string>
+</resources>
