@@ -9,7 +9,12 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(projects.coreUi)
 
+                implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
+
+                implementation(compose.components.resources)
             }
         }
 
@@ -43,4 +48,10 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.organizer"
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "org.pointyware.timer.organizer"
+    generateResClass = auto
 }
