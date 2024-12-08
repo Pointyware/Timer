@@ -172,7 +172,6 @@ fun TaskControl(
             ) {
                 Text(text = stringResource(if (running) Res.string.stop_task else Res.string.start_task))
             }
-            // TODO: hide text field when timer is running and change button text to "Stop Task"
         }
 
         if (taskSelectionOpen) {
