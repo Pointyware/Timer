@@ -33,7 +33,6 @@ import com.taushsampley.timer.organizer.OrganizerScreen
 import com.taushsampley.timer.tasks.ui.TimerScreen
 import com.taushsampley.timer.tasks.ui.TimerViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.pointyware.timer.organizer.OrganizerViewModel
 import org.pointyware.timer.shared.BottomNavBar
 import org.pointyware.timer.shared.Screen
 import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored

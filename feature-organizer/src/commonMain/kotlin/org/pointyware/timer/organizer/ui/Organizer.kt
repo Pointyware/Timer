@@ -1,10 +1,12 @@
 package org.pointyware.timer.organizer.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.twotone.Folder
 import androidx.compose.material.icons.twotone.Timer
 import androidx.compose.material3.Icon
@@ -33,10 +35,11 @@ fun Organizer(
     onClickElement: (OrganizerElement, Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    
-    LazyColumn {
-        items(elements) {
-            OrganizerRow(it)
+    LazyColumn(
+        modifier = modifier
+    ) {
+        itemsIndexed(elements) { index, element ->
+            OrganizerRow(element, modifier = Modifier.clickable { onClickElement(element, index) })
         }
     }
 }
@@ -45,15 +48,19 @@ fun Organizer(
  * Presents the information about a particular element. Depth is expressed as left-spacing, an icon
  * is used to show if the element is a branch or leaf node, and the title is displayed as text.
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OrganizerRow(element: OrganizerElement) {
+fun OrganizerRow(
+    element: OrganizerElement,
+    modifier: Modifier = Modifier
+) {
 
     val typeString = if (element.type == OrganizerElement.Type.Branch)
         stringResource(Res.string.acc_name_category)
     else stringResource(Res.string.acc_name_task)
 
     Row(
-        modifier = Modifier.clearAndSetSemantics {
+        modifier = modifier.clearAndSetSemantics {
             contentDescription = "$typeString ${element.title}"
         }
     ) {
