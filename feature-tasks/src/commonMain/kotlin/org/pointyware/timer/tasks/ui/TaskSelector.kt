@@ -1,26 +1,23 @@
-package com.taushsampley.timer.tasks.ui
+package org.pointyware.timer.tasks.ui
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.tooling.preview.Preview
-import org.pointyware.timer.R
+import org.jetbrains.compose.resources.stringResource
 import org.pointyware.timer.entities.Task
+import org.pointyware.timer.tasks.Res
+import org.pointyware.timer.tasks.cancel
+import org.pointyware.timer.tasks.select
 
 /**
  * Allows the user to select from a list of tasks.
@@ -53,7 +50,7 @@ fun TaskSelector(
                 onClick = onCancel,
                 modifier = Modifier.semantics(mergeDescendants = true) {}
             ) {
-                Text(stringResource(R.string.cancel))
+                Text(stringResource(Res.string.cancel))
             }
             Button(
                 enabled = newTask != null,
@@ -62,46 +59,8 @@ fun TaskSelector(
                 },
                 modifier = Modifier.semantics(mergeDescendants = true) {}
             ) {
-                Text(stringResource(R.string.select))
+                Text(stringResource(Res.string.select))
             }
         }
     }
-}
-
-@Composable
-fun TaskItem(
-    task: Task,
-    isSelected: Boolean,
-    onSelect: () -> Unit
-) {
-    Text(
-        text = task.title,
-        modifier = Modifier
-            .clickable(onClick = onSelect)
-            .background(
-                if (isSelected) {
-                    MaterialTheme.colors.secondary.copy(alpha = ContentAlpha.medium)
-                } else {
-                    MaterialTheme.colors.background
-                }
-            )
-    )
-}
-
-@Preview
-@Composable
-fun TaskSelectionPreview() {
-    val taskList = listOf(
-        Task("alpha", 1),
-        Task("beta", 2),
-        Task("gamma", 3),
-        Task("delta", 4)
-    )
-    var selectedTask by remember { mutableStateOf<Task?>(null) }
-
-    TaskSelector(
-        taskList, selectedTask,
-        onSelect = { selectedTask = it },
-        {selectedTask = null}
-    )
 }
