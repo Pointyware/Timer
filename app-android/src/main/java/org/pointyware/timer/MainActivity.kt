@@ -7,11 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -36,6 +34,7 @@ import com.taushsampley.timer.tasks.ui.TimerScreen
 import com.taushsampley.timer.tasks.ui.TimerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.pointyware.timer.organizer.OrganizerViewModel
+import org.pointyware.timer.shared.BottomNavBar
 import org.pointyware.timer.shared.Screen
 import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
 import org.pointyware.timer.ui.theme.TimerTheme
@@ -53,26 +52,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TimerApp(timerViewModel, organizerViewModel, calendarViewModel, metricsViewModel)
-        }
-    }
-}
-
-@Composable
-fun BottomNavBar(
-    currentScreen: Screen,
-    onClick: (Screen) -> Unit,
-    modifier: Modifier = Modifier
-) {
-
-    BottomAppBar(modifier) {
-        Screen.entries.forEach {
-            NavigationBarItem(
-                selected = currentScreen == it,
-                onClick = { onClick(it) },
-                icon = {
-                    Icon(it.image, contentDescription = null)
-                }
-            )
         }
     }
 }
