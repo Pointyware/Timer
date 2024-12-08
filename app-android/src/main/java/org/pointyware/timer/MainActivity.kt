@@ -41,9 +41,9 @@ import com.taushsampley.timer.tasks.ui.TimerScreen
 import com.taushsampley.timer.tasks.ui.TimerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.pointyware.timer.organizer.OrganizerViewModel
-import org.pointyware.timer.shared.ui.theme.TimerTheme
 import org.pointyware.timer.ui.theme.TimerIcons
 import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
+import org.pointyware.timer.ui.theme.TimerTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
