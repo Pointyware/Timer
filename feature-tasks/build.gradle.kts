@@ -12,6 +12,9 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.ui)
                 implementation(compose.material3)
+
+                api(projects.coreInteractors)
+                api(projects.coreUi)
             }
         }
 

@@ -16,10 +16,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.coreEntities)
-                api(projects.coreInteractors)
-                api(projects.coreData)
-                api(projects.coreUi)
+                api(projects.featureMetrics)
+                api(projects.featureCalendar)
 
                 implementation(libs.koin.core)
 
