@@ -12,6 +12,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.ui)
                 implementation(compose.material3)
+                implementation(compose.components.resources)
 
                 api(projects.coreInteractors)
                 api(projects.coreUi)
@@ -53,4 +54,10 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.tasks"
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "org.pointyware.timer.tasks"
+    generateResClass = auto
 }
