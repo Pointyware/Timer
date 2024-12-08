@@ -14,8 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
-import org.pointyware.timer.organizer.accNameCategory
-import org.pointyware.timer.organizer.accNameTask
+import org.jetbrains.compose.resources.stringResource
+import org.pointyware.timer.organizer.Res
+import org.pointyware.timer.organizer.acc_name_category
+import org.pointyware.timer.organizer.acc_name_task
 import org.pointyware.timer.ui.theme.TimerIcons
 
 /**
@@ -47,8 +49,8 @@ fun Organizer(
 fun OrganizerRow(element: OrganizerElement) {
 
     val typeString = if (element.type == OrganizerElement.Type.Branch)
-        accNameCategory
-    else accNameTask
+        stringResource(Res.string.acc_name_category)
+    else stringResource(Res.string.acc_name_task)
 
     Row(
         modifier = Modifier.clearAndSetSemantics {
