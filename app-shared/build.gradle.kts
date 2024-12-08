@@ -19,6 +19,7 @@ kotlin {
                 api(projects.coreEntities)
                 api(projects.coreInteractors)
                 api(projects.coreData)
+                api(projects.coreUi)
 
                 implementation(libs.koin.core)
 
