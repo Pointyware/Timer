@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks.ui
+package org.pointyware.timer.tasks.ui
 
 /**
  * Holds the information relevant to displaying a particular record.
