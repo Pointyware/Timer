@@ -1,4 +1,4 @@
-package org.pointyware.timer.organizer
+package org.pointyware.timer.organizer.ui
 
 /**
  * Used for presentation of an organizational hierarchy.

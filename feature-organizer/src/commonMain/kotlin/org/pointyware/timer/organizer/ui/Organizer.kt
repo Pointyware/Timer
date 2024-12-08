@@ -1,4 +1,4 @@
-package org.pointyware.timer.organizer
+package org.pointyware.timer.organizer.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +15,7 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.stringResource
+import org.pointyware.timer.organizer.Res
 import org.pointyware.timer.ui.theme.TimerIcons
 
 /**

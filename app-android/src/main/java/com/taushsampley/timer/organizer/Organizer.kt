@@ -4,8 +4,8 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import org.pointyware.timer.organizer.Organizer
-import org.pointyware.timer.organizer.OrganizerElement
+import org.pointyware.timer.organizer.ui.Organizer
+import org.pointyware.timer.organizer.ui.OrganizerElement
 import org.pointyware.timer.shared.ui.theme.TimerTheme
 
 @Preview(showBackground = true)
