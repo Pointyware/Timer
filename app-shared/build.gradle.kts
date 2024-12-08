@@ -24,6 +24,7 @@ kotlin {
                 implementation(libs.kotlinx.dateTime)
 
                 implementation(compose.ui)
+                implementation(compose.materialIconsExtended)
                 implementation(compose.material3)
                 implementation(compose.material3AdaptiveNavigationSuite)
 
