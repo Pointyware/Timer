@@ -9,7 +9,7 @@ import org.pointyware.timer.organizer.ui.OrganizerElement
  *
  */
 class OrganizerViewModel(
-
+    // TODO: inject repository and interactors
 ): ViewModel() {
 
     fun onClickElement(organizerElement: OrganizerElement, index: Int) {
