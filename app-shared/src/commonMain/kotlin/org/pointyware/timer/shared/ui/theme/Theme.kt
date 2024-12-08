@@ -12,6 +12,7 @@ import org.pointyware.timer.ui.theme.Purple500
 import org.pointyware.timer.ui.theme.Purple700
 import org.pointyware.timer.ui.theme.Shapes
 import org.pointyware.timer.ui.theme.Teal200
+import org.pointyware.timer.ui.theme.Typography
 
 val DarkColorPalette = darkColorScheme(
     primary = Purple200,
