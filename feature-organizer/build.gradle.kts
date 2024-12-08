@@ -9,7 +9,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(projects.coreUi)
+                api(projects.featureTasks)
 
                 implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
