@@ -27,6 +27,7 @@ kotlin {
 
                 implementation(compose.ui)
                 implementation(compose.material3)
+                implementation(compose.material3AdaptiveNavigationSuite)
 
                 implementation(libs.compose.viewmodel)
                 implementation(libs.compose.navigation)
