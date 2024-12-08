@@ -18,6 +18,7 @@ kotlin {
             dependencies {
                 api(projects.featureMetrics)
                 api(projects.featureCalendar)
+                api(projects.featureTasks)
 
                 implementation(libs.koin.core)
 
