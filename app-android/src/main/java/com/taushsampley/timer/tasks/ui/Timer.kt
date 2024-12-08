@@ -25,7 +25,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import org.pointyware.timer.shared.ui.theme.TimerTheme
+import org.pointyware.timer.ui.theme.TimerTheme
 
 /**
  *
