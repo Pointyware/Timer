@@ -1,4 +1,4 @@
-package org.pointyware.timer.shared.ui.theme
+package org.pointyware.timer.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
