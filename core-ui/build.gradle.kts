@@ -14,6 +14,8 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 implementation(compose.components.resources)
 
+                api(libs.kotlinx.collections.immutable)
+
                 api(projects.coreEntities)
             }
         }
