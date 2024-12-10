@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks.ui
+package org.pointyware.timer.tasks.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -7,7 +7,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import org.pointyware.timer.entities.Task
-import org.pointyware.timer.tasks.ui.TaskSelector
 
 @Preview
 @Composable
