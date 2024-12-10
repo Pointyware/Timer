@@ -10,7 +10,7 @@ import org.pointyware.timer.entities.Task
 
 @Preview
 @Composable
-fun TaskSelectionPreview() {
+fun TaskSelectorPreview() {
     val taskList = listOf(
         Task("alpha", 1),
         Task("beta", 2),
