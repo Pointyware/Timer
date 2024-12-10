@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
 import org.pointyware.timer.tasks.TimerScreen
 import org.pointyware.timer.tasks.TimerScreenState
+import org.pointyware.timer.tasks.ui.ITimerViewModel
 import org.pointyware.timer.ui.theme.TimerTheme
 
 @Composable
