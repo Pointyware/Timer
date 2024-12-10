@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks.ui
+package org.pointyware.timer.tasks.ui
 
 import org.pointyware.timer.entities.Record
 
