@@ -15,6 +15,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.tooling.preview.Preview
 import org.pointyware.timer.metrics.entities.Metric
 import org.pointyware.timer.metrics.entities.TaskMetric
+import org.pointyware.timer.metrics.ui.ColorMap
+import org.pointyware.timer.metrics.ui.RandomColorMap
 
 /**
  */
