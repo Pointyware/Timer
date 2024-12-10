@@ -25,9 +25,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.taushsampley.timer.calendar.CalendarScreen
-import com.taushsampley.timer.calendar.CalendarViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import org.pointyware.timer.calendar.ui.CalendarScreen
+import org.pointyware.timer.calendar.viewmodels.CalendarViewModel
 import org.pointyware.timer.metrics.ui.MetricsScreen
 import org.pointyware.timer.metrics.viewmodels.MetricsViewModel
 import org.pointyware.timer.organizer.ui.OrganizerScreen
