@@ -5,14 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import org.pointyware.timer.tasks.TimerScreen
 import org.pointyware.timer.tasks.TimerScreenState
 import org.pointyware.timer.ui.theme.TimerTheme
 
 @Composable
 fun TimerScreen(
-    timerViewModel: TimerViewModel = viewModel()
+    timerViewModel: ITimerViewModel
 ) {
     val currentTime by timerViewModel.time.collectAsState()
     val isRunning by timerViewModel.isRunning.collectAsState()
@@ -41,6 +40,18 @@ fun TimerScreen(
 fun TimerScreenPreview() {
 
     TimerTheme {
-        TimerScreen()
+        TimerScreen(
+            TimerScreenState(
+                currentTime = 0,
+                isRunning = false,
+                recordingList = emptyList(),
+                title = "Task Title",
+                taskList = emptyList(),
+                selectedTask = null
+            ),
+            onToggleTimer = {},
+            onTaskSelected = {},
+            onTitleChanged = {}
+        )
     }
 }
