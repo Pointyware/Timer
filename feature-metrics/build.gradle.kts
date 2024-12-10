@@ -12,6 +12,7 @@ kotlin {
                 api(projects.featureOrganizer)
 
                 implementation(compose.ui)
+                implementation(compose.material3)
             }
         }
 

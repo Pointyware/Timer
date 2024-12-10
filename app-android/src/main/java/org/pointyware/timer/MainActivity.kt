@@ -27,10 +27,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.taushsampley.timer.calendar.CalendarScreen
 import com.taushsampley.timer.calendar.CalendarViewModel
-import com.taushsampley.timer.metrics.MetricsScreen
 import com.taushsampley.timer.metrics.MetricsViewModel
 import com.taushsampley.timer.organizer.OrganizerScreen
 import dagger.hilt.android.AndroidEntryPoint
+import org.pointyware.timer.metrics.ui.MetricsScreen
 import org.pointyware.timer.shared.BottomNavBar
 import org.pointyware.timer.shared.Screen
 import org.pointyware.timer.tasks.ui.TimerScreen
