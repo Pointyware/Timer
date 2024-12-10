@@ -3,11 +3,16 @@ package com.taushsampley.timer.metrics
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import org.pointyware.timer.metrics.entities.Metric
 
-class MetricsViewModel: ViewModel() {
+interface IMetricsViewModel {
+    val metricsList: StateFlow<List<Metric>>
+}
+
+class MetricsViewModel: ViewModel(), IMetricsViewModel {
 
     private val _metricsList = MutableStateFlow<List<Metric>>(listOf())
-    val metricsList: StateFlow<List<Metric>> = _metricsList
+    override val metricsList: StateFlow<List<Metric>> = _metricsList
 
     init {
         _metricsList.value = listOf(

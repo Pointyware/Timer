@@ -1,5 +1,7 @@
 package com.taushsampley.timer.metrics
 
+import org.pointyware.timer.metrics.entities.Metric
+
 /**
  * Holds metric data for a task category
  */
