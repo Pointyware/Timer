@@ -14,19 +14,8 @@ import org.pointyware.timer.entities.Record
 import org.pointyware.timer.entities.Task
 import org.pointyware.timer.interactors.CreateRecordUseCase
 import org.pointyware.timer.interactors.CreateTaskUseCase
+import org.pointyware.timer.tasks.ui.ITimerViewModel
 import org.pointyware.timer.tasks.ui.RecordListItem
-
-interface ITimerViewModel { // TODO: rename after migration
-    val recordings: StateFlow<List<RecordListItem>>
-    val time: StateFlow<Int>
-    val isRunning: StateFlow<Boolean>
-    val taskList: StateFlow<List<Task>>
-    val selectedTask: StateFlow<Task?>
-    val taskTitle: StateFlow<String>
-    fun toggleTimer()
-    fun selectTask(task: Task)
-    fun titleChanged(title: String)
-}
 
 // TODO: add Hilt to inject dependencies
 class TimerViewModel(application: Application): AndroidViewModel(application), ITimerViewModel {
