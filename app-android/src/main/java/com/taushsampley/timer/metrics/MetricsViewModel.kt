@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import org.pointyware.timer.metrics.entities.Metric
+import org.pointyware.timer.metrics.entities.TaskMetric
 
 interface IMetricsViewModel {
     val metricsList: StateFlow<List<Metric>>

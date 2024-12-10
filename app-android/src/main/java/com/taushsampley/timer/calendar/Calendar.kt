@@ -24,8 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.taushsampley.timer.metrics.CategoryMetric
 import com.taushsampley.timer.metrics.MetricsWheel
-import com.taushsampley.timer.metrics.TaskMetric
 import org.pointyware.timer.R
+import org.pointyware.timer.metrics.entities.TaskMetric
 import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
 import org.pointyware.timer.ui.theme.TimerTheme
 
