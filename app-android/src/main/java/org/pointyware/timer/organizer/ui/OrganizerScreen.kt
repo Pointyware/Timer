@@ -1,11 +1,9 @@
-package com.taushsampley.timer.organizer
+package org.pointyware.timer.organizer.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import org.pointyware.timer.OrganizerViewModel
-import org.pointyware.timer.organizer.ui.OrganizerScreen
-import org.pointyware.timer.organizer.ui.OrganizerScreenState
 
 /**
  */
