@@ -1,6 +1,5 @@
-package com.taushsampley.timer.calendar
+package org.pointyware.timer.calendar.viewmodels
 
-import androidx.annotation.StringRes
 
 /**
  *
@@ -9,7 +8,7 @@ import androidx.annotation.StringRes
  * @property metrics A list of lists of metric data.
  */
 data class MonthMetrics(
-    @StringRes val month: Int,
+    val month: Int,
     val year: Int,
     val metrics: List<List<DayMetrics>>
 ) {

@@ -1,4 +1,4 @@
-package com.taushsampley.timer.calendar
+package org.pointyware.timer.calendar.viewmodels
 
 import org.pointyware.timer.metrics.entities.Metric
 

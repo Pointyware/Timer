@@ -23,6 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.pointyware.timer.R
+import org.pointyware.timer.calendar.viewmodels.DayMetrics
+import org.pointyware.timer.calendar.viewmodels.MonthMetrics
 import org.pointyware.timer.metrics.entities.CategoryMetric
 import org.pointyware.timer.metrics.entities.TaskMetric
 import org.pointyware.timer.metrics.ui.MetricsWheel
