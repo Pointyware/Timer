@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -21,7 +21,7 @@ import org.pointyware.timer.ui.theme.TimerTheme
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
 fun TimerPreview() {
-    var time by remember { mutableStateOf(0) }
+    var time by remember { mutableIntStateOf(0) }
 
     TimerTheme {
         Surface {
