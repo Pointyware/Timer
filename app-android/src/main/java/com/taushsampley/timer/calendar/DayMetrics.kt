@@ -1,6 +1,6 @@
 package com.taushsampley.timer.calendar
 
-import com.taushsampley.timer.metrics.Metric
+import org.pointyware.timer.metrics.entities.Metric
 
 /**
  * @property day The day of some month/year that this data represents.

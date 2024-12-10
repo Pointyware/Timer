@@ -1,4 +1,4 @@
-package com.taushsampley.timer.metrics
+package org.pointyware.timer.metrics.entities
 
 /**
  * Holds information necessary to display compiled task durations.
