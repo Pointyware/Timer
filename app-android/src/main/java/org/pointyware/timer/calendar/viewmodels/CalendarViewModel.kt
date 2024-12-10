@@ -1,10 +1,8 @@
-package com.taushsampley.timer.calendar
+package org.pointyware.timer.calendar.viewmodels
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import org.pointyware.timer.calendar.viewmodels.ICalendarViewModel
-import org.pointyware.timer.calendar.viewmodels.MonthMetrics
 
 class CalendarViewModel: ViewModel(), ICalendarViewModel {
 
