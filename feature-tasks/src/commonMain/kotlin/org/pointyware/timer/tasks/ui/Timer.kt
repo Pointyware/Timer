@@ -1,4 +1,4 @@
-package org.pointyware.timer.tasks
+package org.pointyware.timer.tasks.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
