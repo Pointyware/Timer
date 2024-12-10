@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import org.pointyware.timer.metrics.ui.RandomColorMap
 import org.pointyware.timer.ui.theme.TimerTheme
 
 /**
