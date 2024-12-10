@@ -1,6 +1,4 @@
-package com.taushsampley.timer.metrics
-
-import org.pointyware.timer.metrics.entities.Metric
+package org.pointyware.timer.metrics.entities
 
 /**
  * Holds metric data for a single task

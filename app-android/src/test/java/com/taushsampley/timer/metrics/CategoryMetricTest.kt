@@ -3,6 +3,7 @@ package com.taushsampley.timer.metrics
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
+import org.pointyware.timer.metrics.entities.TaskMetric
 
 /**
  */
