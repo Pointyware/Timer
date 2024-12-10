@@ -10,6 +10,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.featureMetrics)
+
+                implementation(libs.kotlinx.coroutines)
             }
         }
 
@@ -19,7 +21,7 @@ kotlin {
 
         val desktopMain by getting {
             dependencies {
-
+                implementation(libs.kotlinx.coroutinesCoreJvm)
             }
         }
 
@@ -28,7 +30,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-
+                implementation(libs.kotlinx.coroutinesAndroid)
             }
         }
 
