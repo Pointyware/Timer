@@ -10,6 +10,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.featureOrganizer)
+
+                implementation(compose.ui)
             }
         }
 
