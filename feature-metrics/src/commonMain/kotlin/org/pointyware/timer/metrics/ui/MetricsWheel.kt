@@ -1,4 +1,4 @@
-package com.taushsampley.timer.metrics
+package org.pointyware.timer.metrics.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.aspectRatio
@@ -12,12 +12,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.tooling.preview.Preview
-import org.pointyware.timer.metrics.entities.CategoryMetric
 import org.pointyware.timer.metrics.entities.Metric
-import org.pointyware.timer.metrics.entities.TaskMetric
-import org.pointyware.timer.metrics.ui.ColorMap
-import org.pointyware.timer.metrics.ui.RandomColorMap
 
 /**
  */
@@ -32,9 +27,11 @@ fun MetricsWheel(
     val totalDuration = metricsList.sumOf { it.duration }
     val maxHeight = metricsList.maxOfOrNull { it.height } ?: 0
 
-    Canvas(modifier = modifier
-        .fillMaxWidth()
-        .aspectRatio(1.0f)) {
+    Canvas(
+        modifier = modifier
+            .fillMaxWidth()
+            .aspectRatio(1.0f)
+    ) {
         // defines draw radius of wheel
         val totalRadius = size.minDimension / 2
         val center = size.center
@@ -42,8 +39,9 @@ fun MetricsWheel(
         val tierRadius = totalRadius / maxHeight
         val fullBounds = Rect(center, totalRadius)
 
-        fun drawSegments(duration: Long, segments: List<Metric>, tier: Int,
-                         startAngle: Float = 0f, endAngle: Float = 360f
+        fun drawSegments(
+            duration: Long, segments: List<Metric>, tier: Int,
+            startAngle: Float = 0f, endAngle: Float = 360f
         ) {
             val tierInnerRadius = tier * tierRadius
             val tierOuterRadius = tierInnerRadius + tierRadius
@@ -64,13 +62,15 @@ fun MetricsWheel(
                 val children = metric.children
                 if (children.isEmpty()) {
                     // draw to final height
-                    drawSegment(tierInnerBounds, fullBounds,
+                    drawSegment(
+                        tierInnerBounds, fullBounds,
                         segmentStart, segmentSweep, segmentEnd,
                         segmentColor, edgeColor, edgeStyle
                     )
                 } else {
                     // draw only this tier
-                    drawSegment(tierInnerBounds, tierOuterBounds,
+                    drawSegment(
+                        tierInnerBounds, tierOuterBounds,
                         segmentStart, segmentSweep, segmentEnd,
                         segmentColor, edgeColor, edgeStyle
                     )
@@ -110,26 +110,4 @@ private fun DrawScope.drawSegment(
     segmentArc.close()
     drawPath(segmentArc, segmentColor)
     drawPath(segmentArc, edgeColor, style = edgeStyle)
-}
-
-
-@Preview
-@Composable
-fun MetricsWheelPreview() {
-
-    val duration = 2500L
-    val dummyData = listOf(
-        TaskMetric(duration),
-        TaskMetric(duration),
-        TaskMetric(duration),
-        TaskMetric(duration),
-        CategoryMetric(
-            TaskMetric(duration),
-            TaskMetric(duration),
-            CategoryMetric(
-                TaskMetric(duration)
-            )
-        )
-    )
-    MetricsWheel(metricsList = dummyData)
 }
