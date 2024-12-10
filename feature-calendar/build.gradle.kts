@@ -12,6 +12,10 @@ kotlin {
                 api(projects.featureMetrics)
 
                 implementation(libs.kotlinx.coroutines)
+
+                implementation(compose.ui)
+                implementation(compose.material3)
+                implementation(compose.components.resources)
             }
         }
 
@@ -45,4 +49,10 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.calendar"
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "org.pointyware.timer.calendar"
+    generateResClass = always
 }
