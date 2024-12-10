@@ -1,4 +1,4 @@
-package com.taushsampley.timer.metrics
+package org.pointyware.timer.metrics.ui
 
 import androidx.compose.ui.graphics.Color
 
