@@ -30,11 +30,11 @@ import com.taushsampley.timer.calendar.CalendarViewModel
 import com.taushsampley.timer.metrics.MetricsScreen
 import com.taushsampley.timer.metrics.MetricsViewModel
 import com.taushsampley.timer.organizer.OrganizerScreen
-import com.taushsampley.timer.tasks.ui.TimerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.pointyware.timer.shared.BottomNavBar
 import org.pointyware.timer.shared.Screen
 import org.pointyware.timer.tasks.ui.TimerScreen
+import org.pointyware.timer.tasks.ui.TimerViewModel
 import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
 import org.pointyware.timer.ui.theme.TimerTheme
 

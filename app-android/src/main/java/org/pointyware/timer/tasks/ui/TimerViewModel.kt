@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks.ui
+package org.pointyware.timer.tasks.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -14,8 +14,6 @@ import org.pointyware.timer.entities.Record
 import org.pointyware.timer.entities.Task
 import org.pointyware.timer.interactors.CreateRecordUseCase
 import org.pointyware.timer.interactors.CreateTaskUseCase
-import org.pointyware.timer.tasks.ui.ITimerViewModel
-import org.pointyware.timer.tasks.ui.RecordListItem
 
 // TODO: add Hilt to inject dependencies
 class TimerViewModel(application: Application): AndroidViewModel(application), ITimerViewModel {
