@@ -4,6 +4,7 @@ import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import org.pointyware.timer.entities.Record
+import org.pointyware.timer.tasks.ui.RecordFormatter
 
 
 /**
