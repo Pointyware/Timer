@@ -16,8 +16,20 @@ import org.pointyware.timer.interactors.CreateRecordUseCase
 import org.pointyware.timer.interactors.CreateTaskUseCase
 import org.pointyware.timer.tasks.ui.RecordListItem
 
+interface ITimerViewModel { // TODO: rename after migration
+    val recordings: StateFlow<List<RecordListItem>>
+    val time: StateFlow<Int>
+    val isRunning: StateFlow<Boolean>
+    val taskList: StateFlow<List<Task>>
+    val selectedTask: StateFlow<Task?>
+    val taskTitle: StateFlow<String>
+    fun toggleTimer()
+    fun selectTask(task: Task)
+    fun titleChanged(title: String)
+}
+
 // TODO: add Hilt to inject dependencies
-class TimerViewModel(application: Application): AndroidViewModel(application) {
+class TimerViewModel(application: Application): AndroidViewModel(application), ITimerViewModel {
 
     private val repository = getApplication<TimerApplication>().repository
 
@@ -28,29 +40,29 @@ class TimerViewModel(application: Application): AndroidViewModel(application) {
 //    private val stopRecordingUseCase = StopRecordingUseCase()
 
     private val _recordings = MutableStateFlow<List<RecordListItem>>(emptyList())
-    val recordings: StateFlow<List<RecordListItem>> = _recordings
+    override val recordings: StateFlow<List<RecordListItem>> = _recordings
 
     private val _timer = MutableStateFlow(0)
-    val time: StateFlow<Int> = _timer
+    override val time: StateFlow<Int> = _timer
 
     private val _isRunning = MutableStateFlow(false)
-    val isRunning: StateFlow<Boolean> = _isRunning
+    override val isRunning: StateFlow<Boolean> = _isRunning
 
     private var timerJob: Job? = null
 
     private val _taskList = MutableStateFlow<List<Task>>(emptyList())
-    var taskList: StateFlow<List<Task>> = _taskList
+    override var taskList: StateFlow<List<Task>> = _taskList
     // TODO: load initial list of tasks
 
     private val _selectedTask = MutableStateFlow<Task?>(null)
-    val selectedTask: StateFlow<Task?> = _selectedTask
+    override val selectedTask: StateFlow<Task?> = _selectedTask
 
     private val _taskTitle = MutableStateFlow("")
-    val taskTitle: StateFlow<String> = _taskTitle
+    override val taskTitle: StateFlow<String> = _taskTitle
 
     private var startTime: Long = 0
 
-    fun toggleTimer() {
+    override fun toggleTimer() {
         val isRunning = !_isRunning.value
         _isRunning.value = isRunning
 
@@ -84,13 +96,13 @@ class TimerViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun selectTask(task: Task) {
+    override fun selectTask(task: Task) {
         _selectedTask.value = task
         _taskTitle.value = task.title
     }
 
     private var searchJob: Job? = null
-    fun titleChanged(title: String) {
+    override fun titleChanged(title: String) {
         _selectedTask.value = null
         _taskTitle.value = title
 
