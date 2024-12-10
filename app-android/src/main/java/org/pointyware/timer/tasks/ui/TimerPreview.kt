@@ -1,4 +1,4 @@
-package com.taushsampley.timer.tasks.ui
+package org.pointyware.timer.tasks.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -15,7 +15,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import org.pointyware.timer.tasks.ui.Timer
 import org.pointyware.timer.ui.theme.TimerTheme
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
