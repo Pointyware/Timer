@@ -3,6 +3,7 @@ package com.taushsampley.timer.metrics
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import org.pointyware.timer.metrics.entities.CategoryMetric
 import org.pointyware.timer.metrics.entities.Metric
 import org.pointyware.timer.metrics.entities.TaskMetric
 

@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.tooling.preview.Preview
+import org.pointyware.timer.metrics.entities.CategoryMetric
 import org.pointyware.timer.metrics.entities.Metric
 import org.pointyware.timer.metrics.entities.TaskMetric
 import org.pointyware.timer.metrics.ui.ColorMap
