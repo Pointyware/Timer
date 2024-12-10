@@ -1,7 +1,7 @@
-package com.taushsampley.timer.metrics
+package org.pointyware.timer.metrics.ui
 
 import androidx.compose.ui.graphics.Color
-import androidx.core.graphics.ColorUtils
+import androidx.compose.ui.graphics.toArgb
 
 /**
  * Produces random colors on demand.
@@ -18,7 +18,7 @@ class RandomColorMap<K>: ColorMap<K> {
         val hslArray = FloatArray(3) { 1.0f }
         hslArray[0] = hue * 360f
         hslArray[2] = 0.5f
-        val colorInt = ColorUtils.HSLToColor(hslArray)
+        val colorInt = Color.hsl(hslArray[0], hslArray[1], hslArray[2]).toArgb()
         return Color(colorInt)
     }
 
