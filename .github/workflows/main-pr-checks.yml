@@ -21,7 +21,7 @@ jobs:
       - name: Setup
         uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build Android
-        run: ./gradlew :app-android:assembleDebug :app-android:assembleRelease -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
+        run: ./gradlew :app-android:assembleDebug -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
       - name: Android Debug Unit Tests
         run: ./gradlew testDebugUnitTest -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
 
