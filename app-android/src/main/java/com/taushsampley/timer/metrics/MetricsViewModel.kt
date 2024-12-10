@@ -6,10 +6,7 @@ import kotlinx.coroutines.flow.StateFlow
 import org.pointyware.timer.metrics.entities.CategoryMetric
 import org.pointyware.timer.metrics.entities.Metric
 import org.pointyware.timer.metrics.entities.TaskMetric
-
-interface IMetricsViewModel {
-    val metricsList: StateFlow<List<Metric>>
-}
+import org.pointyware.timer.metrics.viewmodels.IMetricsViewModel
 
 class MetricsViewModel: ViewModel(), IMetricsViewModel {
 
