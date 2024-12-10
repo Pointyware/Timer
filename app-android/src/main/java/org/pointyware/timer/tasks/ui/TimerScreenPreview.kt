@@ -1,10 +1,8 @@
-package com.taushsampley.timer.tasks.ui
+package org.pointyware.timer.tasks.ui
 
 import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import org.pointyware.timer.tasks.TimerScreen
-import org.pointyware.timer.tasks.TimerScreenState
 import org.pointyware.timer.ui.theme.TimerTheme
 
 @Preview(showBackground = true, name = "Timer Light")
