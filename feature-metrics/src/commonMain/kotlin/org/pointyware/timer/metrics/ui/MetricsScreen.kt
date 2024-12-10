@@ -6,7 +6,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.taushsampley.timer.metrics.MetricsWheel
 import org.pointyware.timer.metrics.viewmodels.IMetricsViewModel
 
 /**
