@@ -1,17 +1,10 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
     id("pointyware.timer.multiplatform.library")
     id("pointyware.timer.multiplatform.compose")
-    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
-
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
-    compilerOptions {
-        freeCompilerArgs = listOf("-Xexpect-actual-classes")
-    }
 
     sourceSets {
         val commonMain by getting {
@@ -46,7 +39,6 @@ kotlin {
 
         val desktopMain by getting {
             dependencies {
-                implementation(libs.sqlDelight.jvm)
             }
         }
 
@@ -55,8 +47,6 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(libs.sqlDelight.android)
-
                 implementation(libs.koin.android)
             }
         }
@@ -72,12 +62,4 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.shared"
-}
-
-sqldelight {
-    databases {
-        create("TimerDatabase") {
-            packageName = "org.pointyware.timer.shared.db"
-        }
-    }
 }
