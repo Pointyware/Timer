@@ -1,12 +1,11 @@
-package org.pointyware.timer.shared.data
+package org.pointyware.timer.data
 
-import org.pointyware.timer.data.TaskRepository
+import org.pointyware.timer.data.db.DriverFactory
+import org.pointyware.timer.data.db.Persistence
+import org.pointyware.timer.data.db.TimerDatabase
+import org.pointyware.timer.data.db.createOrMigrate
 import org.pointyware.timer.entities.Record
 import org.pointyware.timer.entities.Task
-import org.pointyware.timer.shared.db.TimerDatabase
-import org.pointyware.timer.shared.local.DriverFactory
-import org.pointyware.timer.shared.local.Persistence
-import org.pointyware.timer.shared.local.createOrMigrate
 
 /**
  *

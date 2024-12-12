@@ -1,11 +1,11 @@
-package org.pointyware.timer.shared.di
+package org.pointyware.timer.data.di
 
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
-import org.pointyware.timer.shared.local.DriverFactory
-import org.pointyware.timer.shared.local.JvmDriverFactory
+import org.pointyware.timer.data.db.DriverFactory
+import org.pointyware.timer.data.db.JvmDriverFactory
 
 actual fun sharedPlatformModule(): Module = sharedJvmModule()
 
