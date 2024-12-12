@@ -1,9 +1,8 @@
-package org.pointyware.timer.shared.local
+package org.pointyware.timer.data.db
 
 import android.content.Context
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
-import org.pointyware.timer.shared.db.TimerDatabase
 
 /**
  *

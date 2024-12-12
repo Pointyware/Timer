@@ -6,9 +6,9 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.data.TaskRepository
-import org.pointyware.timer.shared.data.TaskRepositoryImpl
-import org.pointyware.timer.shared.di.sharedModule
-import org.pointyware.timer.shared.local.DriverFactory
+import org.pointyware.timer.data.TaskRepositoryImpl
+import org.pointyware.timer.data.db.DriverFactory
+import org.pointyware.timer.data.di.sharedModule
 
 /**
  *

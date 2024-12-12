@@ -6,13 +6,13 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.data.TaskRepository
+import org.pointyware.timer.data.TaskRepositoryImpl
+import org.pointyware.timer.data.db.DriverFactory
+import org.pointyware.timer.data.db.Persistence
+import org.pointyware.timer.data.di.sharedModule
 import org.pointyware.timer.entities.Record
 import org.pointyware.timer.interactors.CreateRecordUseCase
 import org.pointyware.timer.interactors.CreateTaskUseCase
-import org.pointyware.timer.shared.data.TaskRepositoryImpl
-import org.pointyware.timer.shared.di.sharedModule
-import org.pointyware.timer.shared.local.DriverFactory
-import org.pointyware.timer.shared.local.Persistence
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test

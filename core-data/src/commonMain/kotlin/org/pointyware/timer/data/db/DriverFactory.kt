@@ -1,4 +1,4 @@
-package org.pointyware.timer.shared.local
+package org.pointyware.timer.data.db
 
 import app.cash.sqldelight.db.SqlDriver
 
