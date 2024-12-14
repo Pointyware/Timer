@@ -18,5 +18,9 @@ gradlePlugin {
             id = "org.pointyware.timer.multiplatform.compose"
             implementationClass = "org.pointyware.timer.multiplatform.MultiplatformComposePlugin"
         }
+        register("kotlinConvention") {
+            id = "pointyware.timer.kotlin"
+            implementationClass = "org.pointyware.timer.multiplatform.KotlinConventionPlugin"
+        }
     }
 }
