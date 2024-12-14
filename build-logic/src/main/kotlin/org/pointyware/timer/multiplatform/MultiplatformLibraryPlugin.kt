@@ -2,6 +2,7 @@ package org.pointyware.timer.multiplatform
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.get
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.pointyware.timer.configureKotlinAndroid
@@ -13,11 +14,9 @@ import org.pointyware.timer.configureKotlinJvm
 class MultiplatformLibraryPlugin: Plugin<Project> {
     override fun apply(project: Project) {
         with(project) {
+            apply(plugin = "org.jetbrains.kotlin.multiplatform")
+            apply(plugin = "com.android.library")
 
-            with(plugins) {
-                apply("org.jetbrains.kotlin.multiplatform")
-                apply("com.android.library")
-            }
             configureKotlinAndroid()
             configureKotlinJvm()
 
