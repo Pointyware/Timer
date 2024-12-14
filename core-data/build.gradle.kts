@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
-    id("pointyware.timer.multiplatform.library")
+    id("org.pointyware.timer.multiplatform.library")
     alias(libs.plugins.sqlDelight)
 }
 
