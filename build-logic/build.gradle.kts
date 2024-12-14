@@ -11,11 +11,11 @@ dependencies {
 gradlePlugin {
     plugins {
         register("multiplatformLibrary") {
-            id = "pointyware.timer.multiplatform.library"
+            id = "org.pointyware.timer.multiplatform.library"
             implementationClass = "org.pointyware.timer.multiplatform.MultiplatformLibraryPlugin"
         }
         register("multiplatformCompose") {
-            id = "pointyware.timer.multiplatform.compose"
+            id = "org.pointyware.timer.multiplatform.compose"
             implementationClass = "org.pointyware.timer.multiplatform.MultiplatformComposePlugin"
         }
     }

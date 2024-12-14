@@ -1,7 +1,7 @@
 
 plugins {
     alias(libs.plugins.kotlinJvm)
-    id("pointyware.timer.multiplatform.compose")
+    id("org.pointyware.timer.multiplatform.compose")
     application
 }
 

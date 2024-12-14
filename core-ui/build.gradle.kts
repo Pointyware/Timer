@@ -1,7 +1,7 @@
 
 plugins {
-    id("pointyware.timer.multiplatform.library")
-    id("pointyware.timer.multiplatform.compose")
+    id("org.pointyware.timer.multiplatform.library")
+    id("org.pointyware.timer.multiplatform.compose")
 }
 
 kotlin {
