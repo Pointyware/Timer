@@ -3,15 +3,20 @@ package org.pointyware.timer
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.kotlin.dsl.configure
 
 
 /**
  * Configure base Kotlin options for JVM (non-Android)
  */
 internal fun Project.configureKotlinJvm() {
-    extensions.configure(JavaPluginExtension::class.java) {
-        // Up to Java 11 APIs are available through desugaring
-        // https://developer.android.com/studio/write/java11-minimal-support-table
+    configure<JavaPluginExtension> {
+        configureKotlinJvm(this)
+    }
+}
+
+fun configureKotlinJvm(extension: JavaPluginExtension) {
+    extension.apply {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
