@@ -8,6 +8,8 @@ import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.pointyware.timer.configureKotlinAndroid
+import org.pointyware.timer.configureKotlinJvm
 
 /**
  *
@@ -27,19 +29,19 @@ class MultiplatformComposePlugin: Plugin<Project> {
 
                 pluginManager.hasPlugin("org.jetbrains.kotlin.jvm") -> {
                     configure<JavaPluginExtension> {
-
+                        configureKotlinJvm(this)
                     }
                 }
 
                 pluginManager.hasPlugin("com.android.library") -> {
                     configure<LibraryExtension> {
-
+                        configureKotlinAndroid(this)
                     }
                 }
 
                 pluginManager.hasPlugin("com.android.application") -> {
                     configure<ApplicationExtension> {
-
+                        configureKotlinAndroid(this)
                     }
                 }
             }

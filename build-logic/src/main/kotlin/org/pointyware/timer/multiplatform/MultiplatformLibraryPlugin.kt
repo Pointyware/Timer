@@ -16,12 +16,12 @@ class MultiplatformLibraryPlugin: Plugin<Project> {
         with(project) {
             apply(plugin = "org.jetbrains.kotlin.multiplatform")
             apply(plugin = "com.android.library")
+            apply(plugin = "org.pointyware.timer.kotlin")
 
             configureKotlinAndroid()
             configureKotlinJvm()
 
             extensions.configure(KotlinMultiplatformExtension::class.java) {
-                jvmToolchain(17)
                 jvm("desktop")
                 androidTarget()
 
