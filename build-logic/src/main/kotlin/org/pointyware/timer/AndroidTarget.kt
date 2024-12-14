@@ -8,7 +8,13 @@ import org.gradle.api.Project
  * Configure base Kotlin with Android options
  */
 fun Project.configureKotlinAndroid() {
-    extensions.configure(CommonExtension::class.java) {
+    extensions.getByType(CommonExtension::class.java).also {
+        configureKotlinAndroid(it)
+    }
+}
+
+fun configureKotlinAndroid(extension: CommonExtension<*, *, *, *, *, *>) {
+    with(extension) {
         compileSdk = 35
 
         defaultConfig {
