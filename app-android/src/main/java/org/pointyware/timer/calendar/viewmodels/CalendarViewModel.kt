@@ -1,10 +1,13 @@
 package org.pointyware.timer.calendar.viewmodels
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
-class CalendarViewModel: ViewModel(), ICalendarViewModel {
+@HiltViewModel
+class CalendarViewModel @Inject constructor(): ViewModel(), ICalendarViewModel {
 
     private val _metrics = MutableStateFlow<MonthMetrics?>(null)
     override val metrics: StateFlow<MonthMetrics?> = _metrics
