@@ -1,6 +1,7 @@
 
 plugins {
     id("org.pointyware.timer.multiplatform.library")
+    id("org.pointyware.timer.multiplatform.koin")
 }
 
 kotlin {
