@@ -1,30 +1,24 @@
 package org.pointyware.timer.tasks.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import org.pointyware.timer.TimerApplication
 import org.pointyware.timer.entities.Record
 import org.pointyware.timer.entities.Task
 import org.pointyware.timer.interactors.CreateRecordUseCase
-import org.pointyware.timer.interactors.CreateTaskUseCase
 
-// TODO: add Hilt to inject dependencies
-class TimerViewModel(application: Application): AndroidViewModel(application), ITimerViewModel {
-
-    private val repository = getApplication<TimerApplication>().repository
-
-    private val createTaskUseCase = CreateTaskUseCase(repository)
-    private val createRecordUseCase = CreateRecordUseCase(repository, createTaskUseCase)
-
+@HiltViewModel
+class TimerViewModel(
+    private val createRecordUseCase: CreateRecordUseCase,
 //    private val startRecordingUseCase = ToggleTimerUseCase()
 //    private val stopRecordingUseCase = StopRecordingUseCase()
+): ViewModel(), ITimerViewModel {
 
     private val _recordings = MutableStateFlow<List<RecordListItem>>(emptyList())
     override val recordings: StateFlow<List<RecordListItem>> = _recordings
