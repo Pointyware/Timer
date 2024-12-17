@@ -8,11 +8,11 @@ import org.pointyware.timer.data.db.AndroidDriverFactory
 import org.pointyware.timer.data.db.DriverFactory
 
 
-actual fun coreDataPlatformModule(): Module = sharedAndroidModule()
+actual fun coreDataPlatformModule(): Module = coreDataAndroidModule()
 
 /**
  *
  */
-fun sharedAndroidModule() = module {
+fun coreDataAndroidModule() = module {
     singleOf(::AndroidDriverFactory) { bind<DriverFactory>()}
 }
