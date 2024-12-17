@@ -18,6 +18,10 @@ gradlePlugin {
             id = "org.pointyware.timer.multiplatform.compose"
             implementationClass = "org.pointyware.timer.multiplatform.MultiplatformComposePlugin"
         }
+        register("multiplatformKoin") {
+            id = "org.pointyware.timer.multiplatform.koin"
+            implementationClass = "org.pointyware.timer.multiplatform.MultiplatformKoinPlugin"
+        }
         register("kotlinConvention") {
             id = "org.pointyware.timer.kotlin"
             implementationClass = "org.pointyware.timer.multiplatform.KotlinConventionPlugin"
