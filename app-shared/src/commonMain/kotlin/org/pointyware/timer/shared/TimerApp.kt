@@ -24,8 +24,8 @@ import org.pointyware.timer.metrics.ui.MetricsScreen
 import org.pointyware.timer.metrics.viewmodels.IMetricsViewModel
 import org.pointyware.timer.organizer.ui.OrganizerScreen
 import org.pointyware.timer.organizer.viewmodels.IOrganizerViewModel
-import org.pointyware.timer.tasks.ui.ITimerViewModel
 import org.pointyware.timer.tasks.ui.TimerScreen
+import org.pointyware.timer.tasks.viewmodels.ITimerViewModel
 import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
 import org.pointyware.timer.ui.theme.TimerTheme
 

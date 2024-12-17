@@ -8,3 +8,20 @@ interface ICalendarViewModel {
     fun goToPreviousMonth()
     fun goToNextMonth()
 }
+
+class CalendarViewModel(): ICalendarViewModel {
+    override val metrics: StateFlow<MonthMetrics?>
+        get() = TODO()
+
+    override fun selectMonthAndYear(month: Int, year: Int) {
+        TODO()
+    }
+
+    override fun goToPreviousMonth() {
+        TODO()
+    }
+
+    override fun goToNextMonth() {
+        TODO()
+    }
+}
