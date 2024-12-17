@@ -67,7 +67,7 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.hilt.android)
-    implementation(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     testImplementation(libs.kotlinx.coroutinesTest)
     testImplementation(libs.junit)
