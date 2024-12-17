@@ -7,7 +7,7 @@ interface IMetricsViewModel {
     val metricsList: StateFlow<List<Metric>>
 }
 
-class MetricsViewModel(): IMetricsViewModel {
+class MetricsViewModelImpl(): IMetricsViewModel {
     override val metricsList: StateFlow<List<Metric>>
         get() = TODO()
 }

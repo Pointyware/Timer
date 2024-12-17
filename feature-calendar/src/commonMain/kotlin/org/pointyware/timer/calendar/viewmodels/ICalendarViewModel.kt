@@ -9,7 +9,7 @@ interface ICalendarViewModel {
     fun goToNextMonth()
 }
 
-class CalendarViewModel(): ICalendarViewModel {
+class CalendarViewModelImpl(): ICalendarViewModel {
     override val metrics: StateFlow<MonthMetrics?>
         get() = TODO()
 

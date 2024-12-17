@@ -16,7 +16,7 @@ interface ITimerViewModel {
     fun titleChanged(title: String)
 }
 
-class TimerViewModel(): ITimerViewModel {
+class TimerViewModelImpl(): ITimerViewModel {
     override val recordings: StateFlow<List<RecordListItem>>
         get() = TODO()
 
