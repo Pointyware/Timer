@@ -8,7 +8,7 @@ import org.pointyware.timer.data.db.AndroidDriverFactory
 import org.pointyware.timer.data.db.DriverFactory
 
 
-actual fun sharedPlatformModule(): Module = sharedAndroidModule()
+actual fun coreDataPlatformModule(): Module = sharedAndroidModule()
 
 /**
  *

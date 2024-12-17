@@ -9,7 +9,7 @@ import org.pointyware.timer.data.TaskRepository
 import org.pointyware.timer.data.TaskRepositoryImpl
 import org.pointyware.timer.data.db.DriverFactory
 import org.pointyware.timer.data.db.Persistence
-import org.pointyware.timer.data.di.sharedModule
+import org.pointyware.timer.data.di.coreDataModule
 import org.pointyware.timer.entities.Record
 import org.pointyware.timer.interactors.CreateRecordUseCase
 import org.pointyware.timer.interactors.CreateTaskUseCase
@@ -32,7 +32,7 @@ class CreateRecordUseCaseTest {
     fun setUp() {
         startKoin {
             modules(
-                sharedModule(),
+                coreDataModule(),
             )
         }
         val koin = getKoin()

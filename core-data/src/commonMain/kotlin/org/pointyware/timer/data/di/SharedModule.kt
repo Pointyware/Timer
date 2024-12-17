@@ -6,10 +6,10 @@ import org.koin.dsl.module
 /**
  *
  */
-fun sharedModule() = module {
+fun coreDataModule() = module {
     includes(
-        sharedPlatformModule()
+        coreDataPlatformModule()
     )
 }
 
-expect fun sharedPlatformModule(): Module
+expect fun coreDataPlatformModule(): Module
