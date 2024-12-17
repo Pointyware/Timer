@@ -7,3 +7,12 @@ interface IOrganizerViewModel {
     val elements: StateFlow<List<OrganizerElement>>
     fun onClickElement(organizerElement: OrganizerElement, index: Int)
 }
+
+class OrganizerViewModel(): IOrganizerViewModel {
+    override val elements: StateFlow<List<OrganizerElement>>
+        get() = TODO()
+
+    override fun onClickElement(organizerElement: OrganizerElement, index: Int) {
+        TODO()
+    }
+}

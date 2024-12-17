@@ -6,3 +6,8 @@ import org.pointyware.timer.metrics.entities.Metric
 interface IMetricsViewModel {
     val metricsList: StateFlow<List<Metric>>
 }
+
+class MetricsViewModel(): IMetricsViewModel {
+    override val metricsList: StateFlow<List<Metric>>
+        get() = TODO()
+}
