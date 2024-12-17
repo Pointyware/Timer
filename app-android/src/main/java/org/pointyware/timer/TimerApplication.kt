@@ -4,7 +4,7 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
-import org.pointyware.timer.data.di.coreDataModule
+import org.pointyware.timer.shared.di.sharedModule
 
 /**
  *
@@ -18,7 +18,7 @@ class TimerApplication: Application() {
         startKoin {
             androidContext(this@TimerApplication)
             modules(
-                coreDataModule(),
+                sharedModule(),
             )
         }
     }
