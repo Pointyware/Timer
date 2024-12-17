@@ -21,6 +21,7 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 implementation(compose.material3)
                 implementation(compose.material3AdaptiveNavigationSuite)
+                implementation(compose.components.resources)
 
                 implementation(libs.compose.viewmodel)
                 implementation(libs.compose.navigation)
@@ -62,4 +63,10 @@ kotlin {
 
 android {
     namespace = "org.pointyware.timer.shared"
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "org.pointyware.timer.shared"
+    generateResClass = auto
 }
