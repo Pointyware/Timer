@@ -28,12 +28,16 @@ import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import org.pointyware.timer.calendar.ui.CalendarScreen
 import org.pointyware.timer.calendar.viewmodels.CalendarViewModel
+import org.pointyware.timer.calendar.viewmodels.ICalendarViewModel
 import org.pointyware.timer.metrics.ui.MetricsScreen
+import org.pointyware.timer.metrics.viewmodels.IMetricsViewModel
 import org.pointyware.timer.metrics.viewmodels.MetricsViewModel
 import org.pointyware.timer.organizer.ui.OrganizerScreen
+import org.pointyware.timer.organizer.viewmodels.IOrganizerViewModel
 import org.pointyware.timer.organizer.viewmodels.OrganizerViewModel
 import org.pointyware.timer.shared.BottomNavBar
 import org.pointyware.timer.shared.Screen
+import org.pointyware.timer.tasks.ui.ITimerViewModel
 import org.pointyware.timer.tasks.ui.TimerScreen
 import org.pointyware.timer.tasks.ui.TimerViewModel
 import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
@@ -59,10 +63,10 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TimerApp(
-    timerViewModel: TimerViewModel,
-    organizerViewModel: OrganizerViewModel,
-    calendarViewModel: CalendarViewModel,
-    metricsViewModel: MetricsViewModel
+    timerViewModel: ITimerViewModel,
+    organizerViewModel: IOrganizerViewModel,
+    calendarViewModel: ICalendarViewModel,
+    metricsViewModel: IMetricsViewModel
 ) {
 
     TimerTheme(
