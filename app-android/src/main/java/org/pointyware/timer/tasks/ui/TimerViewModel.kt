@@ -13,9 +13,10 @@ import org.pointyware.timer.entities.Record
 import org.pointyware.timer.entities.Task
 import org.pointyware.timer.interactors.CreateRecordUseCase
 import org.pointyware.timer.tasks.viewmodels.ITimerViewModel
+import javax.inject.Inject
 
 @HiltViewModel
-class TimerViewModel(
+class TimerViewModel @Inject constructor(
     private val createRecordUseCase: CreateRecordUseCase,
 //    private val startRecordingUseCase = ToggleTimerUseCase()
 //    private val stopRecordingUseCase = StopRecordingUseCase()
