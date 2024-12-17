@@ -8,7 +8,7 @@ import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.data.TaskRepository
 import org.pointyware.timer.data.TaskRepositoryImpl
 import org.pointyware.timer.data.db.DriverFactory
-import org.pointyware.timer.data.di.sharedModule
+import org.pointyware.timer.data.di.coreDataModule
 
 /**
  *
@@ -24,7 +24,7 @@ class TimerApplication: Application() {
         startKoin {
             androidContext(this@TimerApplication)
             modules(
-                sharedModule(),
+                coreDataModule(),
             )
         }
         val koin = getKoin()

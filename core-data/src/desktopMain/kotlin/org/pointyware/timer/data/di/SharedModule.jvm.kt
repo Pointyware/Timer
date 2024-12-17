@@ -7,7 +7,7 @@ import org.koin.dsl.module
 import org.pointyware.timer.data.db.DriverFactory
 import org.pointyware.timer.data.db.JvmDriverFactory
 
-actual fun sharedPlatformModule(): Module = sharedJvmModule()
+actual fun coreDataPlatformModule(): Module = sharedJvmModule()
 
 /**
  * Provides JVM-specific ontology dependencies
