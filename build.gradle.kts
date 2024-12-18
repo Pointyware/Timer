@@ -10,3 +10,6 @@ plugins {
     alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.hilt) apply false
 }
+
+group = "org.pointyware.timer"
+version = libs.versions.app.get()
