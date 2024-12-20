@@ -11,15 +11,22 @@ plugins {
 kotlin {
     jvmToolchain(17)
 
-//    wasmJs {
-//        browser {
-//            binaries.executable()
-//        }
-//    }
-    js {
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
         browser {
-            binaries.executable()
+            commonWebpackConfig {
+                outputFileName = "webApp.js"
+                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+                    static = (static ?: mutableListOf()).apply {
+                        // Serve sources to debug inside browser
+                        add(project.rootDir.path)
+                        add(project.projectDir.path)
+                    }
+//                    port = 8080
+                }
+            }
         }
+        binaries.executable()
     }
 
     applyDefaultHierarchyTemplate()
@@ -63,5 +70,16 @@ publishing {
     }
     repositories {
 
+    }
+}
+
+tasks.create<Task>("list-components") {
+    description = "List all components"
+
+    doLast {
+        println("Components:")
+        project.components.forEach {
+            println(it.name)
+        }
     }
 }
