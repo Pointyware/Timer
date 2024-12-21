@@ -19,6 +19,8 @@ dependencies {
     implementation(compose.desktop.currentOs)
 }
 
-application {
-    mainClass = "org.pointyware.timer.desktop.ApplicationKt"
+compose.desktop {
+    application {
+        mainClass = "org.pointyware.timer.desktop.ApplicationKt"
+    }
 }
