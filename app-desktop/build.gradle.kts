@@ -1,3 +1,4 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinJvm)
@@ -22,5 +23,11 @@ dependencies {
 compose.desktop {
     application {
         mainClass = "org.pointyware.timer.desktop.ApplicationKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Dmg)
+            packageName = group.toString()
+            packageVersion = version.toString()
+        }
     }
 }
