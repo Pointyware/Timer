@@ -60,7 +60,7 @@ dependencies {
     implementation(libs.androidx.composeMaterial3)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material.icons.extended)
-    implementation(libs.androidx.ui.tooling.preview.v170)
+    implementation(libs.androidx.composePreview)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose.v140)
     implementation(libs.androidx.navigation.compose)
@@ -77,5 +77,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.compose.junit4)
+
     debugImplementation(libs.androidx.composeTooling)
 }
