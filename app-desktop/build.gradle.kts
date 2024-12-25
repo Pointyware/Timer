@@ -23,8 +23,8 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Dmg)
-            packageName = group.toString()
-            packageVersion = version.toString()
+            packageName = rootProject.group.toString()
+            packageVersion = rootProject.version.toString()
         }
     }
 }
