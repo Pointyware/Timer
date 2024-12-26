@@ -11,7 +11,7 @@ kotlin {
 }
 
 android {
-    namespace = "org.pointyware.timer"
+    namespace = "org.pointyware.timer.android"
 
     compileSdk = 35
 

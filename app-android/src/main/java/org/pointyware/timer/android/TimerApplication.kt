@@ -1,4 +1,4 @@
-package org.pointyware.timer
+package org.pointyware.timer.android
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
