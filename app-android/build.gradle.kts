@@ -10,8 +10,13 @@ kotlin {
     jvmToolchain(17)
 }
 
+parent?.let {
+    group = it.group.toString() + ".android"
+    version = it.version
+}
+
 android {
-    namespace = "org.pointyware.timer.android"
+    namespace = group.toString()
 
     compileSdk = 35
 
