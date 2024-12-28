@@ -31,6 +31,15 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("keystore.jks")
+            storePassword = providers.gradleProperty("keystore.password").getOrElse("no-pass")
+            keyAlias = providers.gradleProperty("keystore.alias").getOrElse("no-alias")
+            keyPassword = providers.gradleProperty("keystore.alias_password").getOrElse("no-pass")
+        }
+    }
+
     buildTypes {
         debug {
             isMinifyEnabled = false
