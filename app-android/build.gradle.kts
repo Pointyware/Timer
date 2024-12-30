@@ -46,7 +46,7 @@ android {
             enableUnitTestCoverage = true
         }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles.addAll(listOf(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 file("proguard-rules.pro")
