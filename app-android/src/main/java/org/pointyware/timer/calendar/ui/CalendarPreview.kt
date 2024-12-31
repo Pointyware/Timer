@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import org.pointyware.timer.R
+import org.pointyware.timer.android.R
 import org.pointyware.timer.calendar.viewmodels.DayMetrics
 import org.pointyware.timer.calendar.viewmodels.MonthMetrics
 import org.pointyware.timer.metrics.entities.CategoryMetric
