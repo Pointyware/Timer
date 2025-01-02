@@ -51,6 +51,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 file("proguard-rules.pro")
             ))
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     buildFeatures {
