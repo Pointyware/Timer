@@ -32,11 +32,16 @@ include(
     ":core-interactors",
 )
 
-include(":app-shared")
-include(":app-android")
-include(":app-browser")
-//include(":app-ios")
-include(":app-desktop")
+include(
+    ":app-shared",
+    ":app-android",
+    ":app-browser",
+    ":app-desktop"
+)
+
+include(
+    ":app-android:baseline-profile"
+)
 
 include(
     ":core-ui"
