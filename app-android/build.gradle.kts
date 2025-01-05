@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     id("org.pointyware.timer.multiplatform.compose")
     alias(libs.plugins.hilt)
+    alias(libs.plugins.androidBaseline)
 }
 
 kotlin {
@@ -97,4 +98,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.junit4)
 
     debugImplementation(libs.androidx.composeTooling)
+
+    baselineProfile(project(":app-android:baseline-profile"))
 }
