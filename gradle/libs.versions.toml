@@ -95,7 +95,7 @@ truth = { module = "com.google.truth:truth", version.ref = "truth" }
 [plugins]
 androidApplication  = { id = "com.android.application", version.ref = "agp" }
 androidLibrary      = { id = "com.android.library", version.ref = "agp" }
-androidBaseline     = { id = "androidx.baselineprofile", version.ref = "agp" }
+androidBaseline     = { id = "androidx.baselineprofile", version.ref = "benchmarkMacroJunit4" }
 composeMultiplatform    = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler    = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dokka               = { id = "org.jetbrains.dokka", version.ref = "dokka" }
