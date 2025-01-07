@@ -31,6 +31,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    buildTypes {
+        debug {}
+        release {}
+    }
 //    targetProjectPath = ":app-android"
 
     buildFeatures {
