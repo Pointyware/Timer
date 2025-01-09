@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.androidBaseline) apply false
+    alias(libs.plugins.android.test) apply false
 }
 
 group = "org.pointyware.timer"
