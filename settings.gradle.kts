@@ -54,3 +54,4 @@ include(
 )
 
 includeBuild("build-logic")
+include(":app-android:baselineprofile")
