@@ -86,8 +86,6 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.hilt.android)
-    implementation(libs.androidx.profileinstaller)
-    "baselineProfile"(project(":app-android:baselineprofile"))
     ksp(libs.hilt.compiler)
 
     testImplementation(libs.kotlinx.coroutinesTest)
@@ -101,5 +99,7 @@ dependencies {
 
     debugImplementation(libs.androidx.composeTooling)
 
+    implementation(libs.androidx.profileinstaller)
+    baselineProfile(project(":app-android:baselineprofile"))
     baselineProfile(project(":app-android:baseline-profile"))
 }
