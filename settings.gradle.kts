@@ -40,7 +40,8 @@ include(
 )
 
 include(
-    ":app-android:baseline-profile"
+    ":app-android:baseline-profile",
+    ":app-android:baselineprofile"
 )
 
 include(
@@ -54,4 +55,3 @@ include(
 )
 
 includeBuild("build-logic")
-include(":app-android:baselineprofile")
