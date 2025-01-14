@@ -66,10 +66,18 @@ signing {
 
 publishing {
     publications {
-
+        create<MavenPublication>("maven") {
+            from(components["kotlin"])
+        }
     }
     repositories {
-
+        maven("GitHub") {
+            url = uri("https://maven.pkg.github.com/pointyware/timer")
+            credentials {
+                username = providers.gradleProperty("github.user").getOrElse("no-user")
+                password = providers.gradleProperty("github.token").getOrElse("no-pass")
+            }
+        }
     }
 }
 
