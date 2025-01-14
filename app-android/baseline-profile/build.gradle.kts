@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     id("org.pointyware.timer.multiplatform.compose")
     alias(libs.plugins.hilt)
+    alias(libs.plugins.android.test)
     alias(libs.plugins.androidBaseline)
 }
 
