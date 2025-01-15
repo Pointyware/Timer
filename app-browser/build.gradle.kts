@@ -61,13 +61,15 @@ kotlin {
 }
 
 signing {
-
+    useGpgCmd()
+    sign(publishing.publications)
 }
 
 publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components["kotlin"])
+            artifactId = "app-browser"
         }
     }
     repositories {
