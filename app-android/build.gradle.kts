@@ -101,5 +101,5 @@ dependencies {
 
     implementation(libs.androidx.profileinstaller)
     baselineProfile(project(":app-android:baselineprofile"))
-    baselineProfile(project(":app-android:baseline-profile"))
+//    baselineProfile(project(":app-android:baseline-profile"))
 }
