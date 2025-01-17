@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     id("org.pointyware.timer.multiplatform.compose")
-    publishing
+    `maven-publish`
     signing
 }
 
