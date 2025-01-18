@@ -67,7 +67,7 @@ signing {
 
 publishing {
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("app") {
             from(components["kotlin"])
             artifactId = "app-browser"
         }
