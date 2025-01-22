@@ -1,4 +1,4 @@
-package org.pointyware.timer
+package org.pointyware.timer.android
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
