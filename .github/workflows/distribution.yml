@@ -13,7 +13,7 @@ jobs:
         uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
       - name: Build Android
         run: |
-          ${{ secrets.KEYSTORE }} > base64 --decode > app-android/keystore.jks
+          ${{ secrets.RELEASE_KEYSTORE }} > base64 --decode > app-android/keystore.jks
           ./gradlew :app-android:bundleRelease \
             :app-android:testReleaseUnitTest \
             -Pgithub.user=${{ secrets.BUILD_USER }} \
