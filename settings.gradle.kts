@@ -40,7 +40,6 @@ include(
 )
 
 include(
-//    ":app-android:baseline-profile",
     ":app-android:baselineprofile"
 )
 
