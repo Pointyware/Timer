@@ -1,5 +1,5 @@
 name: Distribution Process
-run-name: Verify `${{ github.head_ref }}` before merge to `main` by @${{ github.actor }}
+run-name: Assemble and Test Release Bundle `${{ github.head_ref }}` by @${{ github.actor }}
 
 on:
   workflow_dispatch:
