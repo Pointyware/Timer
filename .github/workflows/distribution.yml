@@ -2,7 +2,7 @@ name: Distribution Process
 run-name: Verify `${{ github.head_ref }}` before merge to `main` by @${{ github.actor }}
 
 on:
-  manual_dispatch:
+  workflow_dispatch:
 
 jobs:
   build-app-android:
