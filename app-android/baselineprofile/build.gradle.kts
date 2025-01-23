@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "org.pointyware.timer.baselineprofile"
+    namespace = "org.pointyware.timer.android.baselineprofile"
     compileSdk = 34
 
     compileOptions {
