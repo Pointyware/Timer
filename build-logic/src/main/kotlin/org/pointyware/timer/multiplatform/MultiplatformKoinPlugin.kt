@@ -20,8 +20,10 @@ class MultiplatformKoinPlugin: Plugin<Project> {
                             commonMain.dependencies {
                                 implementation(libs.findLibrary("koin-core").get())
                             }
-                            androidMain.dependencies {
-                                implementation(libs.findLibrary("koin-android").get())
+                            if (pluginManager.hasPlugin("org.jetbrains.kotlin.android")) {
+                                androidMain.dependencies {
+                                    implementation(libs.findLibrary("koin-android").get())
+                                }
                             }
                         }
                     }
