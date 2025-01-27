@@ -1,5 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-
 plugins {
     alias(libs.plugins.kotlinJvm)
     id("org.pointyware.timer.multiplatform.compose")
@@ -15,16 +13,23 @@ dependencies {
 
     implementation(compose.ui)
     implementation(compose.desktop.currentOs)
+    implementation(compose.components.resources)
 }
 
 compose.desktop {
     application {
         mainClass = "org.pointyware.timer.desktop.ApplicationKt"
 
-        nativeDistributions {
-            targetFormats(TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Dmg)
-            packageName = rootProject.group.toString()
-            packageVersion = rootProject.version.toString()
-        }
+//        nativeDistributions {
+//            targetFormats(TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Dmg)
+//            packageName = rootProject.group.toString()
+//            packageVersion = rootProject.version.toString()
+//        }
     }
+}
+
+compose.resources {
+    generateResClass = always
+    publicResClass = true
+    packageOfResClass = "org.pointyware.timer.desktop"
 }
