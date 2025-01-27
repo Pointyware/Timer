@@ -1,19 +1,33 @@
 plugins {
-    alias(libs.plugins.kotlinJvm)
+    alias(libs.plugins.kotlinMultiplatform)
     id("org.pointyware.timer.multiplatform.compose")
     id("org.pointyware.timer.multiplatform.koin")
 }
 
 kotlin {
     jvmToolchain(17)
-}
 
-dependencies {
-    implementation(projects.appShared)
+    jvm()
 
-    implementation(compose.ui)
-    implementation(compose.desktop.currentOs)
-    implementation(compose.components.resources)
+    sourceSets {
+        val jvmMain by getting {
+
+            dependencies {
+                implementation(projects.appShared)
+
+                implementation(compose.ui)
+                implementation(compose.desktop.currentOs)
+                implementation(compose.components.resources)
+            }
+        }
+
+        val jvmTest by getting {
+
+            dependencies {
+
+            }
+        }
+    }
 }
 
 compose.desktop {
