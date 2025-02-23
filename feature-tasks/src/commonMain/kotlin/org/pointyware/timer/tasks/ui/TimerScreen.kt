@@ -119,13 +119,7 @@ fun RecordingList(
     LazyColumn(modifier = modifier.fillMaxWidth()) {
         items(recordList) { record ->
 
-            /*
-             TODO:
-              1. make each task item expandable and animated
-              2. when expanded, show date and start/end times
-              3. If same day, show date once with both times; if spans multiple days, show
-                dates for each time
-             */
+            // https://github.com/Pointyware/Timer/issues/39
             Surface(
                 modifier = Modifier
                     .padding(all = 8.dp),
