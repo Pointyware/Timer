@@ -16,6 +16,9 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 implementation(compose.components.resources)
 
+                implementation(libs.compose.viewmodel)
+                implementation(libs.compose.navigation)
+
                 api(projects.coreInteractors)
                 api(projects.coreUi)
             }
