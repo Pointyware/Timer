@@ -1,7 +1,16 @@
 package org.pointyware.timer.tasks.viewmodels
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import org.pointyware.timer.entities.Record
 import org.pointyware.timer.entities.Task
+import org.pointyware.timer.interactors.CreateRecordUseCase
 import org.pointyware.timer.tasks.ui.RecordListItem
 
 interface ITimerViewModel {
@@ -16,34 +25,80 @@ interface ITimerViewModel {
     fun titleChanged(title: String)
 }
 
-class TimerViewModelImpl(): ITimerViewModel {
-    override val recordings: StateFlow<List<RecordListItem>>
-        get() = TODO()
+class TimerViewModelImpl(
+    private val createRecordUseCase: CreateRecordUseCase
+): ViewModel(), ITimerViewModel {
+    private val _recordings = MutableStateFlow<List<RecordListItem>>(emptyList())
+    override val recordings: StateFlow<List<RecordListItem>> = _recordings
 
-    override val time: StateFlow<Int>
-        get() = TODO()
+    private val _timer = MutableStateFlow(0)
+    override val time: StateFlow<Int> = _timer
 
-    override val isRunning: StateFlow<Boolean>
-        get() = TODO()
+    private val _isRunning = MutableStateFlow(false)
+    override val isRunning: StateFlow<Boolean> = _isRunning
 
-    override val taskList: StateFlow<List<Task>>
-        get() = TODO()
+    private var timerJob: Job? = null
 
-    override val selectedTask: StateFlow<Task?>
-        get() = TODO()
+    private val _taskList = MutableStateFlow<List<Task>>(emptyList())
+    override var taskList: StateFlow<List<Task>> = _taskList
+    // TODO: load initial list of tasks
 
-    override val taskTitle: StateFlow<String>
-        get() = TODO()
+    private val _selectedTask = MutableStateFlow<Task?>(null)
+    override val selectedTask: StateFlow<Task?> = _selectedTask
+
+    private val _taskTitle = MutableStateFlow("")
+    override val taskTitle: StateFlow<String> = _taskTitle
+
+    private var startTime: Long = 0
 
     override fun toggleTimer() {
-        TODO()
+        val isRunning = !_isRunning.value
+        _isRunning.value = isRunning
+
+        if (isRunning) {
+            timerJob = viewModelScope.launch {
+                while (true) {
+                    delay(1000)
+                    _timer.value++
+                }
+            }
+
+            startTime = System.currentTimeMillis()
+        } else {
+            timerJob?.cancel()
+            _timer.value = 0
+
+            val endTime = System.currentTimeMillis()
+            selectedTask.value?.also {
+                viewModelScope.launch {
+                    createRecordUseCase(
+                        Record(
+                            startTime = startTime,
+                            endTime = endTime
+                        ), it)
+                }
+            } ?: run {
+                viewModelScope.launch {
+                    createRecordUseCase(Record(startTime, endTime), taskTitle.value)
+                }
+            }
+        }
     }
 
     override fun selectTask(task: Task) {
-        TODO()
+        _selectedTask.value = task
+        _taskTitle.value = task.title
     }
 
+    private var searchJob: Job? = null
     override fun titleChanged(title: String) {
-        TODO()
+        _selectedTask.value = null
+        _taskTitle.value = title
+
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch(Dispatchers.IO) {
+            val selectedTask = taskList.value.find {it.title == title}
+            _selectedTask.value = selectedTask
+        }
     }
 }
