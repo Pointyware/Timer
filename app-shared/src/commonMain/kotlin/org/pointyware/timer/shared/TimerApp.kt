@@ -11,7 +11,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -19,7 +18,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.resources.stringResource
-import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.calendar.ui.CalendarScreen
 import org.pointyware.timer.calendar.viewmodels.ICalendarViewModel
 import org.pointyware.timer.metrics.ui.MetricsScreen
@@ -28,16 +26,13 @@ import org.pointyware.timer.organizer.ui.OrganizerScreen
 import org.pointyware.timer.organizer.viewmodels.IOrganizerViewModel
 import org.pointyware.timer.tasks.ui.TimerScreen
 import org.pointyware.timer.tasks.viewmodels.ITimerViewModel
+import org.pointyware.timer.ui.koinDependency
 import org.pointyware.timer.ui.theme.TimerIconsAutoMirrored
 import org.pointyware.timer.ui.theme.TimerTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TimerApp(
-    organizerViewModel: IOrganizerViewModel,
-    calendarViewModel: ICalendarViewModel,
-    metricsViewModel: IMetricsViewModel
-) {
+fun TimerApp() {
 
     TimerTheme(
         isDynamicTheme = true // no-op on non-Android platforms
@@ -79,17 +74,19 @@ fun TimerApp(
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(Screen.Timer.name) {
-                    val koin = remember { getKoin() }
-                    val timerViewModel: ITimerViewModel = koin.get()
+                    val timerViewModel: ITimerViewModel = koinDependency()
                     TimerScreen(timerViewModel)
                 }
                 composable(Screen.Organizer.name) {
+                    val organizerViewModel = koinDependency<IOrganizerViewModel>()
                     OrganizerScreen(organizerViewModel)
                 }
                 composable(Screen.Metrics.name) {
+                    val metricsViewModel = koinDependency<IMetricsViewModel>()
                     MetricsScreen(metricsViewModel)
                 }
                 composable(Screen.Calendar.name) {
+                    val calendarViewModel = koinDependency<ICalendarViewModel>()
                     CalendarScreen(calendarViewModel)
                 }
             }
