@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import org.pointyware.timer.entities.Record
 import org.pointyware.timer.entities.Task
 import org.pointyware.timer.interactors.CreateRecordUseCase
+import org.pointyware.timer.interactors.LoadTasksUseCase
 import org.pointyware.timer.tasks.ui.RecordListItem
 
 interface ITimerViewModel {
@@ -26,7 +27,8 @@ interface ITimerViewModel {
 }
 
 class TimerViewModelImpl(
-    private val createRecordUseCase: CreateRecordUseCase
+    private val createRecordUseCase: CreateRecordUseCase,
+    private val loadTaskUseCase: LoadTasksUseCase,
 ): ViewModel(), ITimerViewModel {
     private val _recordings = MutableStateFlow<List<RecordListItem>>(emptyList())
     override val recordings: StateFlow<List<RecordListItem>> = _recordings
