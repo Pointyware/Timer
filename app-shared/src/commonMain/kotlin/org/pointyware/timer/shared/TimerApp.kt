@@ -11,6 +11,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -18,6 +19,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.resources.stringResource
+import org.koin.mp.KoinPlatform.getKoin
 import org.pointyware.timer.calendar.ui.CalendarScreen
 import org.pointyware.timer.calendar.viewmodels.ICalendarViewModel
 import org.pointyware.timer.metrics.ui.MetricsScreen
@@ -32,7 +34,6 @@ import org.pointyware.timer.ui.theme.TimerTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TimerApp(
-    timerViewModel: ITimerViewModel,
     organizerViewModel: IOrganizerViewModel,
     calendarViewModel: ICalendarViewModel,
     metricsViewModel: IMetricsViewModel
@@ -78,6 +79,8 @@ fun TimerApp(
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(Screen.Timer.name) {
+                    val koin = remember { getKoin() }
+                    val timerViewModel: ITimerViewModel = koin.get()
                     TimerScreen(timerViewModel)
                 }
                 composable(Screen.Organizer.name) {

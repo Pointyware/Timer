@@ -9,7 +9,6 @@ import org.pointyware.timer.metrics.viewmodels.MetricsViewModelImpl
 import org.pointyware.timer.organizer.viewmodels.OrganizerViewModelImpl
 import org.pointyware.timer.shared.TimerApp
 import org.pointyware.timer.shared.di.sharedModule
-import org.pointyware.timer.tasks.viewmodels.TimerViewModelImpl
 
 /**
  *
@@ -33,7 +32,6 @@ fun main(vararg args: String) {
             state = windowState
         ) {
             TimerApp( // TODO: remove from composable and create on each navigation event
-                timerViewModel = TimerViewModelImpl(),
                 organizerViewModel = OrganizerViewModelImpl(),
                 calendarViewModel = CalendarViewModelImpl(),
                 metricsViewModel = MetricsViewModelImpl()
