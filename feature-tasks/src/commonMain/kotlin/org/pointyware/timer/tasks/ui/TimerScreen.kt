@@ -160,7 +160,6 @@ fun TaskControl(
 
     var taskSelectionOpen by remember { mutableStateOf(false) }
 
-    // TODO: add background to represent a surface that will cover task list
     Surface(
         modifier = Modifier
             .fillMaxWidth(),
@@ -202,12 +201,16 @@ fun TaskControl(
             Dialog(
                 onDismissRequest = { taskSelectionOpen = false }
             ) {
-                TaskSelector(
-                    taskList = taskList,
-                    selectedTask = selectedTask,
-                    onSelect = onTaskSelected,
-                    onCancel = { taskSelectionOpen = false }
-                )
+                Surface(
+                    modifier = Modifier.padding(16.dp) // TimerTheme.paddingMedium
+                ) {
+                    TaskSelector(
+                        taskList = taskList,
+                        selectedTask = selectedTask,
+                        onSelect = onTaskSelected,
+                        onCancel = { taskSelectionOpen = false }
+                    )
+                }
             }
         }
     }
