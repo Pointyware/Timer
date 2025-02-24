@@ -13,6 +13,8 @@ kotlin {
 
                 implementation(libs.kotlinx.coroutines)
 
+                implementation(libs.koin.core)
+
                 implementation(compose.ui)
                 implementation(compose.material3)
                 implementation(compose.components.resources)
