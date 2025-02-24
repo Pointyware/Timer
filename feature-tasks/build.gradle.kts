@@ -19,6 +19,8 @@ kotlin {
                 implementation(libs.compose.viewmodel)
                 implementation(libs.compose.navigation)
 
+                implementation(libs.koin.core)
+
                 api(projects.coreInteractors)
                 api(projects.coreUi)
             }
