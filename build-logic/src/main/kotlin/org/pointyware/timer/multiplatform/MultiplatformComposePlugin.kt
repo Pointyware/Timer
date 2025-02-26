@@ -8,8 +8,8 @@ import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-import org.pointyware.timer.configureKotlinAndroid
 import org.pointyware.timer.configureKotlinJvm
+import org.pointyware.timer.libs
 
 /**
  *
@@ -24,6 +24,16 @@ class MultiplatformComposePlugin: Plugin<Project> {
                 pluginManager.hasPlugin("org.jetbrains.kotlin.multiplatform") -> {
                     configure<KotlinMultiplatformExtension> {
 
+                        with(sourceSets) {
+                            commonMain.dependencies {
+                                implementation(libs.findLibrary("koin-core").get())
+                            }
+                            if (pluginManager.hasPlugin("org.jetbrains.kotlin.android")) {
+                                androidMain.dependencies {
+                                    implementation(libs.findLibrary("koin-android").get())
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -33,15 +43,19 @@ class MultiplatformComposePlugin: Plugin<Project> {
                     }
                 }
 
-                pluginManager.hasPlugin("com.android.library") -> {
-                    configure<LibraryExtension> {
-                        configureKotlinAndroid(this)
-                    }
-                }
+                pluginManager.hasPlugin("org.jetbrains.kotlin.android") -> {
+                    when {
+                        pluginManager.hasPlugin("com.android.library") -> {
+                            configure<LibraryExtension> {
 
-                pluginManager.hasPlugin("com.android.application") -> {
-                    configure<ApplicationExtension> {
-                        configureKotlinAndroid(this)
+                            }
+                        }
+
+                        pluginManager.hasPlugin("com.android.application") -> {
+                            configure<ApplicationExtension> {
+
+                            }
+                        }
                     }
                 }
             }
