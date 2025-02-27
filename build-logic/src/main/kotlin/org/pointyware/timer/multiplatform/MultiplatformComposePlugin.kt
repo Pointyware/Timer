@@ -9,7 +9,6 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.pointyware.timer.configureKotlinJvm
-import org.pointyware.timer.libs
 
 /**
  *
@@ -26,11 +25,13 @@ class MultiplatformComposePlugin: Plugin<Project> {
 
                         with(sourceSets) {
                             commonMain.dependencies {
-                                implementation(libs.findLibrary("koin-core").get())
+//                                implementation(libs.findLibrary("koin-core").get())
+                                // TODO: compose common dependencies
                             }
                             if (pluginManager.hasPlugin("org.jetbrains.kotlin.android")) {
                                 androidMain.dependencies {
-                                    implementation(libs.findLibrary("koin-android").get())
+//                                    implementation(libs.findLibrary("koin-android").get())
+                                    // TODO: compose android dependencies
                                 }
                             }
                         }
