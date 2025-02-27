@@ -2,6 +2,7 @@
 plugins {
     id("org.pointyware.timer.multiplatform.library")
     id("org.pointyware.timer.multiplatform.compose")
+    id("org.pointyware.timer.multiplatform.koin")
 }
 
 kotlin {
@@ -12,8 +13,6 @@ kotlin {
                 api(projects.featureMetrics)
                 api(projects.featureCalendar)
                 api(projects.featureTasks)
-
-                implementation(libs.koin.core)
 
                 implementation(libs.kotlinx.dateTime)
 
@@ -30,8 +29,6 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(libs.koin.test)
-
                 implementation(libs.kotlin.test)
                 implementation(libs.kotlinx.coroutinesTest)
             }
@@ -48,7 +45,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(libs.koin.android)
+
             }
         }
 
