@@ -4,6 +4,7 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 import org.pointyware.timer.interactors.CreateRecordUseCase
 import org.pointyware.timer.interactors.CreateTaskUseCase
+import org.pointyware.timer.interactors.LoadTasksUseCase
 
 /**
  *
@@ -12,4 +13,5 @@ import org.pointyware.timer.interactors.CreateTaskUseCase
 fun coreInteractorsModule() = module {
     factoryOf(::CreateRecordUseCase)
     factoryOf(::CreateTaskUseCase)
+    factoryOf(::LoadTasksUseCase)
 }
