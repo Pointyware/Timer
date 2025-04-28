@@ -1,10 +1,10 @@
 
 plugins {
     id("org.pointyware.timer.multiplatform.library")
+    id("org.pointyware.timer.kotlin")
 }
 
 kotlin {
-
     sourceSets {
         val commonMain by getting {
             dependencies {
