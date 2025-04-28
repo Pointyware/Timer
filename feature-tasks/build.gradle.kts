@@ -28,7 +28,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(libs.kass.assertions)
+//                implementation(libs.kass.assertions)
             }
         }
 

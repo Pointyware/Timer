@@ -90,8 +90,8 @@ dependencies {
 
     testImplementation(libs.kotlinx.coroutinesTest)
     testImplementation(libs.junit)
-    testImplementation(libs.kass.assertions)
-    androidTestImplementation(libs.kass.assertions)
+//    testImplementation(libs.kass.assertions)
+//    androidTestImplementation(libs.kass.assertions)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
