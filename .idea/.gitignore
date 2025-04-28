@@ -1,14 +1,15 @@
 # Default ignored files
+/artifacts/
 /shelf/
-/workspace.xml
-/inspectionProfiles/Project_Default.xml
-/vcs.xml
-/runConfigurations.xml
-/migrations.xml
-/kotlinc.xml
+/inspectionProfiles/
+/runConfigurations/
+/AndroidProjectSystem.xml
+/androidTestResultsUserPreferences.xml
 /deploymentTargetSelector.xml
 /gradle.xml
-/artifacts/
-/androidTestResultsUserPreferences.xml
+/kotlinc.xml
+/migrations.xml
+/runConfigurations.xml
 /studiobot.xml
-/runConfigurations/Generate_Baseline_Profile_for_app_android.xml
+/vcs.xml
+/workspace.xml
