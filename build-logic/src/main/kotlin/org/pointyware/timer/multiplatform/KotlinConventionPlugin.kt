@@ -12,7 +12,7 @@ class KotlinConventionPlugin: Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             configure<KotlinProjectExtension> {
-                jvmToolchain(17)
+                jvmToolchain(21)
             }
         }
     }
