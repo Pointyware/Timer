@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
-        uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
+        uses: Pointyware/.github/.github/actions/checkout-java-gradle@c24a49ffad2ef6b828b5e9c44c8457d5ae457d33
       - name: Build Android
         run: ./gradlew :app-android:assembleDebug -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
       - name: Android Debug Unit Tests
@@ -30,7 +30,7 @@ jobs:
     runs-on: macos-14
     steps:
       - name: Setup
-        uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
+        uses: Pointyware/.github/.github/actions/checkout-java-gradle@c24a49ffad2ef6b828b5e9c44c8457d5ae457d33
       - name: Build iOS
         run: ./gradlew :app-ios:assemble -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
       - name: Test iOS
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
-        uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
+        uses: Pointyware/.github/.github/actions/checkout-java-gradle@c24a49ffad2ef6b828b5e9c44c8457d5ae457d33
       - name: Build Desktop
         run: ./gradlew :app-desktop:assemble -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
       - name: Test Desktop
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Setup
-        uses: Pointyware/.github/.github/actions/checkout-java-gradle@b70bbae19637171d6cf9311f06a59f1c15e2598b
+        uses: Pointyware/.github/.github/actions/checkout-java-gradle@c24a49ffad2ef6b828b5e9c44c8457d5ae457d33
       - name: Build Browser
         run: ./gradlew :app-browser:assemble -Pgithub.user=${{ secrets.BUILD_USER }} -Pgithub.token=${{ secrets.BUILD_TOKEN }}
       - name: Test Browser
